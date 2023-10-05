@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+675855491.index
+1773393425.index
+881619258.index
+2562655047.index
+717860813.index
+327279795.index
+3428164132.index

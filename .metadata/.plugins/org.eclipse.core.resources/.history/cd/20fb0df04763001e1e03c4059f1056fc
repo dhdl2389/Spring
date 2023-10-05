@@ -1,0 +1,15 @@
+package com.acorn.day1.di;
+
+public class PController2 {
+	@Controller
+	public class pController2 {
+
+	   @Autowired
+	   Program p ;
+	   
+	   @GetMapping("/p2.ok")
+	   public String test1() {
+	      return "pView2";
+	   }
+	}
+}
