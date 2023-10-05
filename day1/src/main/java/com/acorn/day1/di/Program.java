@@ -2,20 +2,24 @@ package com.acorn.day1.di;
 
 public class Program {
 
-	// 의존성 dependence
+	// �쓽議댁꽦 dependence
 	Calculator calculator;
 
 	public Program() {
 
 	}
 
-	// 생성자주입 constructor injection
+	// 객체 주입식 constructor injection
 	public Program(Calculator calculator) {
 		super();
 		this.calculator = calculator;
 	}
 
-	// 세터주입 setter injection
+	public Calculator getCalculator() {
+		return calculator;
+	}
+
+	// 세터주입식 setter injection
 	public void setCalculator(Calculator calculator) {
 		this.calculator = calculator;
 	}

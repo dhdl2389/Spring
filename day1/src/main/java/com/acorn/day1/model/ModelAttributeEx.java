@@ -8,21 +8,21 @@ import org.springframework.web.bind.annotation.RequestParam;
 @Controller
 public class ModelAttributeEx {
 	
-	//Model 객체에 자동으로 저장해 줌  key는 User 첫 글자 소문자형태로 키가 정해짐 
-	//Model객체에 담은 데이터는 화면(view)에서 꺼낼 수 있다
+	//Model 媛앹껜�뿉 �옄�룞�쑝濡� ���옣�빐 以�  key�뒗 User 泥� 湲��옄 �냼臾몄옄�삎�깭濡� �궎媛� �젙�빐吏� 
+	//Model媛앹껜�뿉 �떞�� �뜲�씠�꽣�뒗 �솕硫�(view)�뿉�꽌 爰쇰궪 �닔 �엳�떎
 	@RequestMapping("/mAttribute")
-	public String  test1(@ModelAttribute  User user) {    //@ModelAttribute   생략가능함  , model 객체에 자동으로 담아줌 
+	public String  test1(@ModelAttribute  User user) {    //@ModelAttribute   �깮�왂媛��뒫�븿  , model 媛앹껜�뿉 �옄�룞�쑝濡� �떞�븘以� 
 		return "mview1";
 	}
 	
 	
 	@RequestMapping("/mAttribute2")
-	public String  test2( User user) {    //@ModelAttribute   생략가능함  , model 객체에 자동으로 담아줌 
+	public String  test2( User user) {    //@ModelAttribute   �깮�왂媛��뒫�븿  , model 媛앹껜�뿉 �옄�룞�쑝濡� �떞�븘以� 
 		return "mview2";
 	}	 
  
 	@RequestMapping("/mAttribute3")
-	public String  test3(@ModelAttribute("nUser") User user) {    // 키이름을 원하는 걸로  정할때는 @ModelAttribute 생략불가함   , model 객체에 자동으로 담아줌 
+	public String  test3(@ModelAttribute("nUser") User user) {    
 		return "mview3";                              
 	}
 	 

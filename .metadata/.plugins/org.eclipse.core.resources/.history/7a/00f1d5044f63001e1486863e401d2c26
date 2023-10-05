@@ -1,0 +1,12 @@
+package com.acorn.day1.di;
+
+import java.util.ArrayList;
+
+public class TestService {
+
+	public ArrayList<String> getList(){
+		
+		ArrayList<String> list = new ArrayList<String>();
+	}
+
+}

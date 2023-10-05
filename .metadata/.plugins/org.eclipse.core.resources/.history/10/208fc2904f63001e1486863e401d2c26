@@ -1,0 +1,26 @@
+package com.acorn.day1.di;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
+
+@Controller
+public class PController3 {
+
+	// 매서드 단위
+
+	// 주입하는 코드
+	@Autowired
+	TestService service;
+
+	@GetMapping("/list")
+	public String test1(Model model) {
+
+		// Model
+		ArrayList<String> list = service.getList();
+		return "memberList";
+	}
+
+}

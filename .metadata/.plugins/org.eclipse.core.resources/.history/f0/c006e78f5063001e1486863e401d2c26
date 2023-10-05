@@ -1,0 +1,20 @@
+package com.acorn.day1.di;
+
+import java.util.ArrayList;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
+@Component
+public class TestService {
+
+	@Autowired
+	TestDAO dao;
+
+	public ArrayList<String> getList() {
+dao.selectAll();
+		return list;
+
+	}
+
+}
