@@ -18,7 +18,6 @@ public class ApiController {
 
 	/*
 	 * ajax이용하여 서버로 부터 데이터 받아서 출력하기
-	 * 
 	 */
 	@ResponseBody
 	@GetMapping("/likes")

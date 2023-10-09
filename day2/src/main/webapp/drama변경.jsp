@@ -29,7 +29,7 @@ function update(){
 		contentType: "application/json", // 필수값!@!!!@@!@
 		success : function( data){
 		    alert( data);
-		},
+		}
 		error: function(){
 			alert("err");		
 		}
