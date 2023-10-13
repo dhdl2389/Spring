@@ -30,18 +30,19 @@ public class MemberDAOTest {
 		assertTrue(con != null);
 	}
 
-
+	@Test
 	public void test3() throws SQLException {
 
-		int result = dao.insert(new Member("id1", "pwd2", "test3", "d@naver.com4", "1999-12-10", "sns6", new Date()));
+		int result = dao.insert(new Member("id144", "pwd2", "test3", "d@naver.com4", "1999-12-10", "sns6", new Date()));
 
 		assertTrue(result == 1);
 
 	}
-	@Test
+
 	public void test4() throws SQLException {
 		// 업데이트할 회원의 정보를 포함한 Member 객체 생성
-		Member memberToUpdate = new Member("example1", "newPwd", "newName", "newEmail", "2002-12-04", "newSns", new Date());
+		Member memberToUpdate = new Member("example1", "newPwd", "newName", "newEmail", "2002-12-04", "newSns",
+				new Date());
 
 		// updateUser 메서드 호출
 		int result = dao.updateUser(memberToUpdate);
@@ -59,7 +60,7 @@ public class MemberDAOTest {
 		assertEquals("example1", member.getId());
 
 	}
-	
+
 	public void test5() throws SQLException {
 
 		String id = "example1";

@@ -9,6 +9,8 @@ C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.
 \ProjectTest\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2776612295.index
 \day2\src\main\java
+C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1679987527.index
+\batisPrac\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\1937528655.index
 \day1\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\38472399.index
@@ -23,6 +25,8 @@ C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.
 \day5Test\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\2808595563.index
 \day5Exception\src\main\java
+C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\3038947121.index
+\batisPrj\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\843690767.index
 \helloPrj\src\main\java
 C:\Users\dhdl2\OneDrive\πŸ≈¡ »≠∏È\java_ws\Spring\.metadata\.plugins\org.eclipse.jst.jsp.core\jspsearch\832109461.index
