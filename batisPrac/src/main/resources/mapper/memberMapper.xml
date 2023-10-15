@@ -7,11 +7,16 @@
 		SELECT *
 		FROM membertb
 	</select>
-	
-	
-	<select id="selectOne" resultType="Member" parameterType="String"  >
+
+
+	<select id="selectOne" resultType="Member"
+		parameterType="String">
 		SELECT *
 		FROM membertb where id = #{id}
 	</select>
-	
+
+	<delete id="delete" parameterType="String">
+		delete from membertb where id= #{id}
+	</delete>
+
 </mapper>

@@ -24,5 +24,10 @@ public class MemberReporsitory {
 		
 		return session.selectOne(namespace + "selectOne" , id);
 	}
+	
+	public int delete(String id) {
+		
+		return session.delete(namespace + "delete", id);
+	}
 
 }

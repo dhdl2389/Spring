@@ -23,11 +23,15 @@ public class MemberReporsitoryTest {
 		log.info(dao.selectAll().size());
 	}
 
-	@Test
+	
 	public void test2() {
 		/*log.info(dao.selectOne("test1").getName().equals("test1"));*/
 		log.info(dao.selectOne("test1"));
 	}
-
+	
+	@Test
+	public void test3() {
+		log.info(dao.delete("test01"));
+	}
 	
 }
