@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.acorn.OrderMapper">  
+
+ 
+ <!--  resultMap 사용하는 경우  테이블의 컬러명과 DTO객체의 속성명이 다른경우 -->
+
+	<resultMap id="orderResult"  type="OrderDTO">
+		<result property="orderNo" column="orderno" />
+		<result property="userid"  column="userid" />
+		<result property="name"    column="username" />
+		<result property="tel"     column="tel" />
+		<result property="price"   column="price" />
+	</resultMap>
+
+
+    
+    <select id="selectAll" resultType="OrderDTO">
+        SELECT orderno,  o.userid , username  ,  tel ,  price
+        FROM   ordera      o
+        JOIN   membera    m
+        ON  o.userid = m.userid            
+    </select>
+     
+     
+        
+    <select id="selectAll2" resultMap="orderResult">
+        SELECT orderno,  o.userid     , username,  tel , price
+        FROM   ordera      o
+        JOIN   membera    m
+        ON  o.userid = m.userid            
+    </select>
+     
+</mapper>

@@ -4,6 +4,9 @@
 		"http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<typeAlias alias="Member" type="com.acorn.prac.Member"/>
+		<typeAlias alias="Member" type="com.acorn.prac.Member" />
+		<typeAlias alias="OrderDTO" type="com.acorn.batis2.OrderDTO" />
 	</typeAliases>
+
+
 </configuration>
