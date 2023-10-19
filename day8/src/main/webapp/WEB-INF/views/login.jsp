@@ -9,11 +9,7 @@
 </head>
 <body>
 
-<form  action="<c:url value="/login"/>"  method="post">
-<input type="text" name="id" >
-<input type="text" name="pw" >
-<button>로그인</button>
-</form>
+
 
 </body>
 </html>

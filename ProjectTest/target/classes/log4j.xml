@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="com.carrot.boar">
+	<logger name="com.acorn.testing">
 		<level value="info" />
 	</logger>
 	

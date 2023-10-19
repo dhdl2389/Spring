@@ -71,6 +71,10 @@ public class MyController {
 		return "redirect:/login";
 	}
 		
+	@RequestMapping( value="/kakaologintest" , method=RequestMethod.GET )
+	public String  test( ) {		
+		return "kakao_login";
+	}
 	
 
 }
