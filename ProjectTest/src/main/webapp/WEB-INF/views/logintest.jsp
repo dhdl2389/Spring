@@ -65,7 +65,7 @@
       }
     </script>
     
-      <form id="myForm"  method="post"   action="/testing/myForm">
+      <form id="myForm"  method="post"  action="/testing/myForm">
       <input type="text" id="id" name="id" value="" />
       <input type="text" id="nickname" name="nickname" value="" />
       <input type="text" id="profile_image" name="profile_image" value="" />      

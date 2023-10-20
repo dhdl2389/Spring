@@ -5,5 +5,6 @@
 <configuration>
 	<typeAliases>
 		<typeAlias alias="KakaoUserDTO" type="com.acorn.testing.KakaoUserDTO" />
+		<typeAlias alias="AddressDTO" type="com.acorn.testing2.AddressDTO" />
 	</typeAliases>
 </configuration>

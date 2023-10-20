@@ -19,6 +19,4 @@ public class KakaoRepositoryRealImp implements KakaoMemberRepositoryI {
 		return session.insert(namespace + "insertUser", kakaoUserDTO);
 	}
 
-
-
 }
