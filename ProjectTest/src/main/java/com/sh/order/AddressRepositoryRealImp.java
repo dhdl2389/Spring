@@ -1,4 +1,4 @@
-package com.acorn.testing2;
+package com.sh.order;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class AddressRepositoryRealImp implements AddressRepositoryI {
 
 	@Autowired
 	private SqlSession session;
-	private static String namespace = "com.acorn.testing2.AddressMapper.";
+	private static String namespace = "com.sh.order.AddressMapper.";
 
 	@Override
 	public int insert(AddressDTO addressDTO) {

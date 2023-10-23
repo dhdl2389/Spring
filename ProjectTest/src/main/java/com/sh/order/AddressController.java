@@ -1,4 +1,4 @@
-package com.acorn.testing2;
+package com.sh.order;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,15 +10,15 @@ import com.acorn.testing.KakaoUserDTO;
 
 @Controller
 public class AddressController {
-	
+
 	@Autowired
 	AddressServiceI service;
-	
+
 	@GetMapping("/address")
 	public String addressF() {
 		return "address";
 	}
-	
+
 	@PostMapping("/addressForm")
 	public String registerMember(AddressDTO addressDTO) {
 		service.registerMember(addressDTO);

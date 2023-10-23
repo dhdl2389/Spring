@@ -1,5 +1,6 @@
 package com.acorn.testing;
 
+import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,9 @@ public class logintest {
 	@Autowired
 	KakaoMemberServiceI service;
 
+	@Autowired
+	HttpSession httpSession;
+
 	@GetMapping("/logintest")
 	public String logintest() {
 		return "logintest";
@@ -20,8 +24,10 @@ public class logintest {
 
 	@PostMapping("/myForm")
 	public String registerMember(KakaoUserDTO kakaoUserDTO) {
+		httpSession.setAttribute("user", kakaoUserDTO);
 		service.registerMember(kakaoUserDTO);
 		return "logintest";
 	}
+	
 
 }
