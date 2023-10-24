@@ -4,8 +4,13 @@
 <mapper namespace="com.acorn.testing.KakaoUserMapper">
 
    <insert id="insertUser" parameterType="KakaoUserDTO">
-        INSERT INTO kakaousertbl (user_code, id, nickname, profile_image)
-        VALUES (seq_kakao_code.nextval, #{id}, #{nickname}, #{profile_image})
+        INSERT INTO kakaousertbl (id, nickname, profile_image)
+        VALUES (#{id}, #{nickname}, #{profile_image})
     </insert>
+    
+    <select id="selectAll" resultType="KakaoUserDTO">
+		SELECT *
+		FROM kakaousertbl
+	</select>
 
 </mapper>

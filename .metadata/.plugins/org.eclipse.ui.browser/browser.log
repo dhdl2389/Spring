@@ -39,3 +39,29 @@
 
 10월 19, 2023 12:32:07.512 NEW SESSION
 10월 19, 2023 12:32:07.512 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+10월 24, 2023 13:04:13.308 NEW SESSION
+10월 24, 2023 13:04:13.308 [14744:1608:1024/130413.304:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+10월 24, 2023 14:25:52.202 [14744:1608:1024/142552.202:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint (unset) for first_image_paint 0.128 s
+10월 24, 2023 14:25:52.225 [14744:1608:1024/142552.225:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:25:52.775 [14744:1608:1024/142552.775:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:25:52.927 [14744:1608:1024/142552.927:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:25:53.60 [14744:1608:1024/142553.060:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:25:55.602 [14744:1608:1024/142555.601:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:25:55.666 [14744:1608:1024/142555.666:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.159 s for first_image_paint 0.128 s
+10월 24, 2023 14:34:56.255 [14744:1608:1024/143456.254:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint (unset) for first_image_paint 0.119 s
+10월 24, 2023 14:34:56.272 [14744:1608:1024/143456.272:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 14:34:56.819 [14744:1608:1024/143456.819:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 14:34:57.45 [14744:1608:1024/143457.045:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 14:34:57.714 [14744:1608:1024/143457.714:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 14:34:58.56 [14744:1608:1024/143458.055:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 14:34:58.98 [14744:1608:1024/143458.097:ERROR:page_load_metrics_update_dispatcher.cc(179)] Invalid first_paint 0.151 s for first_image_paint 0.119 s
+10월 24, 2023 15:36:14.10 [14744:4028:1024/153614.008:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+10월 24, 2023 15:36:15.302 [14744:1608:1024/153615.302:ERROR:device_event_log_impl.cc(225)] [15:36:15.301] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+10월 24, 2023 15:36:16.448 [14744:4028:1024/153616.448:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 24, 2023 15:36:59.866 [14744:4028:1024/153659.866:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 24, 2023 15:38:39.992 [14744:4028:1024/153839.992:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 24, 2023 15:42:34.656 [14744:4028:1024/154234.656:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 24, 2023 15:50:58.440 [14744:4028:1024/155058.431:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+10월 24, 2023 16:13:58.943 [14744:4028:1024/160358.601:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+10월 24, 2023 16:13:59.07 [14744:4028:1024/161359.007:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7

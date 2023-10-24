@@ -10,7 +10,7 @@
 <body>
 	<ul>
 		<li onclick="kakaoLogin();"><a href="javascript:void(0)"> <span>카카오
-					로그인</span>
+					회원가입</span>
 		</a></li>
 		<li onclick="kakaoLogout();"><a href="javascript:void(0)"> <span>카카오
 					로그아웃</span>
@@ -28,12 +28,14 @@
             Kakao.API.request({
               url: "/v2/user/me",
               success: function (response) {
-                document.getElementById("id").value = response.id;
+                document.getElementById("user_kakao").value = response.id;
                 document.getElementById("nickname").value =
                   response.properties.nickname;
                 document.getElementById("profile_image").value =
-                  response.properties.profile_image;         
+                  response.properties.profile_image;      
                 document.getElementById("myForm").submit();
+               
+               
               },
               fail: function (error) {
                 console.log(error);
@@ -73,23 +75,12 @@
         }).catch(error => console.error('Error:', error));
       }
     </script>
-
-	<form id="myForm" method="post" action="/testing/myForm">
-    <input type="text" id="user_code" name="user_code" value="" />
-    <input type="text" id="id" name="id" value="" />
+<form id="myForm" method="post" action="/testing/myForm">
+    <input type="text" id="user_kakao" name="user_kakao" value="" />
     <input type="text" id="nickname" name="nickname" value="" />
     <input type="text" id="profile_image" name="profile_image" value="" />
 </form>
 
-	<%
-	KakaoUserDTO user = (KakaoUserDTO) session.getAttribute("user");
-	if (user != null) {
-	%>
-	<h2>
-		Welcome,
-		<%=user.getNickname()%></h2>
-	<%
-	}
-	%>
+
 </body>
 </html>
