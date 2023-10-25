@@ -1,4 +1,4 @@
-package com.sh.login;
+package com.sh.saveUser;
 
 import java.util.List;
 
@@ -11,7 +11,7 @@ public class UserRepositoryRealImp implements UserMemberRepositoryI {
 
 	@Autowired
 	private SqlSession session;
-	private static String namespace = "com.sh.login.loginUserMapper.";
+	private static String namespace = "com.sh.saveUser.SaveUserMapper.";
 
 	@Override
 	public int insert(UserDTO userDTO) {

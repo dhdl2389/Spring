@@ -1,10 +1,10 @@
-package com.sh.login;
+package com.sh.saveUser;
 
 import lombok.Data;
 
 @Data
 	public class UserDTO {
-	    private String user_code;
+		private String user_code;
 		private String user_kakao;
 	    private String user_id;
 	    private String user_pw;

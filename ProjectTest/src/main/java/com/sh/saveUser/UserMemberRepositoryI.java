@@ -1,4 +1,4 @@
-package com.sh.login;
+package com.sh.saveUser;
 
 public interface UserMemberRepositoryI {
 

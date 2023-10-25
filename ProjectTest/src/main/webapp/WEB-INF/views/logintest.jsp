@@ -1,6 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.acorn.testing.KakaoUserDTO"%>
+<%@ page import="com.sh.saveUser.UserDTO"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -15,6 +18,11 @@
 		<li onclick="kakaoLogout();"><a href="javascript:void(0)"> <span>카카오
 					로그아웃</span>
 		</a></li>
+		<form id="myForm12" method="post" action="/testing/myForm12">
+			<a href="/testing/logintest1111">
+				<li>우리거 회원가입</li>
+			</a>
+		</form>
 	</ul>
 	<!-- 카카오 스크립트 -->
 	<script src="https://developers.kakao.com/sdk/js/kakao.js"></script>
@@ -75,11 +83,32 @@
         }).catch(error => console.error('Error:', error));
       }
     </script>
-<form id="myForm" method="post" action="/testing/myForm">
-    <input type="text" id="user_kakao" name="user_kakao" value="" />
-    <input type="text" id="nickname" name="nickname" value="" />
-    <input type="text" id="profile_image" name="profile_image" value="" />
-</form>
+	<form id="myForm" method="post" action="/testing/myForm">
+		<input type="hidden" id="user_kakao" name="user_kakao" value="" /> <input
+			type="hidden" id="nickname" name="nickname" value="" /> <input
+			type="hidden" id="profile_image" name="profile_image" value="" />
+	</form>
+
+	<br>
+	<form action="/testing/login" method="post">
+		<div>
+			<label for="user_id">Username:</label> <input type="text"
+				id="user_id" name="user_id">
+		</div>
+		<div>
+			<label for="user_pw">Password:</label> <input type="password"
+				id="user_pw" name="user_pw">
+		</div>
+	
+		<button type="submit">Login</button>
+
+
+		<c:if test="${ not empty param.error}">
+			<p style="color: red;">
+				잘못된 아이디/비밀번호입니다.<br>다시 입력해주세요.
+			</p>
+		</c:if>
+	</form>
 
 
 </body>

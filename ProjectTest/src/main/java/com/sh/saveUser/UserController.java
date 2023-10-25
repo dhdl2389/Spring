@@ -1,4 +1,7 @@
-package com.sh.login;
+package com.sh.saveUser;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -7,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
 public class UserController {
+
 	@Autowired
 	UserMemberService service;
 
@@ -15,11 +19,7 @@ public class UserController {
 		return "saveUser";
 	}
 	
-	@PostMapping("/myForm12")
-	public String registerMember(UserDTO userDTO) {
-		service.registerMember(userDTO);
-		return "saveUser";
-	}
 	
-	
+
+
 }

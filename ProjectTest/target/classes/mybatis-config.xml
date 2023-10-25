@@ -6,9 +6,8 @@
 	<typeAliases>
 		<typeAlias alias="KakaoUserDTO" type="com.acorn.testing.KakaoUserDTO" />
 		<typeAlias alias="OrderDTO" type="com.sh.order.OrderDTO" />
-		<typeAlias alias="userDTO" type="com.sh.login.UserDTO" />
-	
+		<typeAlias alias="LoginDTO" type="com.sh.login.LoginDTO" />
+	    <typeAlias alias="UserDTO" type="com.sh.saveUser.UserDTO" />
 		<typeAlias alias="AddressDTO" type="com.sh.address.AddressDTO" />
-
 	</typeAliases>
 </configuration>
