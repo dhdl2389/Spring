@@ -17,7 +17,7 @@ public class LoginRepositoryImp implements LoginRepositoryI {
 
 	@Override
 	public boolean checklogin(LoginDTO loginDTO) {
-		System.out.println("checklogin  user=>" + loginDTO);
+		//System.out.println("checklogin  user=>" + loginDTO);
 
 		LoginDTO user = session.selectOne(namespace + "checklogin", loginDTO);
 
