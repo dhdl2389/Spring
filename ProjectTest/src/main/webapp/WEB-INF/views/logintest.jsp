@@ -42,8 +42,6 @@
                 document.getElementById("profile_image").value =
                   response.properties.profile_image;      
                 document.getElementById("myForm").submit();
-               
-               
               },
               fail: function (error) {
                 console.log(error);
@@ -99,7 +97,7 @@
 			<label for="user_pw">Password:</label> <input type="password"
 				id="user_pw" name="user_pw">
 		</div>
-	
+
 		<button type="submit">Login</button>
 
 

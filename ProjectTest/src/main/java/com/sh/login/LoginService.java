@@ -22,4 +22,10 @@ public class LoginService implements LoginServiceI {
 		// TODO Auto-generated method stub
 		return userRepository.selectAll(loginDTO);
 	}
+
+	@Override
+	public int updateUser(LoginDTO loginDTO) {
+		// TODO Auto-generated method stub
+		return userRepository.update(loginDTO);
+	}
 }

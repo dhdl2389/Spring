@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class UserMemberServiceImp implements UserMemberService {
-	
+
 	@Autowired
 	UserMemberRepositoryI dao;
 
@@ -16,4 +16,10 @@ public class UserMemberServiceImp implements UserMemberService {
 		// TODO Auto-generated method stub
 		return dao.insert(userDTO);
 	}
+
+	@Override
+	public boolean isUserIdExists(String user_id) {
+		return dao.getUserById(user_id);
+	}
+
 }

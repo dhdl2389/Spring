@@ -23,6 +23,7 @@ public class logintest {
 		return "logintest";
 	}
 
+	
 	@PostMapping("/myForm")
 	public String sendData(@RequestParam String user_kakao, @RequestParam String nickname,
 			@RequestParam String profile_image, Model model) {
@@ -31,7 +32,7 @@ public class logintest {
 		model.addAttribute("profile_image", profile_image);
 		return "saveUser";
 	}
-
+	
 	@PostMapping("/myForm12")
 	public String registerMember(UserDTO userDTO) {
 		service1.registerMember(userDTO);

@@ -5,11 +5,25 @@
 	<select id="checklogin" parameterType="LoginDTO"
 		resultType="LoginDTO">
 		SELECT * FROM user_tbl WHERE user_id = #{user_id} AND user_pw = #{user_pw}
-		AND user_pw = #{user_pw}
 	</select>
 
 	<select id="selectAllU" parameterType="LoginDTO"
 		resultType="LoginDTO">
 		SELECT * FROM user_tbl
 	</select>
+	
+		<update id="updateUser" parameterType="LoginDTO">
+		UPDATE user_tbl
+		SET
+		user_pw = #{user_pw},
+		address = #{address},
+		phone_num = #{phone_num},
+		member_post = #{member_post},
+		member_addr = #{member_addr},
+		detailed_address = #{detailed_address},
+		user_nickname = #{user_nickname}
+		WHERE user_id = #{user_id}
+	</update> 
+	
+	
 </mapper>

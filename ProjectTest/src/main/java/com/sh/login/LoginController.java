@@ -46,9 +46,35 @@ public class LoginController {
 			return "redirect:/login?error=loginerror";
 		}
 	}
+	
+	@Controller
+	public class UpdatePageController {
+		@GetMapping("/update")
+		public String myPage() {
+			return "updatePage";
+		}
+	
+	@PostMapping("/update")
+	public String processUpdate(@ModelAttribute LoginDTO loginDTO, HttpServletRequest request) {
+	    if (loginService.updateUser(loginDTO) > 0) {
+	        // 업데이트 성공
+	        HttpSession session = request.getSession();
+	        // 업데이트 후 사용자 정보를 다시 조회
+	        LoginDTO updatedUser = loginService.selectAll(loginDTO);
+	        // 세션에 업데이트된 사용자 정보 저장
+	        session.setAttribute("selectedUser", updatedUser);
+	        return "redirect:/fPage"; 
+	    } else {
+	        return "redirect:/update?error=updateerror"; 
+	    }
+	}
+	
+	
+	}
+	}
+
 //
 //	@GetMapping
 //	String showWelcomePage() {
 //		return "fPage";
 //	}
-}

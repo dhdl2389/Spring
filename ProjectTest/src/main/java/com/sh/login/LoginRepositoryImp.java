@@ -17,7 +17,7 @@ public class LoginRepositoryImp implements LoginRepositoryI {
 
 	@Override
 	public boolean checklogin(LoginDTO loginDTO) {
-		//System.out.println("checklogin  user=>" + loginDTO);
+		System.out.println("checklogin  user=>" + loginDTO);
 
 		LoginDTO user = session.selectOne(namespace + "checklogin", loginDTO);
 
@@ -42,6 +42,13 @@ public class LoginRepositoryImp implements LoginRepositoryI {
 		
 		LoginDTO user1 = session.selectOne(namespace + "checklogin", loginDTO);
 		return user1;
+	}
+
+
+	@Override
+	public int update(LoginDTO loginDTO) {
+		// TODO Auto-generated method stub
+		return session.update(namespace + "updateUser", loginDTO);
 	}
 
 
