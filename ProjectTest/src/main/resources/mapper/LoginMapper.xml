@@ -9,7 +9,7 @@
 
 	<select id="selectAllU" parameterType="LoginDTO"
 		resultType="LoginDTO">
-		SELECT * FROM user_tbl
+		SELECT * FROM user_tbl where user_id = #{user_id}
 	</select>
 	
 		<update id="updateUser" parameterType="LoginDTO">

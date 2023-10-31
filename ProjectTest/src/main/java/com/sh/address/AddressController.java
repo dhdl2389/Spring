@@ -5,8 +5,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import com.acorn.testing.KakaoMemberServiceI;
-import com.acorn.testing.KakaoUserDTO;
+import com.sh.kakaologin.KakaoMemberServiceI;
+import com.sh.kakaologin.KakaoUserDTO;
 
 @Controller
 public class AddressController {

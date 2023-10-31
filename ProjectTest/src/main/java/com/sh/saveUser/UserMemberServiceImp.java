@@ -21,5 +21,4 @@ public class UserMemberServiceImp implements UserMemberService {
 	public boolean isUserIdExists(String user_id) {
 		return dao.getUserById(user_id);
 	}
-
 }

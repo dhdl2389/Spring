@@ -1,28 +1,25 @@
-ㅌ`<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ page import="com.sh.login.LoginDTO"%>
+<%@ page import="java.util.*" %>
+
 
 <!DOCTYPE html>
 <html>
-
-<style>
-tr ,th, td{
-border: 1px solid black;
-}
-</style>
 <head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+    <meta charset="UTF-8">
+    <title>마이페이지</title>
 </head>
 <body>
 
- <h2>마이페이지</h2>
+<h2>마이페이지</h2>
 <%
     LoginDTO user = (LoginDTO) session.getAttribute("user");
-    LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
-    if (user != null && selectedUser != null) {
+    List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
+    if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+        LoginDTO selectedUser = selectedUserList.get(0); // Assuming you want the first user in the list
 %>
-    <h2> <%= selectedUser.getUser_nickname() %>:님</h2>
+    <h2><%= selectedUser.getUser_nickname() %>:님</h2>
     
     <table style="border: 1px solid black;">
         <tr>
@@ -58,7 +55,8 @@ border: 1px solid black;
     }
 %>
 <form action="/testing/update">
-<button type="submit">정보수정하기</button></form>
+    <button type="submit">정보수정하기</button>
+</form>
 
 </body>
 </html>
