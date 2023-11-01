@@ -69,3 +69,11 @@
 10월 31, 2023 15:23:02.665 NEW SESSION
 10월 31, 2023 15:23:02.665 [13548:15036:1031/152302.651:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
 10월 31, 2023 15:27:00.555 [13548:15036:1031/152700.555:ERROR:device_event_log_impl.cc(225)] [15:27:00.555] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+11월 01, 2023 11:21:36.374 NEW SESSION
+11월 01, 2023 11:21:36.374 [1101/112136.352:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 01, 2023 11:21:36.374 [1101/112136.362:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 01, 2023 13:31:55.173 [19280:17236:1101/130253.801:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 01, 2023 13:31:55.516 [19280:17236:1101/133155.516:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7
+11월 01, 2023 14:09:55.319 [19280:1296:1101/140955.319:ERROR:device_event_log_impl.cc(225)] [14:09:55.318] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+11월 01, 2023 15:41:17.525 [19280:17236:1101/154117.525:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
