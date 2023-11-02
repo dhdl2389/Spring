@@ -50,5 +50,16 @@
     <input type="hidden" name="boardId" value="${product.board_Id}">
 </form>
 
+	<form action="/testing/order">
+		<input type="hidden" name="boardId" value="${product.board_Id}">
+		<button type="submit">주문하기</button>
+	</form>
+
+
+<!-- 김재열 session 확인중 -->
+
+<form action="/order" method="post">
+    <button type="submit">컨트롤러로 보내기</button>
+</form>
 </body>
 </html>

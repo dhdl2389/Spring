@@ -26,7 +26,7 @@ public class scrollController {
 		return "products/scrollPage";
 	}
 
-	@ResponseBody
+	@ResponseBody	
 	@GetMapping("/scroll")
 	public Map<String, Object> scrollGet(String p, Model model) {
 		int currentPage = 1;
