@@ -20,7 +20,10 @@ public class ProductService implements ProductServiceI {
 
 	@Override
 	public List<ProductDTO> getProductList() {
-		return productRepository.getlist();
+
+		List<ProductDTO> result = productRepository.getlist();
+
+		return result;
 	}
 
 	@Override
@@ -56,6 +59,11 @@ public class ProductService implements ProductServiceI {
 	@Override
 	public int updateProduct(ProductDTO product) {
 		return productRepository.updateProduct(product);
+	}
+
+	@Override
+	public void updateDate(String boardId) {
+		productRepository.updateDate(boardId);
 	}
 
 	/*
@@ -101,8 +109,15 @@ public class ProductService implements ProductServiceI {
 	// 좋아요 개수 조회
 
 	@Override
-	public int getLikeCount(String boardId) {
-		return productRepository.getLikeCount(boardId);
+	public int getLikeCount(String board_Id) {
+		return productRepository.getLikeCount(board_Id);
+	}
+
+	////////////////////////////////////
+
+	@Override
+	public void insertLike(ProductDTO product) {
+		productRepository.insertLike(product);
 	}
 
 }

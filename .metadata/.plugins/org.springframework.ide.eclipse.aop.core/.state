@@ -14,6 +14,7 @@
 <aop-project name="carrotMarket"/>
 <aop-project name="cartBatis"/>
 <aop-project name="helloPrj"/>
+<aop-project name="webchat"/>
 <aop-project name="day5Cookie"/>
 <aop-project name="batisTran"/>
 <aop-project name="day2"/>

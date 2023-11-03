@@ -1,47 +1,56 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ page import="java.util.List"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page import="java.util.*"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
+<%@ page import="com.sh.order.domain.OrderDTO"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Show Order</title>
+<style>
+tr {
+	width: 300px;
+}
+</style>
 </head>
 <body>
 	<h2>주문 목록</h2>
-	<%
-	LoginDTO user = (LoginDTO) session.getAttribute("user");
-	List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
-	if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
-		LoginDTO selectedUser = selectedUserList.get(0);
-	%>
-	<h2><%=selectedUser.getUser_code()%>:님
-	</h2>
 
-	<table>
-		<thead>
-			<tr>
-				<th>주문 코드</th>
-				<th>사용자 코드</th>
-				<th>사용자 닉네임</th>
-				<th>전화 번호</th>
-				<th>게시판 ID</th>
-				<th>게시판 제목</th>
-				<th>가격</th>
-				<th>회원 우편번호</th>
-				<th>회원 주소</th>
-				<th>상세 주소</th>
-				<th>배송 요청</th>
-				<th>주문 날짜</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach items="${orderList}" var="order">
-				
+
+	<c:set var="user" value="${sessionScope.user}" />
+	<c:set var="selectedUserList" value="${sessionScope.selectedUser}" />
+
+	<c:if test="${not empty user and not empty selectedUserList}">
+		<c:set var="selectedUser" value="${selectedUserList[0]}" />
+		<h2>${selectedUser.user_code}:님</h2>
+
+		<table>
+			<thead>
+				<tr>
+					<td>주문 코드</td>
+					<td>사용자 코드</td>
+					<td>사용자 아이디</td>
+					<td>사용자 닉네임</td>
+					<td>전화 번호</td>
+					<td>게시판 ID</td>
+					<td>게시판 제목</td>
+					<td>가격</td>
+					<td>회원 우편번호</td>
+					<td>회원 주소</td>
+					<td>상세 주소</td>
+					<td>배송 요청</td>
+					<td>주문 날짜</td>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach items="${orderList}" var="order">
+
 					<tr>
+						<td>${order.order_code}</td>
 						<td>${order.user_code}</td>
+						<td>${order.user_id}</td>
 						<td>${order.user_nickname}</td>
 						<td>${order.phone_num}</td>
 						<td>${order.board_id}</td>
@@ -51,14 +60,13 @@
 						<td>${order.member_addr}</td>
 						<td>${order.detailed_address}</td>
 						<td>${order.delivery_req}</td>
-						<td>${order.board_Date}</td>
+						<td>${order.order_date}</td>
 					</tr>
-				 
-			</c:forEach>
-		</tbody>
-	</table>
-	<%
-	}
-	%>
+
+				</c:forEach>
+			</tbody>
+		</table>
+	</c:if>
+
 </body>
 </html>

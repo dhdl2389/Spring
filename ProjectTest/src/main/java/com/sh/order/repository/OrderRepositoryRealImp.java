@@ -24,8 +24,8 @@ public class OrderRepositoryRealImp implements OrderRepositoryI {
 	}
 	
 	@Override
-	public List<OrderDTO> getListByUser(OrderDTO orderDTO) {
-	    return session.selectList(namespace + "selectAll", orderDTO);
+	public List<OrderDTO> getOrdersByUserCode(String user_id) {
+		return session.selectList(namespace + "selectAll", user_id);
 	}
 
 }

@@ -20,10 +20,11 @@ public class OrderServiceImp implements OrderServiceI {
 		return dao.insert(orderDTO);
 	}
 
-	
 	@Override
-	public List<OrderDTO> getOrderList(OrderDTO orderDTO) {
-		return dao.getListByUser(orderDTO);
+	public List<OrderDTO> getOrdersByUserCode(String user_id) {
+
+		System.out.println("dkfkfkf" + user_id);
+		return dao.getOrdersByUserCode(user_id);
 	}
 
 }

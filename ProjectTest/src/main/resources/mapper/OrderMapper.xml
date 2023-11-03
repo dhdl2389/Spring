@@ -8,6 +8,7 @@
 		order_tbl (
 		order_code,
 		user_code,
+		user_id,
 		user_nickname,
 		phone_num,
 		board_id,
@@ -22,6 +23,7 @@
 		VALUES (
 		seq_order_code.NEXTVAL,
 		#{user_code},
+		#{user_id},
 		#{user_nickname},
 		#{phone_num},
 		#{board_id},
@@ -35,9 +37,9 @@
 		)
 	</insert>
 
-<select id="selectAll" resultType="OrderDTO">
+<select id="selectAll" resultType="OrderDTO" parameterType="String">
     SELECT *
     FROM order_tbl
-    WHERE user_code = #{user_code} 
+    WHERE user_id = #{user_id}
 </select>
 </mapper>

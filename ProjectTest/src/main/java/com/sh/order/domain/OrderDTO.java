@@ -6,6 +6,7 @@ import lombok.Data;
 public class OrderDTO {
     private String order_code;
     private String user_code;
+    private String user_id;
     private String user_nickname;
     private String phone_num;
     private String board_id;
@@ -15,6 +16,6 @@ public class OrderDTO {
     private String member_addr;
     private String detailed_address;
     private String delivery_req;
-    private String board_Date;
+    private String order_date;
     
 }

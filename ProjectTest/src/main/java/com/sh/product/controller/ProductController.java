@@ -5,10 +5,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
-
 import java.util.List;
 
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.Resource;
@@ -16,7 +17,7 @@ import org.springframework.core.io.UrlResource;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -25,6 +26,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.sh.login.domain.LoginDTO;
 import com.sh.product.domain.ProductDTO;
 import com.sh.product.service.ProductService;
 
@@ -37,11 +41,16 @@ public class ProductController {
 	private ProductService productservice;
 
 	@GetMapping("/products")
-	public String getProductList(Model model) {
+	public String getProductList(@ModelAttribute ProductDTO productDTO, HttpServletRequest request) {
 		// ProductService를 통해 상품 목록을 가져와서 모델에 추가
+		HttpSession session = request.getSession();
 		List<ProductDTO> products = productservice.getProductList();
 
-		model.addAttribute("products", products);
+		// System.out.println("dfdfd=" + products);
+
+		// model.addAttribute("products", products);
+		session.setAttribute("products", products);
+		System.out.println("상품정보=" + products);
 		return "products/productList";
 	}
 
@@ -49,17 +58,25 @@ public class ProductController {
 	///////////////////////////// /////////////////////////////////////////////////////////////////////
 
 	@GetMapping("/products/detail")
-	public String showProductDetail(@RequestParam String boardId, Model model) {
+	public String showProductDetail(@RequestParam String boardId, HttpServletRequest request) {
 		// ProductService를 통해 상품 및 이미지 정보 가져오기
 		ProductDTO product = productservice.getProductById(boardId);
-
+		HttpSession session = request.getSession();
 		productservice.increaseClick(boardId);
-		// 모델에 상품 정보 추가
-		model.addAttribute("product", product);
 
+		int likeCount = productservice.getLikeCount(boardId); // 좋아요 수 가져오기
+		// 모델에 상품 정보 추가
+		session.setAttribute("product", product);
+		session.setAttribute("likeCount", likeCount);
 		return "products/productDetail";
 	}
 
+	@PostMapping("/products/updateDate")
+	public String updateDate(@RequestParam String boardId) {
+
+		productservice.updateDate(boardId);
+		return "redirect:/products";
+	}
 	///////////////////////////// 상품등록
 	///////////////////////////// /////////////////////////////////////////////////////////////////////
 
@@ -95,10 +112,10 @@ public class ProductController {
 		product.setBoard_Img(fileRealName);
 		productservice.insertProductData(product);
 
-//	        System.out.println("Title: " + product.getBoard_Title());
-//	        System.out.println("Price: " + product.getBoard_Price());
-//	        System.out.println("Description: " + product.getBoard_Text());
-//	        System.out.println("Image URL: " + product.getBoard_Img());
+//           System.out.println("Title: " + product.getBoard_Title());
+//           System.out.println("Price: " + product.getBoard_Price());
+//           System.out.println("Description: " + product.getBoard_Text());
+//           System.out.println("Image URL: " + product.getBoard_Img());
 
 		return "redirect:/products";
 	}
@@ -161,11 +178,36 @@ public class ProductController {
 		return "redirect:/products";
 	}
 
+	///////////////////////////// 좋아요 추가JH//////////////////
+
+	@PostMapping("/products/likes")
+	public String insertLike(@ModelAttribute ProductDTO product, Model model) {
+		// 좋아요 추가 로직
+		productservice.insertLike(product);
+
+		// 좋아요가 눌린 상품의 정보를 가져와 모델에 추가
+		ProductDTO likedProduct = productservice.getProductById(product.getBoard_Id());
+		model.addAttribute("likedProduct", likedProduct);
+
+		// 좋아요가 눌린 상품의 목록을 다시 가져옴
+		List<ProductDTO> products = productservice.getProductList();
+		model.addAttribute("products", products);
+
+		return "products/productDetail"; // 원하는 리다이렉트 경로로 변경
+	}
+
 	///////////////////// 이미지 저장경로,저장하는 코드
 	///////////////////// //////////////////////////////////////////////////////////////
 	@ResponseBody
 	@RequestMapping(value = "/images/{fileName:.*}", method = RequestMethod.GET)
 	public Resource imageView(@PathVariable String fileName) throws MalformedURLException {
 		return new UrlResource("file:c:\\test\\upload\\" + fileName);
+	}
+
+	@ResponseBody
+	@GetMapping("/products/likes")
+	public int likeNum(String board_Id) {
+		int likeNum = productservice.getLikeCount(board_Id);
+		return likeNum;
 	}
 }

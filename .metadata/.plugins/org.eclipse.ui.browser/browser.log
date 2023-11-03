@@ -77,3 +77,6 @@
 11월 01, 2023 13:31:55.516 [19280:17236:1101/133155.516:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -7
 11월 01, 2023 14:09:55.319 [19280:1296:1101/140955.319:ERROR:device_event_log_impl.cc(225)] [14:09:55.318] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
 11월 01, 2023 15:41:17.525 [19280:17236:1101/154117.525:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+11월 03, 2023 10:25:22.58 NEW SESSION
+11월 03, 2023 10:25:22.58 [10172:18892:1103/102522.056:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
