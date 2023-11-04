@@ -12,21 +12,31 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.sh.scroll.domain.ScrollDTO;
 
 @Repository
-public class scrollRepositoryImp implements scrollRepositoryI {
+public class scrollRepositoryImp implements scrollRepositoryI{
 	@Autowired
 	private SqlSession session;
-	private static String namespace = "com.batis.scrollMapper";
-
+	private static String namespace = "com.sh.scroll.scrollMapper";
+	
+	
 	@Override
 	public int totalCnt() {
-		return session.selectOne(namespace + ".getTotalCnt");
+		return session.selectOne( namespace + ".getTotalCnt");
+	}
+	
+	@Override
+	public List<ScrollDTO> getScroll(int curpage, int pageSize, String mode) {
+		int itemNum = pageSize*curpage;
+	    System.out.println("현재 페이지 : "+curpage+ ", 몇 개씩 : "+ pageSize);
+		return session.selectList( namespace + mode, itemNum);
 	}
 
 	@Override
-	public List<ScrollDTO> getScroll(int curpage, int pageSize) {
-		int itemNum = pageSize * curpage;
-		System.out.println("현재 페이지 : " + curpage + ", 몇 개씩 : " + pageSize);
-		return session.selectList(namespace + ".getListScroll", itemNum);
+	public List<ScrollDTO> getSearch(int curpage, int pageSize, String searchTerm) {
+		int itemNum = pageSize*curpage;
+	    System.out.println("현재 페이지 : "+curpage+ ", 몇 개씩 : "+ pageSize);
+		return session.selectList( namespace + ".getSearchList", searchTerm);
 	}
-
+	
+	
+	
 }

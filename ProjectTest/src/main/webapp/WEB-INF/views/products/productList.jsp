@@ -25,6 +25,7 @@
     <table border="1">
         <thead>
             <tr>
+            	<th>분류</th>
                 <th>제목</th>
                 <th>시간</th>
                 <th>작성자</th>
@@ -38,6 +39,7 @@
         <tbody>
             <c:forEach var="product" items="${products}">
                 <tr>
+                	<td>[${product.board_cate}]</td>
                     <td><a href="/testing/products/detail?boardId=${product.board_Id}">${product.board_Title}</a></td>
                     <td>${product.board_Date}</td>
                     <td>${product.user_nickname}</td>

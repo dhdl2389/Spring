@@ -26,9 +26,9 @@ public class scrollController {
 		return "products/scrollPage";
 	}
 
-	@ResponseBody	
+	@ResponseBody
 	@GetMapping("/scroll")
-	public Map<String, Object> scrollGet(String p, Model model) {
+	public Map<String, Object> scrollGet(String p, String mode, Model model) {
 		int currentPage = 1;
 		if (p != null) {
 			currentPage = Integer.parseInt(p);
@@ -38,7 +38,7 @@ public class scrollController {
 		int pageSize = 6;
 
 		ScrollHandler handler = new ScrollHandler(currentPage, toRecords, pageSize);
-		List<ScrollDTO> list = service.getListScroll(currentPage, pageSize);
+		List<ScrollDTO> list = service.getListScroll(currentPage, pageSize, mode);
 
 		// ajax에서 응답하는거라 model 사용 못함
 		Map<String, Object> map = new HashMap<String, Object>();

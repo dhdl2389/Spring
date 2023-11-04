@@ -80,6 +80,11 @@
     <h2>상품작성</h2>
     
     <form action="/testing/products/add" method="post" enctype="multipart/form-data">
+    	<label for="board_cate">분류:</label>
+    	 <select id="board_cate" name="board_cate">
+     <option value="판매">판매</option>
+     <option value="나눔">나눔</option>
+     </select>
         <label for="board_Title">제목:</label>
         <input type="text" id="board_Title" name="board_Title" required><br>
 

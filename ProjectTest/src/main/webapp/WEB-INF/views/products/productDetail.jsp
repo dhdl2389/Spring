@@ -79,6 +79,7 @@ body {
 						alt="Product Image" style="max-width: 500px; max-height: 500px;">
 				</div>
 				<div class="product-details">
+				<div>분류: [${product.board_cate}]</div>
 					<div>제목: ${product.board_Title} 작성자: ${product.user_nickname }</div>
 					<div>작성일: ${product.board_Date} 조회수: ${product.board_Click}</div>
 					<div>지역: ${product.loc_code}/${product.detail_loc}</div>
@@ -136,6 +137,7 @@ body {
 
 	<form action="/testing/order">
 		<input type="hidden" name="boardId" value="${product.board_Id}">
+		
 		<button type="submit">상품 구매</button>
 	</form>
 

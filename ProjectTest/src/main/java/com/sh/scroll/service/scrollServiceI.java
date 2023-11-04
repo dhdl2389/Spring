@@ -5,7 +5,9 @@ import java.util.List;
 import com.sh.scroll.domain.ScrollDTO;
 
 public interface scrollServiceI {
-	public int getTotalCnt();
-
-	public List<ScrollDTO> getListScroll(int curpage, int pageSize);
+	public int  getTotalCnt();
+	public List<ScrollDTO> getListScroll(int curpage, int pageSize, String mode);
+	
+	public List<ScrollDTO> getListSearch(int curpage, int pageSize, String searchTerm);
+	
 }
