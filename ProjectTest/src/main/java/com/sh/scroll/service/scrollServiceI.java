@@ -7,7 +7,6 @@ import com.sh.scroll.domain.ScrollDTO;
 public interface scrollServiceI {
 	public int  getTotalCnt();
 	public List<ScrollDTO> getListScroll(int curpage, int pageSize, String mode);
-	
-	public List<ScrollDTO> getListSearch(int curpage, int pageSize, String searchTerm);
+	List<ScrollDTO> getSearchList(String searchTerm);
 	
 }

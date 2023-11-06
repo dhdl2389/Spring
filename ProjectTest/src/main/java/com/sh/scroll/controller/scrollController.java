@@ -45,11 +45,16 @@ public class scrollController {
 		int totalPage = handler.getTotalPage();
 		System.out.println("총 갯수 = " + totalPage);
 		System.out.println("출력 = " + list);
-
 		map.put("totalPage", totalPage);
 		map.put("list", list);
 
 		return map;
+	}
+
+	@ResponseBody
+	@GetMapping("/search")
+	public List<ScrollDTO> searchGet(String searchTerm) {
+		return service.getSearchList(searchTerm);
 	}
 
 }

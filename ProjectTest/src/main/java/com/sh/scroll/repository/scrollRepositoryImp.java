@@ -15,7 +15,7 @@ import com.sh.scroll.domain.ScrollDTO;
 public class scrollRepositoryImp implements scrollRepositoryI{
 	@Autowired
 	private SqlSession session;
-	private static String namespace = "com.sh.scroll.scrollMapper";
+	private static String namespace = "com.sh.scrollMapper";
 	
 	
 	@Override
@@ -30,11 +30,8 @@ public class scrollRepositoryImp implements scrollRepositoryI{
 		return session.selectList( namespace + mode, itemNum);
 	}
 
-	@Override
-	public List<ScrollDTO> getSearch(int curpage, int pageSize, String searchTerm) {
-		int itemNum = pageSize*curpage;
-	    System.out.println("현재 페이지 : "+curpage+ ", 몇 개씩 : "+ pageSize);
-		return session.selectList( namespace + ".getSearchList", searchTerm);
+	public List<ScrollDTO> getSearchList(String searchTerm) {
+	    return session.selectList(namespace + ".getSearchList", searchTerm);
 	}
 	
 	

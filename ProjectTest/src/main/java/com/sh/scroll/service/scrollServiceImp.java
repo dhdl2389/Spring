@@ -9,24 +9,24 @@ import com.sh.scroll.domain.ScrollDTO;
 import com.sh.scroll.repository.scrollRepositoryI;
 
 @Service
-public class scrollServiceImp implements scrollServiceI{
-	
+public class scrollServiceImp implements scrollServiceI {
+
 	@Autowired
 	scrollRepositoryI dao;
-	
+
 	@Override
 	public int getTotalCnt() {
 		return dao.totalCnt();
 	}
-	
+
 	@Override
 	public List<ScrollDTO> getListScroll(int curpage, int pageSize, String mode) {
 		return dao.getScroll(curpage, pageSize, mode);
 	}
-	
+
 	@Override
-	public List<ScrollDTO> getListSearch(int curpage, int pageSize, String searchTerm) {
-		return dao.getScroll(curpage, pageSize, searchTerm);
+	public List<ScrollDTO> getSearchList(String searchTerm) {
+		return dao.getSearchList(searchTerm);
 	}
-	
+
 }

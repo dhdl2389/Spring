@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.sh.scroll.scrollMapper">
+<mapper namespace="com.sh.scrollMapper">
 	<select id="getTotalCnt" resultType="int">
 		SELECT count(*) FROM
 		user_board
@@ -32,9 +32,12 @@
 		1 AND #{itemNum}
 	</select>
 
-	<select id="getSearchList" resultType="ScrollDTO">
-		select * from user_board where board_title like #{searchTerm} or board_text
-		like #{searchTerm}
+	<select id="getSearchList" resultType="ScrollDTO"
+		parameterType="string">
+		select * from user_board where replace(board_title, ' ', '') like '%' ||
+		replace(#{searchTerm}, ' ', '') || '%'
+		or replace(board_text, ' ', '') like '%' || replace(#{searchTerm}, ' ',
+		'') || '%'
 	</select>
 
 </mapper>
