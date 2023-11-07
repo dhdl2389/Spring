@@ -116,6 +116,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="C:\Users\dhdl2\OneDrive\바탕 화면\java_ws\Spring\SecondHand"/>
 			<item value="C:\Users\dhdl2\OneDrive\바탕 화면\java_ws\Spring\webchat"/>
 			<item value="C:\Users\dhdl2\OneDrive\바탕 화면\SecondHandPrj\ProjectTest"/>
 			<item value="C:\Users\dhdl2\OneDrive\바탕 화면\SecondHandPrj"/>

@@ -13,5 +13,7 @@ public class GlobalCatcher {
 	public String catcher(SQLException ex, Model model) {
 		model.addAttribute("ex", ex);
 		return "err2";
+		
+	
 	}
 }

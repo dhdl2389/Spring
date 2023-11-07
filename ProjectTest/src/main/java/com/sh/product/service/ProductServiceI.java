@@ -34,9 +34,16 @@ public interface ProductServiceI {
  
     // 좋아요 개수 조회
     int getLikeCount(String boardId);
-    
-    void toggleLike(String boardId, String userCode);
-///////////////////////
-   void insertLike(ProductDTO product);
+   
     void updateDate(String boardId);
+    
+	//*** 좋아요
+	//좋아요 insert
+	void insertLike(String boardId, String userId);
+	
+	//좋아요 delete
+	void deleteLike(String boardId, String userId);
+	
+	//좋아요 클릭했는지
+	boolean likeClick(String boardId, String userId);
 }

@@ -4,12 +4,17 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sh.product.domain.ProductDTO;
+import com.sh.product.service.ProductService;
 import com.sh.scroll.domain.ScrollDTO;
 import com.sh.scroll.domain.ScrollHandler;
 import com.sh.scroll.service.scrollServiceI;
@@ -19,10 +24,16 @@ public class scrollController {
 
 	@Autowired
 	scrollServiceI service;
-
+	@Autowired
+	private ProductService productservice;
 	// 슬라이드 Ajax
 	@GetMapping("/scrollHome")
-	public String scrollHome() {
+	public String scrollHome(HttpServletRequest request) {
+		
+		HttpSession session = request.getSession();
+		List<ProductDTO> products = productservice.getProductList();
+
+		session.setAttribute("products", products);
 		return "products/scrollPage";
 	}
 

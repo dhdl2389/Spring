@@ -33,7 +33,7 @@
 		<button type="submit">마이페이지이동</button>
 	</form>
 
-	<form action="/testing/products">
+	<form action="/testing/scrollHome">
 		<button type="submit">상품</button>
 	</form>
 

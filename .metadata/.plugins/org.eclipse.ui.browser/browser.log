@@ -80,3 +80,14 @@
 
 11월 03, 2023 10:25:22.58 NEW SESSION
 11월 03, 2023 10:25:22.58 [10172:18892:1103/102522.056:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+11월 07, 2023 10:46:43.469 NEW SESSION
+11월 07, 2023 10:46:43.469 [3532:19184:1107/104643.465:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 07, 2023 11:02:03.151 [3532:19184:1107/110203.151:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 07, 2023 11:26:22.633 [3532:19184:1107/112622.633:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
+11월 07, 2023 11:26:24.737 [3532:19184:1107/112624.737:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+11월 07, 2023 11:26:43.654 [3532:6328:1107/112643.654:ERROR:device_event_log_impl.cc(192)] [11:26:43.652] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+11월 07, 2023 12:27:05.491 [3532:6328:1107/122705.491:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 07, 2023 14:48:48.993 [3532:6328:1107/144848.992:ERROR:device_event_log_impl.cc(192)] [14:48:48.988] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+11월 07, 2023 14:51:12.130 [3532:6328:1107/145112.130:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+11월 07, 2023 16:01:36.511 [3532:6328:1107/160136.511:ERROR:device_event_log_impl.cc(192)] [16:01:36.510] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)

@@ -5,6 +5,9 @@
 <%@ page import="com.sh.product.domain.ProductDTO"%>
 <%@ page import="java.util.*"%>
 
+<c:set  var="path"   value="${pageContext.request.contextPath}"/> 
+<!--${path} -->
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -33,6 +36,9 @@ body {
 
 .product-details div {
 	margin-bottom: 10px;
+}
+#like{
+	width: 100px;
 }
 </style>
 </head>
@@ -79,13 +85,14 @@ body {
 						alt="Product Image" style="max-width: 500px; max-height: 500px;">
 				</div>
 				<div class="product-details">
-				<div>분류: [${product.board_cate}]</div>
+					<div>분류: [${product.board_cate}]</div>
 					<div>제목: ${product.board_Title} 작성자: ${product.user_nickname }</div>
 					<div>작성일: ${product.board_Date} 조회수: ${product.board_Click}</div>
 					<div>지역: ${product.loc_code}/${product.detail_loc}</div>
 
 					<div>내용: ${product.board_Text}</div>
 					<div>가격: ${product.board_Price}</div>
+					<div id = "likes">관심 : ${likenum} 개</div>
 				</div>
 			</div>
 
@@ -123,7 +130,7 @@ body {
 		<input type="text" name="user_code1" id="user_code1"
 			value="<%=selectedUser.getUser_code()%>" required> <input
 			type="hidden" name="boardId" value="${product.board_Id}">
-		<button id="likeButton">좋아요 추가</button>
+		
 	</form>
 	<%
 	} else {
@@ -131,18 +138,72 @@ body {
 	out.println("상품 정보를 찾을 수 없습니다.");
 	}
 	%>
-	<form action="/testing/products">
+	<!-- 관심 버튼 추가 -->
+	<button id="like">관심 버튼</button>
+
+	<form action="/testing/scrollHome">
 		<button type="submit">상품</button>
 	</form>
 
 	<form action="/testing/order">
 		<input type="hidden" name="boardId" value="${product.board_Id}">
-		
+
 		<button type="submit">상품 구매</button>
 	</form>
 
 	<form action="/testing/logout" method="post">
 		<button type="submit">로그아웃</button>
 	</form>
+
+	<script>
+	let loading = false; // 추가 데이터 로딩 중 여부
+	let onClick = ${onClick};
+	console.log("jsp확인 = " + onClick);
+	//좋아요
+	function like(boardId, userId) {
+	    if (!loading) {
+	        loading = true;
+	        $.ajax({
+	            url: "${path}/products/like", // 서버측 엔드포인트 설정
+	            type: "POST",              
+	            data: {boardId:boardId,
+	            	   userId:userId,
+	            	   onClick:onClick
+	            	},
+	            success: function (data) {
+	                $("#likes").empty();
+	                $("#likes").append("관심 : " + data+ " 개");
+	              	liketoggle();
+	                loading = false;
+	            },
+	            error: function (error) {
+	                console.log("Error:", error);
+	                loading = false;
+	            }
+	        });
+			
+		}
+	}
+	function liketoggle(){
+		if(onClick == false){
+			$("#like").empty();
+			$("#like").append("관심");
+		}else if(onClick == true){
+			$("#like").empty();
+			$("#like").append("관심 해제");
+		}
+		
+	}
+	
+	$(document).ready(function(){
+		liketoggle();
+	    $("#like").click(function(){
+	    	console.log("토글 " + onClick);
+	    	like(${product.board_Id},"${user.user_id}");
+	    	onClick = !onClick;
+	    });
+	    
+	});
+</script>
 </body>
 </html>

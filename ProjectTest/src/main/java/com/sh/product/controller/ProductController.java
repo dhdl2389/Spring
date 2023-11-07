@@ -46,9 +46,6 @@ public class ProductController {
 		HttpSession session = request.getSession();
 		List<ProductDTO> products = productservice.getProductList();
 
-		// System.out.println("dfdfd=" + products);
-
-		// model.addAttribute("products", products);
 		session.setAttribute("products", products);
 		System.out.println("상품정보=" + products);
 		return "products/productList";
@@ -58,16 +55,27 @@ public class ProductController {
 	///////////////////////////// /////////////////////////////////////////////////////////////////////
 
 	@GetMapping("/products/detail")
-	public String showProductDetail(@RequestParam String boardId, HttpServletRequest request) {
+	public String showProductDetail(@RequestParam String boardId, Model model, HttpServletRequest request) {
 		// ProductService를 통해 상품 및 이미지 정보 가져오기
 		ProductDTO product = productservice.getProductById(boardId);
 		HttpSession session = request.getSession();
 		productservice.increaseClick(boardId);
+		
+		//*** 로그인 정보 받아오기
+		LoginDTO login = (LoginDTO)session.getAttribute("user");
+		String userId = login.getUser_id();
+		System.out.println(userId);
+		
+		//*** 좋아요 기능
+		Integer likenum = productservice.getLikeCount(boardId); //좋아요 수 받아오기
+		boolean onClick = productservice.likeClick(boardId, userId); //누른적 있는지
+		System.out.println("detail, 좋아요 수 = "+likenum);
+		System.out.println("클릭 = "+onClick);
+		model.addAttribute("likenum", likenum); //좋아요 수 받아오기
+		model.addAttribute("onClick", onClick); //좋아요 눌렀는지
 
-		int likeCount = productservice.getLikeCount(boardId); // 좋아요 수 가져오기
 		// 모델에 상품 정보 추가
 		session.setAttribute("product", product);
-		session.setAttribute("likeCount", likeCount);
 		return "products/productDetail";
 	}
 
@@ -117,7 +125,7 @@ public class ProductController {
 //           System.out.println("Description: " + product.getBoard_Text());
 //           System.out.println("Image URL: " + product.getBoard_Img());
 
-		return "redirect:/products";
+		return "redirect:/scrollHome";
 	}
 
 	///////////////////////////// 상품 업데이트
@@ -160,11 +168,11 @@ public class ProductController {
 		int updateResult = productservice.updateProduct(product);
 		if (updateResult > 0) {
 			System.out.println("상품 수정 성공!");
-			return "redirect:/products";
+			return "redirect:/scrollHome";
 		} else {
 			System.out.println("상품 수정 실패!");
 
-			return "redirect:/products";
+			return "redirect:/scrollHome";
 		}
 	}
 
@@ -175,26 +183,10 @@ public class ProductController {
 		ProductDTO product = productservice.getProductById(boardId);
 		productservice.deleteProduct(boardId);
 		model.addAttribute("product", product);
-		return "redirect:/products";
+		return "redirect:/scrollHome";
 	}
 
-	///////////////////////////// 좋아요 추가JH//////////////////
 
-	@PostMapping("/products/likes")
-	public String insertLike(@ModelAttribute ProductDTO product, Model model) {
-		// 좋아요 추가 로직
-		productservice.insertLike(product);
-
-		// 좋아요가 눌린 상품의 정보를 가져와 모델에 추가
-		ProductDTO likedProduct = productservice.getProductById(product.getBoard_Id());
-		model.addAttribute("likedProduct", likedProduct);
-
-		// 좋아요가 눌린 상품의 목록을 다시 가져옴
-		List<ProductDTO> products = productservice.getProductList();
-		model.addAttribute("products", products);
-
-		return "products/productDetail"; // 원하는 리다이렉트 경로로 변경
-	}
 
 	///////////////////// 이미지 저장경로,저장하는 코드
 	///////////////////// //////////////////////////////////////////////////////////////
@@ -210,4 +202,24 @@ public class ProductController {
 		int likeNum = productservice.getLikeCount(board_Id);
 		return likeNum;
 	}
+	
+	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 좋아요 기능
+		//*** 추가
+		@ResponseBody
+		@PostMapping("/products/like")
+		public String likeup(String boardId, String userId, boolean onClick) {
+			
+			if(onClick == true) {
+				System.out.println("관심 - = " + onClick);
+				productservice.deleteLike(boardId, userId);
+			}else {
+				System.out.println("관심 + = " + onClick);
+				productservice.insertLike(boardId, userId);
+			}
+		
+			Integer likenum = productservice.getLikeCount(boardId);
+			System.out.println("좋아요 수 : "+ likenum+", userId = "+userId+", userId = "+boardId );
+
+			return likenum.toString();
+		}
 }

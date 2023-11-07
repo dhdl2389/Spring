@@ -188,18 +188,17 @@
 		});
 
 		function loadSearchResults(searchTerm) {
-		    let processedSearchTerm = searchTerm.replace(/\s/g, '');
-		    $.ajax({
-		        url: "search?searchTerm=" + processedSearchTerm,
-		        type: "GET",
-		        success: function (data) {
-		            let resultHtml = pageToString(data);
-		            $(".wrap").empty().append(resultHtml);
-		        },
-		        error: function (error) {
-		            console.log("Error:", error);
-		        }
-		    });
+			$.ajax({
+				url: "search?searchTerm=" + searchTerm,
+				type: "GET",
+				success: function(data) {
+					let resultHtml = pageToString(data);
+					$(".wrap").empty().append(resultHtml);
+				},
+				error: function(error) {
+					console.log("Error:", error);
+				}
+			});
 		}
 	});
 </script>

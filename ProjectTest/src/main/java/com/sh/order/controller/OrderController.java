@@ -55,7 +55,6 @@ public class OrderController {
 	@PostMapping("/orderForm")
 	public String registerOrder(OrderDTO orderDTO) {
 		service.registerOrder(orderDTO);
-
 		return "/homePage/homePage";
 	}
 }
