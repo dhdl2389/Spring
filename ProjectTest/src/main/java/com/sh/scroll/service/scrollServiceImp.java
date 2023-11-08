@@ -29,4 +29,8 @@ public class scrollServiceImp implements scrollServiceI {
 		return dao.getSearchList(searchTerm);
 	}
 
+	@Override
+	public List<ScrollDTO> getLikeList(String userId) {
+		return dao.getLikeList(userId);
+	}
 }

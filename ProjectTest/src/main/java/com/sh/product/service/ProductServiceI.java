@@ -37,13 +37,15 @@ public interface ProductServiceI {
    
     void updateDate(String boardId);
     
-	//*** 좋아요
-	//좋아요 insert
-	void insertLike(String boardId, String userId);
-	
-	//좋아요 delete
-	void deleteLike(String boardId, String userId);
-	
-	//좋아요 클릭했는지
-	boolean likeClick(String boardId, String userId);
+  //좋아요 insert
+  	void insertLike(String boardId, String userId);
+  	
+  	//좋아요 delete
+  	void deleteLike(String boardId, String userId);
+  	
+  	//좋아요 클릭했는지
+  	boolean likeClick(String boardId, String userId);
+  	
+  	//관심상품 갯수
+  	int likeNum(String userId);
 }

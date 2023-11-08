@@ -34,6 +34,9 @@ public class scrollRepositoryImp implements scrollRepositoryI{
 	    return session.selectList(namespace + ".getSearchList", searchTerm);
 	}
 	
-	
+	@Override
+	public List<ScrollDTO> getLikeList(String userId) {
+		return session.selectList(namespace+ ".getLikeList",userId);
+	}
 	
 }

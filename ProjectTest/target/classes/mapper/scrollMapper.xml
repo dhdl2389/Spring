@@ -39,5 +39,17 @@
 		or replace(board_text, ' ', '') like '%' || replace(#{searchTerm}, ' ',
 		'') || '%'
 	</select>
+	
+	<!-- 관심상품 목록 -->
+	<select id="getLikeList" resultType="ScrollDTO">
+		select
+		ROW_NUMBER() OVER (ORDER BY board_date DESC) AS num, b.board_id,
+		b.board_title, b.board_date, b.user_nickname, b.loc_code, b.detail_loc,
+		b.board_price, b.board_click, b.board_img, b.board_text
+		from board_like l
+		join  user_board b
+		on l.BOARD_ID = b.BOARD_ID
+		where l.USER_ID = #{userId}
+	</select>
 
 </mapper>

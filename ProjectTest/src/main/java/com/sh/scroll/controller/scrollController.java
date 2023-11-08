@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sh.product.domain.ProductDTO;
@@ -66,6 +67,13 @@ public class scrollController {
 	@GetMapping("/search")
 	public List<ScrollDTO> searchGet(String searchTerm) {
 		return service.getSearchList(searchTerm);
+	}
+	
+	@ResponseBody
+	@PostMapping("/likeList")
+	public List<ScrollDTO> likeList(String userId) {
+		List<ScrollDTO> list = service.getLikeList(userId);
+		return list;
 	}
 
 }

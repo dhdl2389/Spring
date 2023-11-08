@@ -11,7 +11,6 @@
 <aop-project name="day5Test"/>
 <aop-project name="day9"/>
 <aop-project name="dbtest"/>
-<aop-project name="carrotMarket"/>
 <aop-project name="cartBatis"/>
 <aop-project name="helloPrj"/>
 <aop-project name="webchat"/>

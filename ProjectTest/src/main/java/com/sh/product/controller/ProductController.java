@@ -5,8 +5,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 import java.io.File;
 import java.io.IOException;
 import java.net.MalformedURLException;
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -64,21 +65,19 @@ public class ProductController {
 		//*** 로그인 정보 받아오기
 		LoginDTO login = (LoginDTO)session.getAttribute("user");
 		String userId = login.getUser_id();
-		System.out.println(userId);
 		
 		//*** 좋아요 기능
 		Integer likenum = productservice.getLikeCount(boardId); //좋아요 수 받아오기
 		boolean onClick = productservice.likeClick(boardId, userId); //누른적 있는지
-		System.out.println("detail, 좋아요 수 = "+likenum);
-		System.out.println("클릭 = "+onClick);
+	
 		model.addAttribute("likenum", likenum); //좋아요 수 받아오기
 		model.addAttribute("onClick", onClick); //좋아요 눌렀는지
-
 		// 모델에 상품 정보 추가
 		session.setAttribute("product", product);
 		return "products/productDetail";
 	}
-
+	
+	
 	@PostMapping("/products/updateDate")
 	public String updateDate(@RequestParam String boardId) {
 
@@ -204,22 +203,37 @@ public class ProductController {
 	}
 	
 	//ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 좋아요 기능
-		//*** 추가
-		@ResponseBody
-		@PostMapping("/products/like")
-		public String likeup(String boardId, String userId, boolean onClick) {
-			
-			if(onClick == true) {
-				System.out.println("관심 - = " + onClick);
-				productservice.deleteLike(boardId, userId);
-			}else {
-				System.out.println("관심 + = " + onClick);
-				productservice.insertLike(boardId, userId);
+			//*** 추가
+			@ResponseBody
+			@PostMapping("/products/like")
+			public Map<String, Object> likeup(String boardId, String userId) {
+				boolean onClick = productservice.likeClick(boardId, userId);
+				if(onClick == true) {
+					//클릭된 상태라면 -> 관심 삭제
+					productservice.deleteLike(boardId, userId);
+				}else {
+					//클릭 안된상태 -> 관심 추가
+					productservice.insertLike(boardId, userId);
+				}
+				
+				//클릭 상태 반환
+				onClick = !onClick;
+				//상품상세 - 좋아요 수 반환
+				Integer likenum = productservice.getLikeCount(boardId);
+				
+				//관심상품 수
+				Integer likeCount = productservice.likeNum(userId);
+				Map<String, Object> map = new HashMap<String,Object>();
+				map.put("likenum", likenum.toString());
+				map.put("onClick", onClick);
+				map.put("likeCount", likeCount);
+				
+				return map;
 			}
-		
-			Integer likenum = productservice.getLikeCount(boardId);
-			System.out.println("좋아요 수 : "+ likenum+", userId = "+userId+", userId = "+boardId );
-
-			return likenum.toString();
-		}
+			
+			@ResponseBody
+			@PostMapping("/products/likeEvent")
+			public boolean likeEvent(String userId, String boardId) {
+				return productservice.likeClick(boardId, userId);
+			}
 }
