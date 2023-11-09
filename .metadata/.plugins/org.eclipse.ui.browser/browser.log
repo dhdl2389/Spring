@@ -91,3 +91,8 @@
 11월 07, 2023 14:48:48.993 [3532:6328:1107/144848.992:ERROR:device_event_log_impl.cc(192)] [14:48:48.988] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
 11월 07, 2023 14:51:12.130 [3532:6328:1107/145112.130:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
 11월 07, 2023 16:01:36.511 [3532:6328:1107/160136.511:ERROR:device_event_log_impl.cc(192)] [16:01:36.510] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+11월 09, 2023 12:40:25.509 NEW SESSION
+11월 09, 2023 12:40:25.509 [22816:12848:1109/124025.502:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 09, 2023 12:40:25.509 [22816:12848:1109/124025.502:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 09, 2023 13:00:37.271 [22816:14420:1109/130037.262:ERROR:mcs_client.cc(750)] Received close command, resetting connection.

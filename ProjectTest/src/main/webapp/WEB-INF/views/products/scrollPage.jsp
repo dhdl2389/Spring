@@ -172,11 +172,11 @@
 	        		if(data.onClick == false){
 	        			$("#"+boardId).empty();
 	        			//빈하트
-	        			$("#"+boardId).append(`<img id="likeImg" src="https://github.com/kevinbj0/Front_Image/blob/main/%ED%95%98%ED%8A%B8-%EB%B9%88.png?raw=true">`);
+	        			$("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/heart.png">`);
 	        		}else if(data.onClick == true){
 	        			$("#"+boardId).empty();
 	        			//꽉찬 하트
-	        			$("#"+boardId).append(`<img id="likeImg" src="https://github.com/kevinbj0/Front_Image/blob/main/%ED%95%98%ED%8A%B8-%EA%BD%89%EC%B0%AC.png?raw=true">`);
+	        			$("#"+boardId).append(`<img id="likeImg" src="${path}/resources/porduct/hfull.png">`);
 	        		}
 	        		
 	        		$("#srLike").empty();
@@ -204,11 +204,11 @@
         		if(data == false){
         			$("#"+boardId).empty();
         			//빈하트
-        			$("#"+boardId).append(`<img id="likeImg" src="https://github.com/kevinbj0/Front_Image/blob/main/%ED%95%98%ED%8A%B8-%EB%B9%88.png?raw=true">`);
+        			$("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/heart.png">`);
         		}else if(data == true){
         			$("#"+boardId).empty();
         			//꽉찬 하트
-        			$("#"+boardId).append(`<img id="likeImg" src="https://github.com/kevinbj0/Front_Image/blob/main/%ED%95%98%ED%8A%B8-%EA%BD%89%EC%B0%AC.png?raw=true">`);
+        			$("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/hfull.png">`);
         		}
             },
             error: function(error) {

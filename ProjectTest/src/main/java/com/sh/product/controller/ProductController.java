@@ -206,6 +206,7 @@ public class ProductController {
 			//*** 추가
 			@ResponseBody
 			@PostMapping("/products/like")
+			
 			public Map<String, Object> likeup(String boardId, String userId) {
 				boolean onClick = productservice.likeClick(boardId, userId);
 				if(onClick == true) {
