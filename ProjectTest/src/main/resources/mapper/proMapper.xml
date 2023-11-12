@@ -171,4 +171,9 @@
 	</select>
     
     
+    	<!-- 동네인증 지역 목록 -->
+	<select id="getLocalProducts" resultType="ProductDTO" parameterType="String">
+		SELECT * FROM user_board WHERE detail_loc = #{detail_loc}
+	</select>
+    
 </mapper>

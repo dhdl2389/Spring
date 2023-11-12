@@ -96,3 +96,6 @@
 11월 09, 2023 12:40:25.509 [22816:12848:1109/124025.502:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 11월 09, 2023 12:40:25.509 [22816:12848:1109/124025.502:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 11월 09, 2023 13:00:37.271 [22816:14420:1109/130037.262:ERROR:mcs_client.cc(750)] Received close command, resetting connection.
+11월 09, 2023 16:57:41.644 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 09, 2023 16:57:41.644 WARNING: Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#56 is a dynamic-sized tensor).
+11월 09, 2023 16:58:36.914 WARNING: Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#56 is a dynamic-sized tensor).

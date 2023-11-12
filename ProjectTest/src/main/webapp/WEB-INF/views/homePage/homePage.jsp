@@ -350,6 +350,11 @@ footer {
 }
 
 /* 모달 스타일 */
+#find-me {
+	margin-top: 520px;
+	margin-right: 440px;
+}
+
 .modal {
 	display: none; /* 기본적으로 숨겨진 상태로 시작 */
 	position: fixed; /* 고정 위치 */
@@ -484,22 +489,23 @@ footer {
 			</ul>
 		</div>
 
-		<form action="/testing/products">
+		<form action="/testing/scrollHome">
 			<button type="submit">중고거래</button>
 		</form>
-		<form action="/testing/scrollHome">
+		<form action="/testing/localproductList" method="post">
+			<input type="hidden"  name="newLocation" value="${detail_loc}" />
 			<button type="submit">동네거래</button>
 		</form>
 
-		<!-- 모달요소 -->
-		
+		<!-- 동네 인증 -->
+		<form id="location_form" method="post" action="location_form">
+			<!-- 모달요소 -->
 			<div id="myModal" class="modal">
 				<div class="modal-content">
 					<span class="close" onclick="closeModal()">&times;</span>
 
 					<div id="modal-content"></div>
-					<input type="submit" value="Submit" />
-
+					<input type="submit" value="Submit" id="submit-btn" disabled />
 				</div>
 			</div>
 
@@ -508,7 +514,10 @@ footer {
 			<p id="status"></p>
 			<a id="map-link" target="_blank"></a>
 			<div id="map" style="width: 500px; height: 500px; margin-left: 50px"></div>
-		
+			<input type="hidden" id="location-input" name="newLocation"
+				value="${detail_loc}" />
+		</form>
+
 		<%
 		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
 			LoginDTO firstSelectedUser = selectedUser.get(0);
@@ -716,6 +725,7 @@ footer {
         	  }
 
         	  if (typeof newLocation === "object" && Object.keys(newLocation).length !== 0) {
+        		  const detailLoc = newLocation.detail_loc;
         	    newLocationElement.textContent =
         	      "인증되었습니다. 현재위치:" +
         	      newLocation.locCode +
@@ -726,9 +736,12 @@ footer {
         	      "이고, 경도는 " +
         	      newLongitude +
         	      "입니다.";
+        	 // newLocation 값을 input에 할당
+        	    document.getElementById("location-input").value = newLocation.locCode + " - " + newLocation.detail_loc;
         	  } else {
         	    console.log("New location:", newLocation);
         	    newLocationElement.textContent = newLocation;
+        	    document.getElementById("location-input").value = newLocation;
         	  }
         	});
 
@@ -805,151 +818,151 @@ footer {
           // 서울시
           {
             locCode: "서울시",
-            detailLoc: "강남구",
+            detail_loc: "강남구",
             latitude: 37.5172,
             longitude: 127.0473,
           },
           {
             locCode: "서울시",
-            detailLoc: "강서구",
+            detail_loc: "강서구",
             latitude: 37.5509,
             longitude: 126.8497,
           },
           {
             locCode: "서울시",
-            detailLoc: "강동구",
+            detail_loc: "강동구",
             latitude: 37.5618,
             longitude: 127.0371,
           },
           {
             locCode: "서울시",
-            detailLoc: "강북구",
+            detail_loc: "강북구",
             latitude: 37.646995,
             longitude: 127.014716,
           },
           {
             locCode: "서울시",
-            detailLoc: "관악구",
+            detail_loc: "관악구",
             latitude: 37.4782,
             longitude: 126.9517,
           },
           {
             locCode: "서울시",
-            detailLoc: "광진구",
+            detail_loc: "광진구",
             latitude: 37.5485,
             longitude: 127.0859,
           },
           {
             locCode: "서울시",
-            detailLoc: "구로구",
+            detail_loc: "구로구",
             latitude: 37.4952,
             longitude: 126.8581,
           },
           {
             locCode: "서울시",
-            detailLoc: "금천구",
+            detail_loc: "금천구",
             latitude: 37.4573,
             longitude: 126.9019,
           },
           {
             locCode: "서울시",
-            detailLoc: "노원구",
+            detail_loc: "노원구",
             latitude: 37.6542,
             longitude: 127.0568,
           },
           {
             locCode: "서울시",
-            detailLoc: "도봉구",
+            detail_loc: "도봉구",
             latitude: 37.6688,
             longitude: 127.0471,
           },
           {
             locCode: "서울시",
-            detailLoc: "동대문구",
+            detail_loc: "동대문구",
             latitude: 37.5812,
             longitude: 127.0547,
           },
           {
             locCode: "서울시",
-            detailLoc: "동작구",
+            detail_loc: "동작구",
             latitude: 37.4964,
             longitude: 126.9443,
           },
           {
             locCode: "서울시",
-            detailLoc: "마포구",
+            detail_loc: "마포구",
             latitude: 37.5665,
             longitude: 126.9018,
           },
           {
             locCode: "서울시",
-            detailLoc: "서대문구",
+            detail_loc: "서대문구",
             latitude: 37.5791,
             longitude: 126.9368,
           },
           {
             locCode: "서울시",
-            detailLoc: "서초구",
+            detail_loc: "서초구",
             latitude: 37.4837,
             longitude: 127.0324,
           },
           {
             locCode: "서울시",
-            detailLoc: "성동구",
+            detail_loc: "성동구",
             latitude: 37.5635,
             longitude: 127.0365,
           },
           {
             locCode: "서울시",
-            detailLoc: "성북구",
+            detail_loc: "성북구",
             latitude: 37.6066,
             longitude: 127.0237,
           },
           {
             locCode: "서울시",
-            detailLoc: "송파구",
+            detail_loc: "송파구",
             latitude: 37.5145,
             longitude: 127.1058,
           },
           {
             locCode: "서울시",
-            detailLoc: "양천구",
+            detail_loc: "양천구",
             latitude: 37.5169,
             longitude: 126.866,
           },
           {
             locCode: "서울시",
-            detailLoc: "영등포구",
+            detail_loc: "영등포구",
             latitude: 37.5255,
             longitude: 126.8974,
           },
           {
             locCode: "서울시",
-            detailLoc: "용산구",
+            detail_loc: "용산구",
             latitude: 37.5326,
             longitude: 126.9905,
           },
           {
             locCode: "서울시",
-            detailLoc: "은평구",
+            detail_loc: "은평구",
             latitude: 37.6171,
             longitude: 126.928,
           },
           {
             locCode: "서울시",
-            detailLoc: "종로구",
+            detail_loc: "종로구",
             latitude: 37.5704,
             longitude: 126.9922,
           },
           {
             locCode: "서울시",
-            detailLoc: "중구",
+            detail_loc: "중구",
             latitude: 37.5642,
             longitude: 126.9975,
           },
           {
             locCode: "서울시",
-            detailLoc: "중랑구",
+            detail_loc: "중랑구",
             latitude: 37.6066,
             longitude: 127.0927,
           },
@@ -957,13 +970,13 @@ footer {
           // 제주도
           {
             locCode: "제주도",
-            detailLoc: "제주시",
+            detail_loc: "제주시",
             latitude: 33.4996,
             longitude: 126.5312,
           },
           {
             locCode: "제주도",
-            detailLoc: "서귀포시",
+            detail_loc: "서귀포시",
             latitude: 33.2542,
             longitude: 126.5603,
           },
@@ -971,49 +984,49 @@ footer {
           // 경기도
           {
             locCode: "경기도",
-            detailLoc: "수원",
+            detail_loc: "수원",
             latitude: 37.2636,
             longitude: 127.0286,
           },
           {
             locCode: "경기도",
-            detailLoc: "성남",
+            detail_loc: "성남",
             latitude: 37.4386,
             longitude: 127.1378,
           },
           {
             locCode: "경기도",
-            detailLoc: "용인",
+            detail_loc: "용인",
             latitude: 37.241086,
             longitude: 127.177555,
           },
           {
             locCode: "경기도",
-            detailLoc: "부천",
+            detail_loc: "부천",
             latitude: 37.5032,
             longitude: 126.7667,
           },
           {
             locCode: "경기도",
-            detailLoc: "안산",
+            detail_loc: "안산",
             latitude: 37.3217,
             longitude: 126.8309,
           },
           {
             locCode: "경기도",
-            detailLoc: "고양",
+            detail_loc: "고양",
             latitude: 37.658,
             longitude: 126.8326,
           },
           {
             locCode: "경기도",
-            detailLoc: "의정부",
+            detail_loc: "의정부",
             latitude: 37.7437,
             longitude: 127.0413,
           },
           {
             locCode: "경기도",
-            detailLoc: "광명",
+            detail_loc: "광명",
             latitude: 37.4794,
             longitude: 126.8646,
           },
@@ -1021,43 +1034,43 @@ footer {
           // 충청도
           {
             locCode: "충청도",
-            detailLoc: "대전",
+            detail_loc: "대전",
             latitude: 36.3504,
             longitude: 127.3845,
           },
           {
             locCode: "충청도",
-            detailLoc: "천안",
+            detail_loc: "천안",
             latitude: 36.8151,
             longitude: 127.1135,
           },
           {
             locCode: "충청도",
-            detailLoc: "아산",
+            detail_loc: "아산",
             latitude: 36.7926,
             longitude: 127.0018,
           },
           {
             locCode: "충청도",
-            detailLoc: "공주",
+            detail_loc: "공주",
             latitude: 36.5633,
             longitude: 127.2564,
           },
           {
             locCode: "충청도",
-            detailLoc: "논산",
+            detail_loc: "논산",
             latitude: 36.1977,
             longitude: 127.1002,
           },
           {
             locCode: "충청도",
-            detailLoc: "보령",
+            detail_loc: "보령",
             latitude: 36.3494,
             longitude: 126.6032,
           },
           {
             locCode: "충청도",
-            detailLoc: "서산",
+            detail_loc: "서산",
             latitude: 36.7763,
             longitude: 126.4509,
           },
@@ -1065,43 +1078,43 @@ footer {
           // 경상도
           {
             locCode: "경상도",
-            detailLoc: "부산",
+            detail_loc: "부산",
             latitude: 35.1796,
             longitude: 129.0756,
           },
           {
             locCode: "경상도",
-            detailLoc: "대구",
+            detail_loc: "대구",
             latitude: 35.8714,
             longitude: 128.6014,
           },
           {
             locCode: "경상도",
-            detailLoc: "울산",
+            detail_loc: "울산",
             latitude: 35.5384,
             longitude: 129.3114,
           },
           {
             locCode: "경상도",
-            detailLoc: "창원",
+            detail_loc: "창원",
             latitude: 35.2322,
             longitude: 128.6811,
           },
           {
             locCode: "경상도",
-            detailLoc: "포항",
+            detail_loc: "포항",
             latitude: 36.0199,
             longitude: 129.341,
           },
           {
             locCode: "경상도",
-            detailLoc: "진주",
+            detail_loc: "진주",
             latitude: 35.1795,
             longitude: 128.1076,
           },
           {
             locCode: "경상도",
-            detailLoc: "김해",
+            detail_loc: "김해",
             latitude: 35.2282,
             longitude: 128.8812,
           },
@@ -1109,43 +1122,43 @@ footer {
           // 전라도
           {
             locCode: "전라도",
-            detailLoc: "광주",
+            detail_loc: "광주",
             latitude: 35.1595,
             longitude: 126.8526,
           },
           {
             locCode: "전라도",
-            detailLoc: "전주",
+            detail_loc: "전주",
             latitude: 35.8468,
             longitude: 127.1297,
           },
           {
             locCode: "전라도",
-            detailLoc: "목포",
+            detail_loc: "목포",
             latitude: 34.8124,
             longitude: 126.3922,
           },
           {
             locCode: "전라도",
-            detailLoc: "순천",
+            detail_loc: "순천",
             latitude: 34.9477,
             longitude: 127.5047,
           },
           {
             locCode: "전라도",
-            detailLoc: "여수",
+            detail_loc: "여수",
             latitude: 34.7604,
             longitude: 127.6622,
           },
           {
             locCode: "전라도",
-            detailLoc: "나주",
+            detail_loc: "나주",
             latitude: 35.0128,
             longitude: 126.7193,
           },
           {
             locCode: "전라도",
-            detailLoc: "군산",
+            detail_loc: "군산",
             latitude: 35.9756,
             longitude: 126.945,
           },
@@ -1153,43 +1166,43 @@ footer {
           // 강원도
           {
             locCode: "강원도",
-            detailLoc: "춘천",
+            detail_loc: "춘천",
             latitude: 37.8856,
             longitude: 127.7342,
           },
           {
             locCode: "강원도",
-            detailLoc: "원주",
+            detail_loc: "원주",
             latitude: 37.3447,
             longitude: 127.9209,
           },
           {
             locCode: "강원도",
-            detailLoc: "강릉",
+            detail_loc: "강릉",
             latitude: 37.7519,
             longitude: 128.876,
           },
           {
             locCode: "강원도",
-            detailLoc: "속초",
+            detail_loc: "속초",
             latitude: 38.207,
             longitude: 128.591,
           },
           {
             locCode: "강원도",
-            detailLoc: "동해",
+            detail_loc: "동해",
             latitude: 37.7499,
             longitude: 129.3328,
           },
           {
             locCode: "강원도",
-            detailLoc: "태백",
+            detail_loc: "태백",
             latitude: 37.1665,
             longitude: 128.9886,
           },
           {
             locCode: "강원도",
-            detailLoc: "삼척",
+            detail_loc: "삼척",
             latitude: 37.4449,
             longitude: 129.165,
           },
@@ -1221,19 +1234,20 @@ footer {
           }
         }
         
-
+        
         if (locationsWithinRange.length > 0) {
             if (locationsWithinRange.length === 1) {
-                return locationsWithinRange[0].locCode + "-" + locationsWithinRange[0].detailLoc;
+                return locationsWithinRange[0].detail_loc;
             } else {
                 let userChoice = prompt(
                     "여러 지역이 " + desiredRange + "km 이내에 있습니다. 아래에서 선택해주세요:\n " +
-                    locationsWithinRange.map((loc, index) => (index + 1) + ". " + (loc.locCode + "-" + loc.detailLoc)).join('\n')
+                    locationsWithinRange.map((loc, index) => (index + 1) + ". " + (loc.locCode + "-" + loc.detail_loc)).join('\n')
                 );
 
                 userChoice = parseInt(userChoice);
                 if (userChoice && userChoice <= locationsWithinRange.length) {
-                    return locationsWithinRange[userChoice - 1].locCode + "-" + locationsWithinRange[userChoice - 1].detailLoc;
+                	console.log(locationsWithinRange[userChoice - 1].detail_loc);
+                    return locationsWithinRange[userChoice - 1].detail_loc;
                 }
           }
         }
@@ -1242,6 +1256,7 @@ footer {
       }
 
       document.querySelector("#find-me").addEventListener("click", geoFindMe);
+     
     </script>
 
 	<script>
@@ -1267,5 +1282,42 @@ footer {
         geoFindMe();
       });
     </script>
+
+
+	<script>
+    const findMeButton = document.getElementById('find-me');
+    const submitButton = document.getElementById('submit-btn');
+
+    findMeButton.addEventListener('click', getLocation);
+
+    function getLocation() {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+        } else {
+            status.textContent = 'Geolocation is not supported by this browser.';
+        }
+    }
+
+    function showPosition(position) {
+        const latitude = position.coords.latitude;
+        const longitude = position.coords.longitude;
+        const locationInput = document.getElementById('location-input');
+        locationInput.value = latitude + ',' + longitude;
+
+        // 위치를 확인한 후 제출 버튼 활성화
+        submitButton.disabled = false;
+    }
+
+    const form = document.getElementById('location_form');
+    form.addEventListener('submit', (event) => {
+        if (submitButton.disabled) {
+            event.preventDefault(); // 제출 버튼이 비활성화된 경우 폼 제출 방지
+        }
+    });
+</script>
+
+
+
+
 </body>
 </html>
