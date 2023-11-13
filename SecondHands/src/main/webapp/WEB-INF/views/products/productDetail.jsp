@@ -4,7 +4,8 @@
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="com.sh.product.domain.ProductDTO"%>
 <%@ page import="java.util.*"%>
-
+<c:set  var="path"   value="${pageContext.request.contextPath}"/> 
+<!--${path} -->
 <!DOCTYPE html>
 <html>
 <head>
@@ -157,10 +158,9 @@ header.menu-open h2 {
 }
 
 .menu-container Button:hover {
-	background-color: white;
+	background-color: white; 
 	color: #ff6f0f;
 }
-
 .menu-container h2:hover {
 	color: #ff6f0f; /* 호버 시 색상 변경 */
 }
@@ -229,38 +229,34 @@ header.menu-open h2 {
 	margin-top: 10px;
 }
 
-#saveForm {
-	border: 1px solid;
-	margin: 20px auto;
-	/* HEIGHT: 297PX; */
-	width: 650px;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
+      #saveForm {
+    border: 1px solid;
+    margin: 20px auto;
+    /* HEIGHT: 297PX; */
+    width: 650px;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+         
+        }
 
 #saveForm input {
 	width: 96%;
-	margin: 9px 0px 15px;
-	padding: 10px;
-	margin-bottom: 15px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
+    margin: 9px 0px 15px;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
 }
 
 .password-input-container {
-	display: flex;
-	position: relative;
-	align-items: center;
+    display: flex;
+   	position: relative;
+    align-items: center;
 }
 
-#showPasswordCheckbox {
-	position: absolute;
-	top: 32%;
-	right: -41%;
-	transform: translateY(-50%);
-}
+
 
 button {
 	padding: 5px;
@@ -276,62 +272,19 @@ button:hover {
 	background-color: #d55500;
 }
 
-#saveForm label, #saveForm input {
-	display: block;
-	text-align: left; /* 왼쪽 정렬을 위한 수정 */
+#saveForm label,
+#saveForm input {
+    display: block;
+    text-align: left; /* 왼쪽 정렬을 위한 수정 */
 }
 
-#saveForm input[type="checkbox"], #saveForm button {
-	display: inline-block;
+#saveForm input[type="checkbox"],
+#saveForm button {
+    display: inline-block;
 }
 
-#user_id, #user_pw, #user_pw_confirm, #address, #phone_num, #member_post,
-	#member_addr, #detailed_address, #user_birth, #user_nickname {
-	width: 100%; /* 입력란의 너비를 100%로 설정 */
-	padding: 10px;
-	margin-bottom: 15px;
-	border: 1px solid #ddd;
-	border-radius: 4px;
-}
 
-#address {
-	width: calc(100% - 120px); /* 주소 입력란의 너비를 조절하세요. */
-}
 
-#verification_code {
-	width: 100%;
-	padding: 10px;
-	margin-bottom: 15px;
-	border: 1.5px solid #ddd;
-	border-radius: 4px;
-	color: #333; /* 글자 색상을 추가 */
-}
-
-#verification-result {
-	margin-top: 10px;
-	color: red;
-}
-
-#userIdMessage, #passwordValidityMessage, #passwordMatchResult,
-	#verification-result, #verification_code {
-	font-size: 12px;
-	font-weight: bold;
-	text-align: center; /* 텍스트를 중앙으로 정렬 */
-	margin-top: 10px; /* 위 여백 조절 */
-}
-
-#user_pw, #user_pw_confirm, #passwordValidityMessage,
-	#passwordMatchResult {
-	width: 100%;
-}
-
-#member_post {
-	width: 400px;
-}
-
-#member_addr {
-	width: 400px;
-}
 
 button[type="submit"][form="saveForm"] {
 	display: block;
@@ -355,6 +308,17 @@ footer {
 	color: white;
 	text-align: center;
 	bottom: 0;
+}
+
+#like{
+	width: 50px;
+	hetght:50px;
+	background-color: white;
+	border: none;
+}
+#likeImg{
+	width: 40px;
+	height:40px;
 }
 </style>
 </head>
@@ -414,7 +378,6 @@ footer {
 	<%
 	List<ProductDTO> products = (List<ProductDTO>) session.getAttribute("products");
 	List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
-
 	if (selectedUserList != null && !selectedUserList.isEmpty() && products != null && !products.isEmpty()) {
 		// 수정: selectedUserList에서 selectedUser 가져오기
 		LoginDTO selectedUser = selectedUserList.get(0);
@@ -423,23 +386,21 @@ footer {
 		ProductDTO product = products.get(0);
 	%>
 
-	<c:if test="${selectedUser[0].user_code ne product.user_code}">
-		<form action="/testing/checkCode" method="post">
-			Buy Code: <input type="text" name="buy_code"
-				value="${selectedUser[0].user_code}" required><br> Sell
-			Code: <input type="text" name="sell_code"
-				value="${product.user_code}" required><br> Board Id: <input
-				type="text" name="board_id" value="${product.board_Id}" required><br>
-			<button type="submit">채팅신청하기</button>
-		</form>
+<c:if test="${selectedUser[0].user_code ne product.user_code}">
+    <form action="/testing/checkCode" method="post">
+        Buy Code: <input type="text" name="buy_code" value="${selectedUser[0].user_code}" required><br>
+        Sell Code: <input type="text" name="sell_code" value="${product.user_code}" required><br>
+        Board Id: <input type="text" name="board_id" value="${product.board_Id}" required><br>
+        <button type="submit">채팅신청하기</button>
+    </form>
+    
+        <c:if test="${not empty isCodeValid and isCodeValid eq false}">
+    <p style="color: red;">이미 신청한 채팅입니다.</p>
+</c:if>
+</c:if>
 
-		<c:if test="${not empty isCodeValid and isCodeValid eq false}">
-			<p style="color: red;">이미 신청한 채팅입니다.</p>
-		</c:if>
-	</c:if>
-
-
-
+    
+    
 
 
 
@@ -471,7 +432,7 @@ footer {
 						alt="Product Image" style="max-width: 500px; max-height: 500px;">
 				</div>
 				<div class="product-details">
-					<div>분류: [${product.board_cate}]</div>
+				<div>분류: [${product.board_cate}]</div>
 					<div>제목: ${product.board_Title} 작성자: ${product.user_nickname }</div>
 					<div>작성일: ${product.board_Date} 조회수: ${product.board_Click}</div>
 					<div>지역: ${product.loc_code}/${product.detail_loc}</div>
@@ -518,19 +479,19 @@ footer {
 		<button id="likeButton">좋아요 추가</button>
 	</form>
 	<%
-	} else {
-	// products나 selectedUserList가 비어있을 때 예외 처리
-	out.println("상품 정보를 찾을 수 없습니다.");
 	}
+	// products나 selectedUserList가 비어있을 때 예외 처리
+	
 	%>
 	<form action="/testing/products">
 		<button type="submit">상품</button>
 	</form>
-
+	<!-- 관심 버튼 추가 -->
+	<button id="like">관심 버튼</button>
+	
 	<form action="/testing/order">
 		<input type="hidden" name="boardId" value="${product.board_Id}">
-		<input type="text" name="sell_code" value="${product.user_code}"
-			required>
+		<input type="text" name="sell_code" value="${product.user_code}" required>
 		<button type="submit">상품 구매</button>
 	</form>
 

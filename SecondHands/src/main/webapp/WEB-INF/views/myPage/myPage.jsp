@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="java.util.*"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 
 <!DOCTYPE html>
 <html>
@@ -68,7 +68,7 @@ header button {
 }
 
 header button:hover {
-	background-color: #f9f9f9;
+	background-color: #ff6f0f;
 	color: black;
 }
 
@@ -118,6 +118,7 @@ header.menu-open h2 {
 
 /* 햄버거 아이콘 스타일 */
 .menu-icon:hover {
+
 	color: black; /* 마우스를 올렸을 때의 색상 변경 */
 }
 
@@ -159,6 +160,7 @@ header.menu-open h2 {
 }
 
 .menu-container Button:hover {
+background-color: #f9f9f9;
 	color: #ff6f0f; /* 호버 시 색상 변경 */
 }
 
@@ -434,6 +436,7 @@ footer {
 	<%
 	LoginDTO user = (LoginDTO) session.getAttribute("user");
 	List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
+    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
 	%>
 	<%
 	if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
@@ -463,7 +466,15 @@ footer {
 				<li><form action="/testing/update">
 						<button type="submit">회원정보 수정하기</button>
 					</form></li>
+			<li>
+				<form action="/testing/chattingList" method="post">
+    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=selectedUser.getUser_code()%>">
+      채팅하러 가기
+  <button type="submit">${fn:length(chatList)}개</button>
 
+    
+</form>
+</li>
 				<li>
 					<form action="/testing/products/add">
 						<button type="submit">게시글작성</button>

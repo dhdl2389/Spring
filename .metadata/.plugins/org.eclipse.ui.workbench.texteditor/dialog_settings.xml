@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="showPosition"/>
+		<item key="selection" value="desired"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="desired"/>
+			<item value="new-loca"/>
+			<item value="submit-btn"/>
+			<item value="해당"/>
+			<item value="location"/>
 			<item value="showPosition"/>
-			<item value="check"/>
-			<item value="Position"/>
-			<item value="Position&apos;"/>
 			<item value="show"/>
-			<item value="link"/>
-			<item value="linl"/>
-			<item value="new-location"/>
-			<item value="btn"/>
-			<item value="km"/>
-			<item value="3"/>
-			<item value="wrap"/>
-			<item value="search"/>
-			<item value="Search"/>
-			<item value="LikeList"/>
+			<item value="showPositio"/>
+			<item value="t latitude, longitude"/>
+			<item value="checkFie"/>
+			<item value=" checkFieldAndEnableButton();"/>
+			<item value="click"/>
+			<item value="map-link"/>
+			<item value="submitButton"/>
+			<item value="location-input"/>
 		</list>
 		<list key="replacehistory">
 			<item value="location_form"/>
@@ -34,8 +34,8 @@
 		</list>
 	</section>
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog_dialogBounds">
-		<item key="DIALOG_X_ORIGIN" value="701"/>
-		<item key="DIALOG_Y_ORIGIN" value="389"/>
+		<item key="DIALOG_X_ORIGIN" value="918"/>
+		<item key="DIALOG_Y_ORIGIN" value="493"/>
 		<item key="DIALOG_WIDTH" value="247"/>
 		<item key="DIALOG_HEIGHT" value="259"/>
 		<item key="DIALOG_FONT_NAME" value="1|맑은 고딕|9.0|0|WINDOWS|1|-24|0|0|0|400|0|0|0|1|0|0|0|0|맑은 고딕"/>

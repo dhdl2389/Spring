@@ -19,23 +19,21 @@ public class scrollServiceImp implements scrollServiceI {
 		return dao.totalCnt();
 	}
 
-	// 인기순, 최신순, 관심상품
+	//인기순, 최신순, 관심상품
 	@Override
 	public List<ScrollDTO> getListScroll(int curpage, int pageSize, String mode) {
 		return dao.getScroll(curpage, pageSize, mode);
 	}
 
-	// 검색
+	//검색
 	@Override
 	public List<ScrollDTO> getSearchList(String searchTerm) {
 		return dao.getSearchList(searchTerm);
 	}
 
-	// 관심상품
+	//관심상품
 	@Override
 	public List<ScrollDTO> getLikeList(String userId) {
 		return dao.getLikeList(userId);
 	}
-
-
 }

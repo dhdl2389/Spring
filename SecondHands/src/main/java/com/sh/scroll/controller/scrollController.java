@@ -28,7 +28,7 @@ public class scrollController {
 	@Autowired
 	private ProductService productservice;
 	
-	// 슬라이드 페이지
+	// 슬라이드 Ajax
 	@GetMapping("/scrollHome")
 	public String scrollHome(HttpServletRequest request) {
 		
@@ -38,16 +38,19 @@ public class scrollController {
 		session.setAttribute("products", products);
 		return "products/scrollPage";
 	}
-	// 슬라이드 Ajax
+
 	@ResponseBody
 	@GetMapping("/scroll")
-	public Map<String, Object> scrollGet(String p, String mode, Model model) {
+	public Map<String, Object> scrollGet(String page, String mode) {
+		
+		System.out.println("도착");
 		int currentPage = 1;
-		if (p != null) {
-			currentPage = Integer.parseInt(p);
+		if (page != null) {
+			currentPage = Integer.parseInt(page);
 		}
 		int toRecords = service.getTotalCnt();
-	
+		System.out.println("스크롤"+toRecords + ", " + page);
+		
 		//스크롤 한번당 6개씩
 		int pageSize = 6;
 
@@ -60,26 +63,26 @@ public class scrollController {
 		Map<String, Object> map = new HashMap<String, Object>();
 		int totalPage = handler.getTotalPage();
 		
+		System.out.println("총 갯수 = " + totalPage);
+		System.out.println("출력 = " + list);
+		
 		map.put("totalPage", totalPage);
 		map.put("list", list);
 
 		return map;
 	}
 
-	//관심 상품 목록
+	@ResponseBody
+	@GetMapping("/search")
+	public List<ScrollDTO> searchGet(String searchTerm) {
+		return service.getSearchList(searchTerm);
+	}
+	
 	@ResponseBody
 	@PostMapping("/likeList")
 	public List<ScrollDTO> likeList(String userId) {
 		List<ScrollDTO> list = service.getLikeList(userId);
 		return list;
 	}
-	
-
-	@ResponseBody
-	@GetMapping("/search")
-	public List<ScrollDTO> searchGet(String searchTerm) {
-		return service.getSearchList(searchTerm);
-	}
-
 
 }

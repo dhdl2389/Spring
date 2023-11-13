@@ -95,31 +95,31 @@ public class ProductService implements ProductServiceI {
 		return productRepository.getLikeCount(board_Id);
 	}
 
+	//*** 좋아요 기능
 	//좋아요 insert
+	@Override
+	public void insertLike(String boardId, String userId) {
+		productRepository.insertLike(boardId, userId);
+	}
+	
+	//좋아요 delete
+	@Override
+	public void deleteLike(String boardId, String userId) {
+		productRepository.deleteLike(boardId, userId);
+	}
+	//좋아요 클릭했는지
+	@Override
+	public boolean likeClick(String boardId, String userId) {
+		return productRepository.likeClick(boardId, userId);
+	}
+	//관심상품 갯수
+	@Override
+	public int likeNum(String userId) {
+		return productRepository.likeNum(userId);
+	}
 		@Override
-		public void insertLike(String boardId, String userId) {
-			productRepository.insertLike(boardId, userId);
-		}
-		
-		//좋아요 delete
-		@Override
-		public void deleteLike(String boardId, String userId) {
-			productRepository.deleteLike(boardId, userId);
-		}
-		//좋아요 클릭했는지
-		@Override
-		public boolean likeClick(String boardId, String userId) {
-			return productRepository.likeClick(boardId, userId);
-		}
-		//관심상품 갯수
-		@Override
-		public int likeNum(String userId) {
-			return productRepository.likeNum(userId);
-		}
-
-		@Override
-		public List<ProductDTO> getLocalProducts(String detail_loc) {
-			// TODO Auto-generated method stub
-			return productRepository.getLocalProducts(detail_loc);
-		}
+	      public List<ProductDTO> getLocalProducts(String detail_loc) {
+	         // TODO Auto-generated method stub
+	         return productRepository.getLocalProducts(detail_loc);
+	      }
 }

@@ -156,7 +156,7 @@
         FROM board_like
         WHERE board_id = #{boardId}
     </select>
-    <!-- 좋아요 눌렀는지 -->
+   <!-- 좋아요 눌렀는지 -->
       <select id="getlikeClick" resultType="boolean">
         SELECT CASE
 		  WHEN COUNT(*) > 0 THEN 1
@@ -170,10 +170,10 @@
 		select count(*) from board_like where user_id = #{userId}
 	</select>
     
+       <!-- 동네인증 지역 목록 -->
+   <select id="getLocalProducts" resultType="ProductDTO" parameterType="String">
+      SELECT * FROM user_board WHERE detail_loc = #{detail_loc}
+   </select>
     
-    	<!-- 동네인증 지역 목록 -->
-	<select id="getLocalProducts" resultType="ProductDTO" parameterType="String">
-		SELECT * FROM user_board WHERE detail_loc = #{detail_loc}
-	</select>
     
 </mapper>

@@ -46,7 +46,5 @@ public class scrollRepositoryImp implements scrollRepositoryI{
 	public List<ScrollDTO> getLikeList(String userId) {
 		return session.selectList(namespace + ".getLikeList", userId);
 	}
-
-
-
+	
 }

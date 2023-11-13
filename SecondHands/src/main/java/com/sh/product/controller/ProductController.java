@@ -57,12 +57,11 @@ public class ProductController {
 
 	@GetMapping("/products/detail")
 	public String showProductDetail(@RequestParam String boardId, Model model, HttpServletRequest request) {
-
 		// ProductService를 통해 상품 및 이미지 정보 가져오기
 		ProductDTO product = productservice.getProductById(boardId);
 		HttpSession session = request.getSession();
 		productservice.increaseClick(boardId);
-		
+
 		// *** 로그인 정보 받아오기
 		LoginDTO login = (LoginDTO) session.getAttribute("user");
 		String userId = login.getUser_id();
@@ -73,12 +72,9 @@ public class ProductController {
 
 		model.addAttribute("likenum", likenum); // 좋아요 수 받아오기
 		model.addAttribute("onClick", onClick); // 좋아요 눌렀는지
+
 		// 모델에 상품 정보 추가
 		session.setAttribute("product", product);
-	
-		System.out.println("product"+product);
-		System.out.println("userId"+userId);
-		System.out.println("login"+login);
 		return "products/productDetail";
 	}
 
@@ -208,29 +204,29 @@ public class ProductController {
 	// *** 추가
 	@ResponseBody
 	@PostMapping("/products/like")
-
 	public Map<String, Object> likeup(String boardId, String userId) {
 		boolean onClick = productservice.likeClick(boardId, userId);
-		if (onClick == true) {
-			// 클릭된 상태라면 -> 관심 삭제
+		if(onClick == true) {
+			//클릭된 상태라면 -> 관심 삭제
 			productservice.deleteLike(boardId, userId);
-		} else {
-			// 클릭 안된상태 -> 관심 추가
+		}else {
+			//클릭 안된상태 -> 관심 추가 
 			productservice.insertLike(boardId, userId);
 		}
-
-		// 클릭 상태 반환
+		
+		//클릭 상태 반환
 		onClick = !onClick;
-		// 상품상세 - 좋아요 수 반환
+		//상품상세 - 좋아요 수 반환
 		Integer likenum = productservice.getLikeCount(boardId);
-
-		// 관심상품 수
+		
+		//관심상품 수
 		Integer likeCount = productservice.likeNum(userId);
-		Map<String, Object> map = new HashMap<String, Object>();
+
+		Map<String, Object> map = new HashMap<String,Object>();
 		map.put("likenum", likenum.toString());
 		map.put("onClick", onClick);
 		map.put("likeCount", likeCount);
-
+		
 		return map;
 	}
 

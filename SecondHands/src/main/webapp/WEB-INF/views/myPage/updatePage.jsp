@@ -3,6 +3,7 @@
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="com.sh.address.domain.AddressDTO"%>
 <%@ page import="com.sh.kakaologin.domain.KakaoUserDTO"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page import="java.util.*" %>
 
 <!DOCTYPE html>
@@ -448,8 +449,10 @@ footer {
 
 
 <%
-    LoginDTO user = (LoginDTO) session.getAttribute("user");
-    List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
+LoginDTO user = (LoginDTO) session.getAttribute("user");
+List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
+List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
+
     if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
         LoginDTO selectedUser = selectedUserList.get(0); // Assuming you want the first user in the list
 %>
@@ -476,6 +479,14 @@ footer {
                     <button type="submit">마이페이지 이동</button>
                 </form>
             </li>
+            		<li>
+				<form action="/testing/chattingList" method="post">
+    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=selectedUser.getUser_code()%>">
+      채팅하러 가기
+  <button type="submit">${fn:length(chatList)}개</button>
+
+</form>
+</li>
                        <li>
               <form action="/testing/products/add">
       <button type="submit">게시글작성</button>

@@ -404,7 +404,7 @@ footer {
 </script>
 
 
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+   <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script>
 	$(document)
@@ -777,7 +777,7 @@ $(document).ready(function() {
 			<input type="hidden"
 				id="user_image" name="user_image" value="${profile_image}">
 			<input type="hidden" id="user_heat"
-				name="user_heat" value="평점">
+				name="user_heat" value="36.5">
 			<button type="submit" form="saveForm">회원가입하기</button>
 
 		</form>

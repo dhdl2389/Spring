@@ -2,6 +2,7 @@
 	pageEncoding="UTF-8"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 <%@ page import="com.sh.kakaologin.domain.KakaoUserDTO"%>
 <%@ page import="com.sh.saveUser.domain.UserDTO"%>
 <%@ page import="java.util.*"%>
@@ -355,6 +356,11 @@ footer {
 	margin-right: 440px;
 }
 
+#find-me1 {
+	margin-top: 4px;
+	margin-right: 440px;
+}
+
 .modal {
 	display: none; /* 기본적으로 숨겨진 상태로 시작 */
 	position: fixed; /* 고정 위치 */
@@ -433,6 +439,7 @@ footer {
 	<%
 	LoginDTO user = (LoginDTO) session.getAttribute("user");
 	List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+	List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
 	%>
 
 
@@ -465,7 +472,16 @@ footer {
 					</form>
 				</li>
 				<li>
-					<form action="/testing/scrollHome">
+					<form action="/testing/chattingList" method="post">
+						<input type="text" name="buy_code" placeholder="채팅 코드 입력"
+							value="<%=firstSelectedUser.getUser_code()%>"> 채팅하러 가기
+						<button type="submit">${fn:length(chatList)}개</button>
+
+
+					</form>
+				</li>
+				<li>
+					<form action="/testing/qna">
 						<button type="submit">문의하기</button>
 					</form>
 				</li>
@@ -492,7 +508,6 @@ footer {
 		<form action="/testing/scrollHome">
 			<button type="submit">중고거래</button>
 		</form>
-
 		<%
 		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
 		%>
@@ -515,6 +530,10 @@ footer {
 		<%
 		}
 		%>
+
+		<%
+		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+		%>
 		<!-- 동네 인증 -->
 		<form id="location_form" method="post" action="location_form">
 			<!-- 모달요소 -->
@@ -523,7 +542,7 @@ footer {
 					<span class="close" onclick="closeModal()">&times;</span>
 
 					<div id="modal-content"></div>
-					<input type="submit" value="Submit" id="submit-btn" disabled />
+					<input type="submit" value="동네 인증" id="submit-btn" disabled />
 				</div>
 			</div>
 
@@ -535,6 +554,21 @@ footer {
 			<input type="hidden" id="location-input" name="newLocation"
 				value="${detail_loc}" />
 		</form>
+		<%
+		} else {
+		%>
+		<button id="find-me1">동네인증</button>
+		<script>
+         document.getElementById("find-me1").addEventListener("click", function() {
+            alert("로그인이 필요한 서비스 입니다.");
+            window.location.href = "/testing/login"; 
+        });
+         </script>
+		<%
+		}
+		%>
+
+
 
 		<%
 		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
@@ -673,9 +707,9 @@ footer {
           "동네 인증";
 
         mapLink.href =
-          "https://www.openstreetmap.org/#map=18/" + latitude + "/" + longitude;
+          "";
         mapLink.textContent =
-          "Latitude: " + latitude + " °, Longitude: " + longitude + " °";
+        	"";
 
         var mapContainer = document.getElementById("map"),
           mapOption = {
@@ -728,40 +762,40 @@ footer {
         });
 
         kakao.maps.event.addListener(map, "click", function (mouseEvent) {
-        	  const newLatitude = mouseEvent.latLng.getLat();
-        	  const newLongitude = mouseEvent.latLng.getLng();
+             const newLatitude = mouseEvent.latLng.getLat();
+             const newLongitude = mouseEvent.latLng.getLng();
 
-        	  const newLocation = checkLocation(newLatitude, newLongitude);
-        	  console.log("New location:", newLocation);
+             const newLocation = checkLocation(newLatitude, newLongitude);
+             console.log("New location:", newLocation);
 
-        	  const modalContent = document.getElementById("modal-content");
-        	  let newLocationElement = modalContent.querySelector("#new-location");
-        	  if (!newLocationElement) {
-        	    newLocationElement = document.createElement("div");
-        	    newLocationElement.id = "new-location";
-        	    modalContent.appendChild(newLocationElement);
-        	  }
+             const modalContent = document.getElementById("modal-content");
+             let newLocationElement = modalContent.querySelector("#new-location");
+             if (!newLocationElement) {
+               newLocationElement = document.createElement("div");
+               newLocationElement.id = "new-location";
+               modalContent.appendChild(newLocationElement);
+             }
 
-        	  if (typeof newLocation === "object" && Object.keys(newLocation).length !== 0) {
-        		  const detailLoc = newLocation.detail_loc;
-        	    newLocationElement.textContent =
-        	      "인증되었습니다. 현재위치:" +
-        	      newLocation.locCode +
-        	      " - " +
-        	      newLocation.detail_loc +
-        	      ". 클릭한 위치의 위도는 " +
-        	      newLatitude +
-        	      "이고, 경도는 " +
-        	      newLongitude +
-        	      "입니다.";
-        	 // newLocation 값을 input에 할당
-        	    document.getElementById("location-input").value = newLocation.locCode + " - " + newLocation.detail_loc;
-        	  } else {
-        	    console.log("New location:", newLocation);
-        	    newLocationElement.textContent = newLocation;
-        	    document.getElementById("location-input").value = newLocation;
-        	  }
-        	});
+             if (typeof newLocation === "object" && Object.keys(newLocation).length !== 0) {
+                const detailLoc = newLocation.detail_loc;
+               newLocationElement.textContent =
+                 "인증되었습니다. 현재위치:" +
+                 newLocation.locCode +
+                 " - " +
+                 newLocation.detail_loc +
+                 ". 클릭한 위치의 위도는 " +
+                 newLatitude +
+                 "이고, 경도는 " +
+                 newLongitude +
+                 "입니다.";
+            // newLocation 값을 input에 할당
+               document.getElementById("location-input").value = newLocation.locCode + " - " + newLocation.detail_loc;
+             } else {
+               console.log("New location:", newLocation);
+               newLocationElement.textContent = newLocation;
+               document.getElementById("location-input").value = newLocation;
+             }
+           });
 
         kakao.maps.event.addListener(map, "idle", function () {
           searchAddrFromCoords(map.getCenter(), displayCenterInfo);
@@ -1229,8 +1263,8 @@ footer {
         const desiredRange = 3; // 변경하고자 하는 거리 범위 (단위: km)
 
         for (let location of locations) {
-        	
-        	console.log("location"+  location.locCode);
+           
+           console.log("location"+  location.locCode);
           const distance = getDistanceFromLatLonInKm(
             latitude,
             longitude,
@@ -1264,13 +1298,13 @@ footer {
 
                 userChoice = parseInt(userChoice);
                 if (userChoice && userChoice <= locationsWithinRange.length) {
-                	console.log(locationsWithinRange[userChoice - 1].detail_loc);
+                   console.log(locationsWithinRange[userChoice - 1].detail_loc);
                     return locationsWithinRange[userChoice - 1].detail_loc;
                 }
           }
         }
 
-        return "해당 지역이 아닙니다.";
+        return "";
       }
 
       document.querySelector("#find-me").addEventListener("click", geoFindMe);
@@ -1302,9 +1336,11 @@ footer {
     </script>
 
 
-	<script>
+<script>
     const findMeButton = document.getElementById('find-me');
     const submitButton = document.getElementById('submit-btn');
+    const locationInput = document.getElementById('location-input');
+    const form = document.getElementById('location_form');
 
     findMeButton.addEventListener('click', getLocation);
 
@@ -1319,17 +1355,30 @@ footer {
     function showPosition(position) {
         const latitude = position.coords.latitude;
         const longitude = position.coords.longitude;
-        const locationInput = document.getElementById('location-input');
-        locationInput.value = latitude + ',' + longitude;
 
-        // 위치를 확인한 후 제출 버튼 활성화
-        submitButton.disabled = false;
+        // checkLocation 함수를 통해 detail_loc 값을 가져옴
+        const newLocation = checkLocation(latitude, longitude);
+
+        // newLocation이 문자열이 아니라면 객체로 간주하고 detail_loc 값을 가져옴
+        const detailLoc = typeof newLocation === 'object' ? newLocation.detail_loc : newLocation;
+
+        // location-input의 값을 detail_loc로 설정
+        locationInput.value = detailLoc;
+
+        // 필드가 채워져 있으면 버튼 활성화
+        submitButton.disabled = !detailLoc;
+        
+        // 제출 버튼이 비활성화된 경우 폼 제출 방지
+        if (submitButton.disabled) {
+            event.preventDefault();
+        }
     }
 
-    const form = document.getElementById('location_form');
     form.addEventListener('submit', (event) => {
+        // 필드를 선택하지 않은 경우 폼 제출 방지
         if (submitButton.disabled) {
-            event.preventDefault(); // 제출 버튼이 비활성화된 경우 폼 제출 방지
+            alert('Please select a location before submitting.');
+            event.preventDefault();
         }
     });
 </script>
