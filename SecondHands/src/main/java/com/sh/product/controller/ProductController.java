@@ -206,30 +206,31 @@ public class ProductController {
 	@PostMapping("/products/like")
 	public Map<String, Object> likeup(String boardId, String userId) {
 		boolean onClick = productservice.likeClick(boardId, userId);
-		if(onClick == true) {
-			//클릭된 상태라면 -> 관심 삭제
+		if (onClick == true) {
+			// 클릭된 상태라면 -> 관심 삭제
 			productservice.deleteLike(boardId, userId);
-		}else {
-			//클릭 안된상태 -> 관심 추가 
+		} else {
+			// 클릭 안된상태 -> 관심 추가
 			productservice.insertLike(boardId, userId);
 		}
-		
-		//클릭 상태 반환
+
+		// 클릭 상태 반환
 		onClick = !onClick;
-		//상품상세 - 좋아요 수 반환
+		// 상품상세 - 좋아요 수 반환
 		Integer likenum = productservice.getLikeCount(boardId);
-		
-		//관심상품 수
+
+		// 관심상품 수
 		Integer likeCount = productservice.likeNum(userId);
 
-		Map<String, Object> map = new HashMap<String,Object>();
+		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("likenum", likenum.toString());
 		map.put("onClick", onClick);
 		map.put("likeCount", likeCount);
-		
+
 		return map;
 	}
 
+	// 좋아요 클릭
 	@ResponseBody
 	@PostMapping("/products/likeEvent")
 	public boolean likeEvent(String userId, String boardId) {

@@ -48,6 +48,4 @@ public interface ProductServiceI {
 	
 	//관심상품 갯수
 	int likeNum(String userId);
-
-	List<ProductDTO> getLocalProducts(String detail_loc);
 }

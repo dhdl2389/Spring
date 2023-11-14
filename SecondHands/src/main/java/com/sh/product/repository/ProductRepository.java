@@ -99,12 +99,10 @@ public class ProductRepository {
 		 	return session.selectOne(namespace + "getlikeClick", map);
 	 }
 	 
+	 //좋아요 몇개인지 반환
 	 public int likeNum(String userId) {
 		 return session.selectOne(namespace + "getLikeNum", userId);
 	 }
-  	public List<ProductDTO> getLocalProducts(String detail_loc) {
-        return session.selectList(namespace + "getLocalProducts", detail_loc);
-    }
   
 }
     

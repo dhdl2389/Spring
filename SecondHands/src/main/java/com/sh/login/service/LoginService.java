@@ -36,23 +36,28 @@ public class LoginService implements LoginServiceI {
 	public int deleteUser(LoginDTO loginDTO) {
 		// TODO Auto-generated method stub
 		return userRepository.delete(loginDTO);
-		
-		
+
 	}
-	
+
 	@Override
 	public String selectHeat(String sell_code) {
 		return userRepository.selectHeat(sell_code);
 	}
 
 	@Override
-	public int updateHeat(String user_heat,String user_code) {
-		System.out.println("서비스에서 보기"+user_heat+"@@@@@@@@@"+user_code);
-		return userRepository.updateHeat(user_heat,user_code);
+	public int updateHeat(String user_heat, String user_code) {
+		System.out.println("서비스에서 보기" + user_heat + "@@@@@@@@@" + user_code);
+		return userRepository.updateHeat(user_heat, user_code);
+	}
+
+	@Override
+	public String selectHeatU(String sell_code) {
+		return userRepository.selectHeatU(sell_code);
 	}
 	
-	
+	@Override
+	public void saveHeat(String user_code, String user_heat) {
+		userRepository.saveHeat(user_code, user_heat);
+	}
 
-	
-	
 }

@@ -3,7 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="java.util.*"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
 
 <!DOCTYPE html>
 <html>
@@ -18,6 +18,7 @@ body {
 	margin: 0;
 	padding: 0;
 	font-family: 'Arial', sans-serif;
+	background: #fffae0;
 }
 
 header {
@@ -118,7 +119,6 @@ header.menu-open h2 {
 
 /* 햄버거 아이콘 스타일 */
 .menu-icon:hover {
-
 	color: black; /* 마우스를 올렸을 때의 색상 변경 */
 }
 
@@ -160,7 +160,7 @@ header.menu-open h2 {
 }
 
 .menu-container Button:hover {
-background-color: #f9f9f9;
+	background-color: #f9f9f9;
 	color: #ff6f0f; /* 호버 시 색상 변경 */
 }
 
@@ -174,7 +174,7 @@ background-color: #f9f9f9;
 	display: flex; /* 자식 요소를 가로로 정렬 */
 	justify-content: space-between; /* 자식 요소 간의 간격을 최대화하여 정렬 */
 	align-items: center; /* 수직 정렬 */
-	height: 800px;
+	height: 600px;
 }
 
 .main-top div {
@@ -397,46 +397,97 @@ footer {
 	background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
 	color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
 }
+/* 게이지 스타일링 추가 */
+.gauge-container {
+	margin-top: 20px;
+	text-align: center;
+	width: 500px;
+	margin-left: 650px;
+	margin-top: 80px;
+}
+
+.gauge {
+	background-color: #ff6f0f; /* 주황색 배경으로 설정 */
+	height: 20px;
+	width: 0; /* 초기 너비는 0으로 설정 */
+	transition: width 1s; /* 너비 변경 시 부드러운 효과를 위한 transition */
+	border-radius: 5px; /* 모서리를 둥글게 설정 */
+}
+
+.gg {
+	height: 20px;
+	width: 500px; /* 초기 너비는 0으로 설정 */
+	background-color: #d1d0cf;
+	border-radius: 5px; /* 모서리를 둥글게 설정 */
+}
 </style>
 <script>
-	$(document).ready(
-			function() {
-				//맨위로 올리기
-				$("html, body").animate({
-					scrollTop : 0
-				}, 400);
+   $(document).ready(
+         function() {
+            //맨위로 올리기
+            $("html, body").animate({
+               scrollTop : 0
+            }, 400);
 
-				// 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
-				$("#myBtn").click(function() {
-					$("html, body").animate({
-						scrollTop : 0
-					}, 400); //속도를 여기서는 400ms로 설정
-				});
+            // 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
+            $("#myBtn").click(function() {
+               $("html, body").animate({
+                  scrollTop : 0
+               }, 400); //속도를 여기서는 400ms로 설정
+            });
 
-				// 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
-				$(".menu-icon").click(function(e) {
-					e.stopPropagation(); // 햄버거 아이콘을 클릭한 경우, document.body의 클릭 이벤트 전파 방지
-					$(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
-				});
+            // 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
+            $(".menu-icon").click(function(e) {
+               e.stopPropagation(); // 햄버거 아이콘을 클릭한 경우, document.body의 클릭 이벤트 전파 방지
+               $(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
+            });
 
-				// 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
-				$(document.body).click(
-						function(e) {
-							if (!$(e.target).closest('.menu-container').length
-									&& !$(e.target).hasClass('menu-icon')) {
-								$(".menu-container").slideUp();
-							}
-						});
-			});
+            // 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
+            $(document.body).click(
+                  function(e) {
+                     if (!$(e.target).closest('.menu-container').length
+                           && !$(e.target).hasClass('menu-icon')) {
+                        $(".menu-container").slideUp();
+                     }
+                  });
+         });
+</script>
+
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript">
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    var data = google.visualization.arrayToDataTable([
+      ['Year', 'Sales'],
+      ['2014', 1000 ],
+      ['2015', 1170 ],
+      ['2016', 660 ],
+      ['2017', 1030 ]
+    ]);
+
+    var options = {
+      chart: {
+        title: 'Company Performance',
+        subtitle: 'Sales, Expenses, and Profit: 2014-2017',
+      },
+      curveType: 'function', // 추가: 라인 차트에서만 필요
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('barchart_material'));
+
+    chart.draw(data, options);
+  }
 </script>
 </head>
 <body>
-
+<div id="barchart_material" style="width: 900px; height: 500px;"></div>
 
 	<%
 	LoginDTO user = (LoginDTO) session.getAttribute("user");
 	List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
-    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
+	List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
 	%>
 	<%
 	if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
@@ -466,15 +517,18 @@ footer {
 				<li><form action="/testing/update">
 						<button type="submit">회원정보 수정하기</button>
 					</form></li>
-			<li>
-				<form action="/testing/chattingList" method="post">
-    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=selectedUser.getUser_code()%>">
-      채팅하러 가기
-  <button type="submit">${fn:length(chatList)}개</button>
+				<li>
+					<form action="/testing/chattingList" method="post">
+						<input type="text" name="buy_code" placeholder="채팅 코드 입력"
+							value="<%=selectedUser.getUser_code()%>"> 채팅하러 가기
+						<button type="submit">${fn:length(chatList)}개</button>
 
-    
-</form>
-</li>
+
+
+
+
+					</form>
+				</li>
 				<li>
 					<form action="/testing/products/add">
 						<button type="submit">게시글작성</button>
@@ -539,9 +593,21 @@ footer {
 	<%
 	if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
 	%>
-
+	<div class="gauge-container">
+		<h3>내온도</h3>
+		<p><%=selectedUser.getUser_heat()%>℃
+		</p>
+		<div class="gg">
+			<div id="gauge" class="gauge"></div>
+		</div>
+	</div>
 
 	<div class="main-top">
+
+
+
+
+
 		<table style="border: 1px solid black;">
 			<tr>
 				<th>회원번호</th>
@@ -585,36 +651,62 @@ footer {
 				<th>생년월일</th>
 				<td><%=selectedUser.getUser_birth()%></td>
 			</tr>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 		</table>
+
 
 
 	</div>
 
+	<!-- 게이지를 나타낼 부분 추가 -->
+
+
+{<%=selectedUser.getUser_heat()%>}
+{<%=selectedUser.getUser_heat()%>}
+{<%=selectedUser.getUser_heat()%>}
+{<%=selectedUser.getUser_heat()%>}
+
+
+	<script>
+  $(document).ready(function() {
+    // 평점 가져오기 (예시로 75로 설정)
+    var userHeat = <%=selectedUser.getUser_heat()%>;
+
+    // 게이지 업데이트 함수
+    function updateGauge(heat) {
+      var percentage = (heat / 100) * 100; // 0부터 100까지의 범위
+      $("#gauge").css("width", percentage + "%");
+
+      // 색상 계산 및 적용
+      var color = calculateColor(heat);
+      $("#gauge").css("background-color", color);
+    }
+
+    // 평점에 따른 색상 계산 함수
+    function calculateColor(heat) {
+      // HSL 모델에서의 색상 계산
+      var hue = 120 - (heat / 100) * 120; // 0에서 100을 120에서 0으로 변환
+      var saturation = 100; // 포화도는 100%
+      var lightness = 50; // 명도는 50%
+
+      // HSL 색상으로 변환
+      var color = "hsl(" + hue + ", " + saturation + "%, " + lightness + "%)";
+
+      return color;
+    }
+
+    // 페이지 로드 시 게이지 업데이트
+    updateGauge(userHeat);
+  });
+</script>
+
 	<%
 	}
 	%>
 	<%
 	}
 	%>
+
+
 
 	<button id="myBtn" title="Go to top">Top</button>
 	<footer>
@@ -625,6 +717,7 @@ footer {
 		<p>조원: 이정훈</p>
 		<p>조원: 허재혁</p>
 	</footer>
+
 
 </body>
 </html>

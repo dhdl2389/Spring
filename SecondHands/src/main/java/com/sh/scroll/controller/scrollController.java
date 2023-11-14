@@ -28,17 +28,18 @@ public class scrollController {
 	@Autowired
 	private ProductService productservice;
 	
-	// 슬라이드 Ajax
+	// 슬라이드 Home
 	@GetMapping("/scrollHome")
 	public String scrollHome(HttpServletRequest request) {
-		
+		//상품 이미지 및 부가정보 심어둠
 		HttpSession session = request.getSession();
 		List<ProductDTO> products = productservice.getProductList();
-
 		session.setAttribute("products", products);
+		
 		return "products/scrollPage";
 	}
 
+	//슬라이드 Ajax
 	@ResponseBody
 	@GetMapping("/scroll")
 	public Map<String, Object> scrollGet(String page, String mode) {

@@ -99,3 +99,13 @@
 11월 09, 2023 16:57:41.644 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
 11월 09, 2023 16:57:41.644 WARNING: Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#56 is a dynamic-sized tensor).
 11월 09, 2023 16:58:36.914 WARNING: Attempting to use a delegate that only supports static-sized tensors with a graph that has dynamic-sized tensors (tensor#56 is a dynamic-sized tensor).
+
+11월 14, 2023 09:25:48.910 NEW SESSION
+11월 14, 2023 09:25:48.910 [2484:18944:1114/092548.908:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+11월 14, 2023 09:40:37.360 [2484:18944:1114/094037.359:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+11월 14, 2023 13:39:09.438 [2484:11320:1114/133909.438:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 14, 2023 13:41:47.20 [2484:18944:1114/134147.020:ERROR:interface_endpoint_client.cc(702)] Message 5 rejected by interface blink.mojom.WidgetHost
+
+11월 14, 2023 17:15:17.786 NEW SESSION
+11월 14, 2023 17:15:17.786 [18168:17768:1114/171421.634:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 14, 2023 17:15:17.802 [18168:17768:1114/171517.802:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105

@@ -40,11 +40,27 @@
 		#{user_code}
 	</select>
 
+	<select id="selectHeatU" parameterType="String"
+		resultType="String">
+		SELECT user_nickname FROM user_tbl WHERE
+		user_code =
+		#{user_code}
+	</select>
+
+
 	<update id="updateHeat" parameterType="String">
 		UPDATE user_tbl
-		SET user_heat = #{user_heat, jdbcType=VARCHAR}
-		WHERE user_code = #{user_code, jdbcType=VARCHAR}
+		SET
+		user_heat = #{user_heat, jdbcType=VARCHAR}
+		WHERE user_code =
+		#{user_code, jdbcType=VARCHAR}
 	</update>
+
+
+	<insert id="saveHeat" parameterType="LoginDTO">
+		INSERT INTO heat_tbl (heat_code, user_code, user_heat, heat_date)
+		VALUES (seq_heat_code.nextval, #{user_code}, #{user_heat}, SYSDATE)
+	</insert>
 
 
 

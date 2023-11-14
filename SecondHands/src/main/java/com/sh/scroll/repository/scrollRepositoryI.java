@@ -15,4 +15,11 @@ public interface scrollRepositoryI {
 	
 	//관심상품
 	public List<ScrollDTO> getLikeList(String userId);
+	
+	//동네거래 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ
+	//동네거래 리스트
+	public List<ScrollDTO> getLocalProducts(int curpage, int pageSize, String mode,String detail_loc);
+
+	//동네 레코드 개수
+	public int  localTotalCnt(String location);
 }

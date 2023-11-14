@@ -65,12 +65,14 @@ public class LoginController {
 
 	@PostMapping("/heat")
 	public String showHeatPage(@RequestParam String sell_code, Model model) {
-		System.out.println("코드@@@@@@@" + sell_code);
-		String user_heat = loginService.selectHeat(sell_code);
-		model.addAttribute("sell_code", sell_code);
-		System.out.println("온도@@@@@@" + user_heat);
-		model.addAttribute("user_heat", user_heat);
 
+		String user_heat = loginService.selectHeat(sell_code);
+		String user_nickname = loginService.selectHeatU(sell_code);
+
+		model.addAttribute("sell_code", sell_code);
+		model.addAttribute("user_heat", user_heat);
+		model.addAttribute("user_nickname", user_nickname);
+		System.out.println(user_nickname);
 		return "order/heat";
 	}
 
@@ -80,12 +82,13 @@ public class LoginController {
 		if (loginService.updateHeat(user_heat, user_code) > 0) {
 			List<Object> updatedUser = loginService.selectAll(loginDTO);
 			System.out.println(updatedUser);
+			
+			loginService.saveHeat(user_code, user_heat);
 			return "/homePage/homePage";
 
 		} else {
 			return "/order/heat";
 		}
-
 	}
 
 }
