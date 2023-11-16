@@ -49,7 +49,14 @@ public class LoginRepositoryImp implements LoginRepositoryI {
 		// TODO Auto-generated method stub
 		return session.update(namespace + "updateUser", loginDTO);
 	}
+	@Override
+	public int updateUserImg(LoginDTO loginDTO) {
+		// TODO Auto-generated method stub
+		return session.update(namespace + "updateUserImg", loginDTO);
+	}
 
+	
+	
 	@Override
 	public int delete(LoginDTO loginDTO) {
 		// TODO Auto-generated method stu b
@@ -82,11 +89,35 @@ public class LoginRepositoryImp implements LoginRepositoryI {
 	}
 
 	@Override
-	public void saveHeat(String user_code, String user_heat) {
+	public void saveHeat(String user_code, String user_heat,String check_heat,String board_id) {
 		Map<String, Object> map = new HashMap<>();
 		map.put("user_code", user_code);
 		map.put("user_heat", user_heat);
+		map.put("check_heat", check_heat);
+		map.put("board_id", board_id);
 
 		session.insert(namespace + "saveHeat", map);
 	}
+	   @Override
+	   public List<Object> getHeatByUserCode(String user_code) {
+	      List<Object> HeatUserCode = session.selectList(namespace + "getHeatByUserCode", user_code);
+	      return HeatUserCode;
+
+	   }
+	   
+
+		@Override
+		public List<Object>getCheckHeatByUserCode(String sell_code) {
+			List<Object> check = session.selectList(namespace + "getCheckHeatByUserCode", sell_code);
+			return check;
+
+		}
+		@Override
+		public String getCheckHeatByBoardId(String board_id) {
+
+			String heatUser = session.selectOne(namespace + "getCheckHeatByBoardId", board_id);
+			return heatUser;
+		}
+		
+		
 }

@@ -109,7 +109,7 @@ public class ChatController {
 	            // 삭제 실패, 리디렉션 또는 에러 메시지 표시 가능
 	            System.out.println("채팅 삭제에 실패했습니다");
 	        }
-	        return "/homePage/homePage";
+	        return "/chatting/chattingList";
 	    }
 	
 

@@ -30,210 +30,218 @@ import org.springframework.web.multipart.MultipartFile;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.sh.login.domain.LoginDTO;
+import com.sh.login.service.LoginService;
 import com.sh.product.domain.ProductDTO;
 import com.sh.product.service.ProductService;
 
 @Controller
 public class ProductController {
 
-	String fileDir = "c:\\test\\upload\\";// 물리적 폴더 만들어야함 c드라이브 안에 test폴더 생성후 test폴더안에 upload폴더 생성
+   String fileDir = "c:\\test\\upload\\";// 물리적 폴더 만들어야함 c드라이브 안에 test폴더 생성후 test폴더안에 upload폴더 생성
 
-	@Autowired
-	private ProductService productservice;
+   @Autowired
+   private ProductService productservice;
+   @Autowired
+   private LoginService loginService;
 
-	@GetMapping("/products")
-	public String getProductList(@ModelAttribute ProductDTO productDTO, HttpServletRequest request) {
-		// ProductService를 통해 상품 목록을 가져와서 모델에 추가
-		HttpSession session = request.getSession();
-		List<ProductDTO> products = productservice.getProductList();
+   @GetMapping("/products")
+   public String getProductList(@ModelAttribute ProductDTO productDTO, HttpServletRequest request) {
+      // ProductService를 통해 상품 목록을 가져와서 모델에 추가
+      HttpSession session = request.getSession();
+      List<ProductDTO> products = productservice.getProductList();
 
-		session.setAttribute("products", products);
-		System.out.println("상품정보=" + products);
-		return "products/productList";
-	}
+      session.setAttribute("products", products);
+      System.out.println("상품정보=" + products);
+      return "products/scrollHome";
+   }
 
-	///////////////////////////// 상품 상세정보
-	///////////////////////////// /////////////////////////////////////////////////////////////////////
+   ///////////////////////////// 상품 상세정보
+   ///////////////////////////// /////////////////////////////////////////////////////////////////////
 
-	@GetMapping("/products/detail")
-	public String showProductDetail(@RequestParam String boardId, Model model, HttpServletRequest request) {
-		// ProductService를 통해 상품 및 이미지 정보 가져오기
-		ProductDTO product = productservice.getProductById(boardId);
-		HttpSession session = request.getSession();
-		productservice.increaseClick(boardId);
+   @GetMapping("/products/detail")
+   public String showProductDetail(@RequestParam String boardId,@RequestParam String user_code, Model model, HttpServletRequest request) {
 
-		// *** 로그인 정보 받아오기
-		LoginDTO login = (LoginDTO) session.getAttribute("user");
-		String userId = login.getUser_id();
+      String user_heat = loginService.selectHeat(user_code);
+      model.addAttribute("user_heat", user_heat);
 
-		// *** 좋아요 기능
-		Integer likenum = productservice.getLikeCount(boardId); // 좋아요 수 받아오기
-		boolean onClick = productservice.likeClick(boardId, userId); // 누른적 있는지
+      System.out.println("szsfzfzsfzfzfz" + user_heat);
+      // ProductService를 통해 상품 및 이미지 정보 가져오기
+      ProductDTO product = productservice.getProductById(boardId);
+      HttpSession session = request.getSession();
+      productservice.increaseClick(boardId);
 
-		model.addAttribute("likenum", likenum); // 좋아요 수 받아오기
-		model.addAttribute("onClick", onClick); // 좋아요 눌렀는지
+      // *** 로그인 정보 받아오기
+      LoginDTO login = (LoginDTO) session.getAttribute("user");
+      String userId = login.getUser_id();
 
-		// 모델에 상품 정보 추가
-		session.setAttribute("product", product);
-		return "products/productDetail";
-	}
+      // *** 좋아요 기능
+      Integer likenum = productservice.getLikeCount(boardId); // 좋아요 수 받아오기
+      boolean onClick = productservice.likeClick(boardId, userId); // 누른적 있는지
 
-	@PostMapping("/products/updateDate")
-	public String updateDate(@RequestParam String boardId) {
+      model.addAttribute("likenum", likenum); // 좋아요 수 받아오기
+      model.addAttribute("onClick", onClick); // 좋아요 눌렀는지
 
-		productservice.updateDate(boardId);
-		return "redirect:/products";
-	}
-	///////////////////////////// 상품등록
-	///////////////////////////// /////////////////////////////////////////////////////////////////////
+      // 모델에 상품 정보 추가
+      session.setAttribute("product", product);
+      return "products/productDetail";
+   }
 
-	@GetMapping("/products/add")
-	public String showAddProductForm(Model model) {
-		String categoriesJson = productservice.getAllCategoriesJson();
+   @PostMapping("/products/updateDate")
+   public String updateDate(@RequestParam String boardId) {
 
-		// System.out.println(json2);
-		model.addAttribute("item", categoriesJson);
+      productservice.updateDate(boardId);
+      return "redirect:/scrollHome";
+   }
+   ///////////////////////////// 상품등록
+   ///////////////////////////// /////////////////////////////////////////////////////////////////////
 
-		return "products/addProductForm";
-	}
+   @GetMapping("/products/add")
+   public String showAddProductForm(Model model) {
+      String categoriesJson = productservice.getAllCategoriesJson();
 
-	@PostMapping("/products/add")
-	public String addProduct(ProductDTO product, Model model, HttpServletRequest request, MultipartFile file)
-			throws IllegalStateException, IOException {
-		// ProductService를 통해 상품 추가
-		// MultipartFile file 부분은 파일 업로드시 사용
+      // System.out.println(json2);
+      model.addAttribute("item", categoriesJson);
 
-		System.out.println(product);
-		System.out.println(file);
+      return "products/addProductForm";
+   }
 
-		// 파일 업로드 부분
-		String fileRealName = "";
-		if (!file.isEmpty()) {
-			fileRealName = file.getOriginalFilename();
-			System.out.println(fileRealName);
-			String fullPath = fileDir + fileRealName; // "C:\\test\\upload\\test.jpg"
-			file.transferTo(new File(fullPath));
-			model.addAttribute("fileName", fileRealName);
-		}
+   @PostMapping("/products/add")
+   public String addProduct(ProductDTO product, Model model, HttpServletRequest request, MultipartFile file)
+         throws IllegalStateException, IOException {
+      // ProductService를 통해 상품 추가
+      // MultipartFile file 부분은 파일 업로드시 사용
 
-		product.setBoard_Img(fileRealName);
-		productservice.insertProductData(product);
+      System.out.println(product);
+      System.out.println(file);
+
+      // 파일 업로드 부분
+      String fileRealName = "";
+      if (!file.isEmpty()) {
+         fileRealName = file.getOriginalFilename();
+         System.out.println(fileRealName);
+         String fullPath = fileDir + fileRealName; // "C:\\test\\upload\\test.jpg"
+         file.transferTo(new File(fullPath));
+         model.addAttribute("fileName", fileRealName);
+      }
+
+      product.setBoard_Img(fileRealName);
+      productservice.insertProductData(product);
 
 //           System.out.println("Title: " + product.getBoard_Title());
 //           System.out.println("Price: " + product.getBoard_Price());
 //           System.out.println("Description: " + product.getBoard_Text());
 //           System.out.println("Image URL: " + product.getBoard_Img());
 
-		return "redirect:/scrollHome";
-	}
+      return "redirect:/scrollHome";
+   }
 
-	///////////////////////////// 상품 업데이트
-	///////////////////////////// /////////////////////////////////////////////////////////////////////
+   ///////////////////////////// 상품 업데이트
+   ///////////////////////////// /////////////////////////////////////////////////////////////////////
 
-	@GetMapping("/products/update")
-	public String updateProductForm(ProductDTO product, @RequestParam String boardId, Model model) {
-		product = productservice.getProductById(boardId);
-		String categoriesJson = productservice.getAllCategoriesJson();
+   @GetMapping("/products/update")
+   public String updateProductForm(ProductDTO product, @RequestParam String boardId, Model model) {
+      product = productservice.getProductById(boardId);
+      String categoriesJson = productservice.getAllCategoriesJson();
 
-		// System.out.println(json2);
-		model.addAttribute("item", categoriesJson);
-		model.addAttribute("product", product);
-		return "products/updateProductForm";
-	}
+      // System.out.println(json2);
+      model.addAttribute("item", categoriesJson);
+      model.addAttribute("product", product);
+      return "products/updateProductForm";
+   }
 
-	@PostMapping("/products/update")
-	public String updateProduct(ProductDTO product, Model model, MultipartFile file, @RequestParam String boardId,
-			HttpServletRequest request) throws IllegalStateException, IOException {
-		// ProductService를 통해 상품 수정
+   @PostMapping("/products/update")
+   public String updateProduct(ProductDTO product, Model model, MultipartFile file, @RequestParam String boardId,
+         HttpServletRequest request) throws IllegalStateException, IOException {
+      // ProductService를 통해 상품 수정
 
-		String fileRealName = null;
+      String fileRealName = null;
 
-		if (file != null && !file.isEmpty()) {
-			fileRealName = file.getOriginalFilename();
-			// System.out.println(fileRealName);
+      if (file != null && !file.isEmpty()) {
+         fileRealName = file.getOriginalFilename();
+         // System.out.println(fileRealName);
 
-			String fullPath = fileDir + fileRealName; // "C:\\test\\upload\\test.jpg"
-			file.transferTo(new File(fullPath));
-			model.addAttribute("fileName", fileRealName);
+         String fullPath = fileDir + fileRealName; // "C:\\test\\upload\\test.jpg"
+         file.transferTo(new File(fullPath));
+         model.addAttribute("fileName", fileRealName);
 
-			// 이미지 파일이 업데이트되면 데이터베이스에 반영
-			product.setBoard_Img(fileRealName);
-		}
+         // 이미지 파일이 업데이트되면 데이터베이스에 반영
+         product.setBoard_Img(fileRealName);
+      }
 
-		// 상품의 boardId 설정
-		product.setBoard_Id(boardId);
+      // 상품의 boardId 설정
+      product.setBoard_Id(boardId);
 
-		// 상품 수정이 성공하면 목록 페이지로 리다이렉션
-		int updateResult = productservice.updateProduct(product);
-		if (updateResult > 0) {
-			System.out.println("상품 수정 성공!");
-			return "redirect:/scrollHome";
-		} else {
-			System.out.println("상품 수정 실패!");
+      // 상품 수정이 성공하면 목록 페이지로 리다이렉션
+      int updateResult = productservice.updateProduct(product);
+      if (updateResult > 0) {
+         System.out.println("상품 수정 성공!");
+         return "redirect:/scrollHome";
+      } else {
+         System.out.println("상품 수정 실패!");
 
-			return "redirect:/scrollHome";
-		}
-	}
+         return "redirect:/scrollHome";
+      }
+   }
 
-	///////////////////////////// 상품삭제
-	///////////////////////////// /////////////////////////////////////////////////////////////////////
-	@PostMapping("/products/delete")
-	public String productDelete(@RequestParam String boardId, Model model) {
-		ProductDTO product = productservice.getProductById(boardId);
-		productservice.deleteProduct(boardId);
-		model.addAttribute("product", product);
-		return "redirect:/scrollHome";
-	}
+   ///////////////////////////// 상품삭제
+   ///////////////////////////// /////////////////////////////////////////////////////////////////////
+   @PostMapping("/products/delete")
+   public String productDelete(@RequestParam String boardId, Model model) {
+      ProductDTO product = productservice.getProductById(boardId);
+      productservice.deleteProduct(boardId);
+      model.addAttribute("product", product);
+      return "redirect:/scrollHome";
+   }
 
-	///////////////////// 이미지 저장경로,저장하는 코드
-	///////////////////// //////////////////////////////////////////////////////////////
-	@ResponseBody
-	@RequestMapping(value = "/images/{fileName:.*}", method = RequestMethod.GET)
-	public Resource imageView(@PathVariable String fileName) throws MalformedURLException {
-		return new UrlResource("file:c:\\test\\upload\\" + fileName);
-	}
+   ///////////////////// 이미지 저장경로,저장하는 코드
+   ///////////////////// //////////////////////////////////////////////////////////////
+   @ResponseBody
+   @RequestMapping(value = "/images/{fileName:.*}", method = RequestMethod.GET)
+   public Resource imageView(@PathVariable String fileName) throws MalformedURLException {
+      return new UrlResource("file:c:\\test\\upload\\" + fileName);
+   }
 
-	@ResponseBody
-	@GetMapping("/products/likes")
-	public int likeNum(String board_Id) {
-		int likeNum = productservice.getLikeCount(board_Id);
-		return likeNum;
-	}
+   @ResponseBody
+   @GetMapping("/products/likes")
+   public int likeNum(String board_Id) {
+      int likeNum = productservice.getLikeCount(board_Id);
+      return likeNum;
+   }
 
-	// ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 좋아요 기능
-	// *** 추가
-	@ResponseBody
-	@PostMapping("/products/like")
-	public Map<String, Object> likeup(String boardId, String userId) {
-		boolean onClick = productservice.likeClick(boardId, userId);
-		if (onClick == true) {
-			// 클릭된 상태라면 -> 관심 삭제
-			productservice.deleteLike(boardId, userId);
-		} else {
-			// 클릭 안된상태 -> 관심 추가
-			productservice.insertLike(boardId, userId);
-		}
+   // ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ 좋아요 기능
+   // *** 추가
+   @ResponseBody
+   @PostMapping("/products/like")
+   public Map<String, Object> likeup(String boardId, String userId) {
+      boolean onClick = productservice.likeClick(boardId, userId);
+      if(onClick == true) {
+         //클릭된 상태라면 -> 관심 삭제
+         productservice.deleteLike(boardId, userId);
+      }else {
+         //클릭 안된상태 -> 관심 추가 
+         productservice.insertLike(boardId, userId);
+      }
+      
+      //클릭 상태 반환
+      onClick = !onClick;
+      //상품상세 - 좋아요 수 반환
+      Integer likenum = productservice.getLikeCount(boardId);
+      
+      //관심상품 수
+      Integer likeCount = productservice.likeNum(userId);
 
-		// 클릭 상태 반환
-		onClick = !onClick;
-		// 상품상세 - 좋아요 수 반환
-		Integer likenum = productservice.getLikeCount(boardId);
+      Map<String, Object> map = new HashMap<String,Object>();
+      map.put("likenum", likenum.toString());
+      map.put("onClick", onClick);
+      map.put("likeCount", likeCount);
+      
+      return map;
+   }
 
-		// 관심상품 수
-		Integer likeCount = productservice.likeNum(userId);
-
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("likenum", likenum.toString());
-		map.put("onClick", onClick);
-		map.put("likeCount", likeCount);
-
-		return map;
-	}
-
-	// 좋아요 클릭
-	@ResponseBody
-	@PostMapping("/products/likeEvent")
-	public boolean likeEvent(String userId, String boardId) {
-		return productservice.likeClick(boardId, userId);
-	}
+   //좋아요 클릭
+   @ResponseBody
+   @PostMapping("/products/likeEvent")
+   public boolean likeEvent(String userId, String boardId) {
+      return productservice.likeClick(boardId, userId);
+   }
 }

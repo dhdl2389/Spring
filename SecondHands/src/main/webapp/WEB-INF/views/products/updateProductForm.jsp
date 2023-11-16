@@ -5,7 +5,7 @@
           <%@ page import="com.sh.product.domain.ProductDTO"%>
          <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
           <%@ page import="java.util.*"%>
-          
+          <c:set  var="path"   value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -392,8 +392,10 @@ footer {
 
 		<div class="menu-container">
 			<ul>
+			         <li><h2> </h2></li>
 				<li>
-					<h2>
+				   <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
+						<h2>
 						<%
 						if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
 						%>
@@ -402,19 +404,21 @@ footer {
 					</h2>
 				</li>
 				<li>
-					<form action="/testing/myPage">
-						<button type="submit">마이페이지 이동</button>
-					</form>
+				            <form action="/testing/myPage" method="post">
+               <input type="hidden" name="user_code" value="<%=firstSelectedUser.getUser_code()%>">
+                  <button type="submit">마이페이지 이동</button>
+               </form>
 				</li>
 				           		<li>
-				<form action="/testing/chattingList" method="post">
-    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=firstSelectedUser.getUser_code()%>">
-      채팅하러 가기
-  <button type="submit">${fn:length(chatList)}개</button>
+			<form action="/testing/chattingList" method="post">
+						<input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+							value="<%=firstSelectedUser.getUser_code()%>">
+						<button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
-</form>
+
+					</form>
 </li>
-                 <li>
+                       <li>
               <form action="/testing/products/add">
       <button type="submit">게시글작성</button>
    			</form>
@@ -425,7 +429,7 @@ footer {
 					</form>
 				</li>
 				<li>
-					<form action="/testing/scrollHome">
+					<form action="/testing/qna">
 						<button type="submit">문의하기</button>
 					</form>
 				</li>
@@ -446,18 +450,17 @@ footer {
 				<%
 				}
 				%>
+				
 			</ul>
 		</div>
 		<div class="header-btn">
-			<form action="/testing/products">
-				<button type="submit">중고거래</button>
-			</form>
-			<form action="/testing/scrollHome">
-				<button type="submit">동네거래</button>
-			</form>
-			<form action="/testing/scrollHome">
-				<button type="submit">동네인증</button>
-			</form>
+			 <form action="/testing/scrollHome">
+         <button type="submit">중고거래</button>
+      </form>
+			  <form action="/testing/localproductList" method="post">
+               <input type="hidden" name="newLocation" value="${detail_loc}" />
+         <button type="submit">동네거래</button>
+      </form>
 		</div>
 		<%
 		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
@@ -476,8 +479,9 @@ footer {
 		<%
 		}
 		%>
+	
+	
 	</header>
-
 
 	<div class="main-top">
 		<form id="saveForm" action="/testing/products/update" method="post"

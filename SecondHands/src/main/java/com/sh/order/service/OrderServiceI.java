@@ -11,6 +11,8 @@ public interface OrderServiceI {
 
 	public List<OrderDTO> getOrdersByUserCode(String user_id);
 	
+	public String selectBoardId(String board_id);
+	
 
 	}
 

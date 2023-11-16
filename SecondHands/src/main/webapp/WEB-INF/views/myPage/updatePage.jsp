@@ -1,10 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
-<%@ page import="com.sh.address.domain.AddressDTO"%>
-<%@ page import="com.sh.kakaologin.domain.KakaoUserDTO"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set  var="path"   value="${pageContext.request.contextPath}"/> 
 
 <!DOCTYPE html>
 <html>
@@ -464,8 +464,10 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
 			<button type="submit" >Second Hands</button>
 		</form></div>
 		<div class="menu-container">
-			<ul>
-				<li>
+		    <ul>
+         <li><h2> </h2></li>
+            <li>
+              <img src="${path}/images/<%=selectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
 					<h2>
 						<%
 						if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
@@ -475,77 +477,84 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
 					</h2>
 				</li>
 			         <li>
-                <form action="/testing/myPage">
-                    <button type="submit">마이페이지 이동</button>
-                </form>
+              
+				               <form action="/testing/myPage" method="post">
+               <input type="hidden" name="user_code" value="<%=selectedUser.getUser_code()%>">
+                  <button type="submit">마이페이지 이동</button>
+               </form>
+              
             </li>
             		<li>
-				<form action="/testing/chattingList" method="post">
-    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=selectedUser.getUser_code()%>">
-      채팅하러 가기
-  <button type="submit">${fn:length(chatList)}개</button>
+					<form action="/testing/chattingList" method="post">
+						<input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+							value="<%=selectedUser.getUser_code()%>">
+						<button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
-</form>
-</li>
-                       <li>
-              <form action="/testing/products/add">
-      <button type="submit">게시글작성</button>
-   			</form>
-   </li>
-				<li>
-					<form action="/testing/showOrder">
-						<button type="submit">주문내역</button>
+
 					</form>
 				</li>
-				<li>
-					<form action="/testing/scrollHome">
+            <li>
+               <form action="/testing/products/add">
+                  <button type="submit">게시글작성</button>
+               </form>
+            </li>
+            <li>
+
+               <form action="/testing/showOrder">
+                  <button type="submit">주문내역</button>
+               </form>
+            </li>
+            <li>
+           		<form action="/testing/qna">
 						<button type="submit">문의하기</button>
 					</form>
-				</li>
-		
-				<li>
-					<form action="/testing/logout" method="post">
-						<button type="submit">로그아웃</button>
-					</form>
-				</li>
+            </li>
 
-				<%
-				} else {
-				%>
-				<li><h2>로그인이 필요한 서비스입니다.</h2></li>
-				<li>
-					<form action="/testing/login">
-						<button type="submit">가입 및 로그인</button>
-					</form>
-				</li>
-				<%
-				}
-				%>
-			</ul>
-		</div>
+            <li>
+               <form action="/testing/logout" method="post">
+                  <button type="submit">로그아웃</button>
+               </form>
+            </li>
 
-		<form action="/testing/products">
-			<button type="submit">중고거래</button>
-		</form>
-		<form action="/testing/scrollHome">
-			<button type="submit">동네거래</button>
-		</form>
-		<%
-		if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
-		%>
-		<form action="/testing/logout" method="post">
-			<button type="submit">로그아웃</button>
-		</form>
-		<%
-		} else {
-		%>
-		<form action="/testing/login">
-			<button type="submit">가입 및 로그인</button>
-		</form>
-		<%
-		}
-		%>
-	</header>
+            <%
+            } else {
+            %>
+            <li><h2>로그인이 필요한 서비스입니다.</h2></li>
+            <li>
+               <form action="/testing/login">
+                  <button type="submit">가입 및 로그인</button>
+               </form>
+            </li>
+            <%
+            }
+            %>
+         </ul>
+      </div>
+
+      <form action="/testing/scrollHome">
+         <button type="submit">중고거래</button>
+      </form>
+      <form action="/testing/localproductList" method="post">
+               <input type="hidden" name="newLocation" value="${detail_loc}" />
+         <button type="submit">동네거래</button>
+      </form>
+      <%
+      if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+      %>
+      <form action="/testing/logout" method="post">
+         <button type="submit">로그아웃</button>
+      </form>
+      <%
+      } else {
+      %>
+      <form action="/testing/login">
+         <button type="submit">가입 및 로그인</button>
+      </form>
+      <%
+      }
+      %>
+   </header>
+
 		<div class="main-top">
     <form id="saveForm" action="/testing/update" method="post">
           <div style="text-align: center;"> <!-- Add this div for centering -->

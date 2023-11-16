@@ -27,5 +27,11 @@ public class OrderServiceImp implements OrderServiceI {
 		return dao.getOrdersByUserCode(user_id);
 	}
 
+	@Override
+	public String selectBoardId(String board_id) {
+		
+		return dao.selectBoardId(board_id);
+	}
+
 
 }

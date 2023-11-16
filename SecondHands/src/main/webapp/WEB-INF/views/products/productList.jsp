@@ -9,6 +9,7 @@
     <meta charset="UTF-8">
     <title>Product List</title>
 </head>
+
 <body>
     <h2>Product List</h2>
    <%

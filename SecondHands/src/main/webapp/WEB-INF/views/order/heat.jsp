@@ -9,120 +9,135 @@
 <title>Insert title here</title>
 <style>
 header {
-	margin-top: -8px;
-	/* width: 1200px; */
-	margin-left: -8px;
-	margin-right: -9px;
-	background-color: #ff6f0f;
-	padding: 10px;
-	position: sticky;
-	top: 0;
-	color: white;
-	z-index: 1000;
-	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	/* width: 100%; */
-	height: 100px;
-	box-sizing: border-box;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   margin-top: -8px;
+   /* width: 1200px; */
+   margin-left: -8px;
+   margin-right: -9px;
+   background-color: #ff6f0f;
+   padding: 10px;
+   position: sticky;
+   top: 0;
+   color: white;
+   z-index: 1000;
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   /* width: 100%; */
+   height: 100px;
+   box-sizing: border-box;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h2 {
-	text-align: center;
-	font-size: 35px;
-	margin-left: 20px;
+   text-align: center;
+   font-size: 35px;
+   margin-left: 20px;
+}
+
+
+
+.logoBtn {
+   border: none;
+   background-color: #ff6f0f;
+   color:white;
+}
+
+.logoBtn:hover{
+    background-color: #ff6f0f;
+    color: black;
+    transition: color 0.3s ease;
 }
 
 .satisfyD {
-	text-align: center;
-	margin: auto;
-	margin-top: 110px;
-		font-size: 34px;
-	font-weight: bolder;
+   text-align: center;
+   margin: auto;
+   margin-top: 110px;
+   font-size: 34px;
+   font-weight: bolder;
 }
 
 }
 #satisfy {
-	text-align: center;
-	margin-top: 80px;
-	width: 1200px;
-	border: none;
-	text-align: center;
-	font-size: 34px;
-	font-weight: bolder;
+   text-align: center;
+   margin-top: 80px;
+   width: 1200px;
+   border: none;
+   text-align: center;
+   font-size: 34px;
+   font-weight: bolder;
 }
 
 .star {
-	display: inline-block;
-	direction: rtl;
-	border: 0;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	margin: 0 auto;
-	display: flex;
-	justify-content: center;
-	text-align: center;
-	margin: 0 auto;
+   display: inline-block;
+   direction: rtl;
+   border: 0;
+   align-items: center;
+   justify-content: center;
+   text-align: center;
+   margin: 0 auto;
+   display: flex;
+   justify-content: center;
+   text-align: center;
+   margin: 0 auto;
 }
 
 .submitBtn {
-	align-items: center;
-	display: flex;
-	justify-content: center;
-	margin-top: 60px;
+   align-items: center;
+   display: flex;
+   justify-content: center;
+   margin-top: 60px;
 }
 
 .submitB {
-	width: 120px;
-	height: 40px;
-	border-radius: 12px;
-	background-color: #ff6f0f;
-	font-weight: bold;
-	color: white;
-	border: none;
-	transition: color 0.3s ease;
-	s
+   width: 120px;
+   height: 40px;
+   border-radius: 12px;
+   background-color: #ff6f0f;
+   font-weight: bold;
+   color: white;
+   border: none;
+   transition: color 0.3s ease;
+   
 }
 
 .submitB:hover {
-	color: black;
+   color: black;
 }
 
 button.eva {
-	font-size: 3em;
-	color: transparent;
-	text-shadow: 0 0 0 #f0f0f0;
-	background: none;
-	border: none;
-	cursor: pointer;
-	font-size: 113px;
+   font-size: 3em;
+   color: transparent;
+   text-shadow: 0 0 0 #f0f0f0;
+   background: none;
+   border: none;
+   cursor: pointer;
+   font-size: 113px;
 }
 
 button.eva:hover, button.eva.selected, button.eva.hovered {
-	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+   text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 
 input[type=radio]:checked ~ button.eva {
-	text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
+   text-shadow: 0 0 0 rgba(250, 208, 0, 0.99);
 }
 
 #temperatureInput {
-	width: 100%;
-	height: 30px;
-	padding: 5px;
-	box-sizing: border-box;
-	border: solid 1.5px #D3D3D3;
-	border-radius: 5px;
-	font-size: 16px;
+   width: 100%;
+   height: 30px;
+   padding: 5px;
+   box-sizing: border-box;
+   border: solid 1.5px #D3D3D3;
+   border-radius: 5px;
+   font-size: 16px;
 }
 
 #temperature {
-	display: none;
+   display: none;
 }
 </style>
+
 </head>
 <body>
 	<header>
@@ -151,15 +166,21 @@ input[type=radio]:checked ~ button.eva {
 		<button class="eva" value="-0.2" onmouseover="hoverbtn(this)"
 			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
 	</div>
+					<c:set value="${sessionScope.orderList}" var="order"/>
+	
+
 	<form action="/testing/updateHeat" method="post">
-		<input type="hidden" name="user_id" id="user_id" value="" required>
-		<input type="hidden" id="temperatureInput" name="user_heat" value="">
-		<input type="hidden" name="user_code" value="${sell_code}">
+		<input type="hidden" name="user_id" id="user_id" value="" >
+		<input type="text" id="temperatureInput" name="user_heat" value="">
+		<input type="text" name="user_code" value="${sell_code}">
+		<input type="text" name="check_heat" value="T" required>
+		<input type="text" name="board_id" value="${board_id}" required>
+
 		<div class="submitBtn">
 			<button class="submitB" type="submit">평가하기</button>
 		</div>
 	</form>
-	<script>
+<script>
     let user_heat = ${user_heat};
     let clickedIndex = -1;
 
@@ -207,6 +228,14 @@ input[type=radio]:checked ~ button.eva {
         document.getElementById("temperature").innerHTML = '온도: ' + temperature.toFixed(1);
         document.getElementById("temperatureInput").value = temperature.toFixed(1);
     }
+
+    // 추가된 부분: 제출 버튼 클릭 시 평가 여부 확인
+    document.querySelector('.submitB').addEventListener('click', function (event) {
+        if (clickedIndex === -1) {
+            event.preventDefault(); // 제출 방지
+            alert('평가를 완료 해주세요!!');
+        }
+    });
 </script>
 
 

@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="Second"/>
+		<item key="selection" value="맨위"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="맨위"/>
+			<item value="please"/>
+			<item value="hidden"/>
+			<item value="300px"/>
+			<item value="gau"/>
+			<item value=" #user_image {"/>
+			<item value="user_image"/>
+			<item value="선택된"/>
+			<item value="기본_"/>
+			<item value="jack"/>
+			<item value="bar"/>
+			<item value="ㅠㅁㄱ"/>
+			<item value="getUser"/>
+			<item value="heat"/>
 			<item value="second"/>
-			<item value="seconhand"/>
-			<item value="seconhands"/>
-			<item value="logo"/>
-			<item value="loginAlertButton"/>
-			<item value="main-top"/>
-			<item value="myBtn"/>
-			<item value="top"/>
-			<item value="rtl"/>
-			<item value="desired"/>
-			<item value="new-loca"/>
-			<item value="submit-btn"/>
-			<item value="해당"/>
-			<item value="location"/>
-			<item value="showPosition"/>
 		</list>
 		<list key="replacehistory">
 			<item value="location_form"/>

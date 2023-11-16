@@ -7,6 +7,7 @@
 <%@ page import="java.util.List" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set  var="path"   value="${pageContext.request.contextPath}"/> 
 <!DOCTYPE html>
 <html>
 <head>
@@ -151,7 +152,7 @@
             font-weight: bold;
         }
 
-        .menu-container Button:hover {
+        .menu-container button:hover {
             background-color: #f9f9f9;
             color: #ff6f0f;
         }
@@ -293,6 +294,7 @@
             color: white;
         }
     </style>
+ 
     <script>
         function findAddr() {
             new daum.Postcode({
@@ -367,7 +369,9 @@
 	LoginDTO user = (LoginDTO) session.getAttribute("user");
 	List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
 	List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
-	if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+	%>
+	
+<% 	if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
 		LoginDTO firstSelectedUser = selectedUser.get(0);
 	%>
     <c:if test="${not empty user and not empty selectedUserList}">
@@ -383,8 +387,12 @@
 		</div>
 
 		<div class="menu-container">
-			<ul>
-				<li>
+		    <ul>
+         <li><h2> </h2></li>
+            <li>
+   
+              <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
+				
 					<h2>
 						<%
 						if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
@@ -394,17 +402,19 @@
 					</h2>
 				</li>
 				<li>
-					<form action="/testing/myPage">
-						<button type="submit">마이페이지 이동</button>
-					</form>
+				            <form action="/testing/myPage" method="post">
+               <input type="hidden" name="user_code" value="<%=firstSelectedUser.getUser_code()%>">
+                  <button type="submit">마이페이지 이동</button>
+               </form>
 				</li>
 				           		<li>
-				<form action="/testing/chattingList" method="post">
-    <input type="text" name="buy_code" placeholder="채팅 코드 입력" value="<%=firstSelectedUser.getUser_code()%>">
-      채팅하러 가기
-  <button type="submit">${fn:length(chatList)}개</button>
+			<form action="/testing/chattingList" method="post">
+						<input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+							value="<%=firstSelectedUser.getUser_code()%>">
+						<button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
-</form>
+
+					</form>
 </li>
                        <li>
               <form action="/testing/products/add">
@@ -417,7 +427,7 @@
 					</form>
 				</li>
 				<li>
-					<form action="/testing/scrollHome">
+					<form action="/testing/qna">
 						<button type="submit">문의하기</button>
 					</form>
 				</li>
@@ -438,18 +448,17 @@
 				<%
 				}
 				%>
+				
 			</ul>
 		</div>
 		<div class="header-btn">
-			<form action="/testing/products">
-				<button type="submit">중고거래</button>
-			</form>
-			<form action="/testing/scrollHome">
-				<button type="submit">동네거래</button>
-			</form>
-			<form action="/testing/scrollHome">
-				<button type="submit">동네인증</button>
-			</form>
+			 <form action="/testing/scrollHome">
+         <button type="submit">중고거래</button>
+      </form>
+			  <form action="/testing/localproductList" method="post">
+               <input type="hidden" name="newLocation" value="${detail_loc}" />
+         <button type="submit">동네거래</button>
+      </form>
 		</div>
 		<%
 		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
@@ -468,14 +477,16 @@
 		<%
 		}
 		%>
+	
+	
 	</header>
 <div class="main-top">
-        <form id="saveForm" method="post" action="/testing/orderForm" onsubmit="return validateForm()">
+
+        <form id="saveForm" method="post" action="/testing/kakaoPayGo" onsubmit="return validateForm()">
            	   <div style="text-align: center;justify-content: center;"> 
             <h2>구 매</h2>
         </div>
-                   <c:forEach items="${products}" var="singleProduct">
-
+      <c:forEach items="${products}" var="singleProduct"> 
     <input type="hidden" name="board_id" value="${singleProduct.board_Id}" readonly>
    <div style="display: flex"> <label for="board_title">상품명</label>
     <input type="text" name="board_title" 
@@ -496,9 +507,9 @@ value="${singleProduct.board_Title}" readonly>
                 <option value="배송 전 연락 부탁드립니다">배송 전 연락 부탁드립니다</option>
                 <option value="파손의 위험이 있는 상품입니다">파손의 위험이 있는 상품입니다</option>
             </select>
-        </div>
+        </div>      </c:forEach>
           
-</c:forEach>
+
             	   <div style="text-align: center;justify-content: center;"> 
             <h3>배송 주소</h3>
         </div>
@@ -515,21 +526,26 @@ style=" width: 100px; padding: 8px 12px;" >주소찾기</button>
            <input type="hidden" id="user_code" name="user_code" value="${selectedUser.user_code}" readonly/>
             <input type="hidden" id="user_id" name="user_id" value="${selectedUser.user_id}" readonly/>
               <input type="hidden" id="phone_num" name="phone_num" value="${selectedUser.phone_num}" readonly/>
-         <input type="text" name="sell_code" value="${product.user_code}" required>
-           <button type="submit" form="saveForm" style="margin: 40px; width: 100px; padding: 8px 12px;"
-           >주문하기</button>
+         <input type="hidden" name="sell_code" value="${product.user_code}" required>
+          
+          <button type="submit"  style="margin: 40px; width: 100px; padding: 8px 12px;">
+    주문하기
+</button>
+     
         </form>
 		<button id="myBtn" title="Go to top">Top</button>
 	</div>
-
+	
+			
     </c:if>
+    	<%
+		}
+		%>
 	<footer>
 		&copy; 2023 에이콘아카데미 최종프로젝트 <br>
 		<p>조장: 김재열 | 조원: 김민규 | 조원: 김병진 | 조원: 이정훈 | 조원: 허재혁</p>
 	</footer>
-	<%
-	}
-	%>
+
     <c:if test="${empty user or empty selectedUserList}">
         <p>유저 정보가 없습니다.</p>
     </c:if>

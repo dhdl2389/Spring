@@ -31,7 +31,11 @@ public class LoginService implements LoginServiceI {
 		// TODO Auto-generated method stub
 		return userRepository.update(loginDTO);
 	}
-
+	@Override
+	public int updateUserImg(LoginDTO loginDTO) {
+		// TODO Auto-generated method stub
+		return userRepository.updateUserImg(loginDTO);
+	}
 	@Override
 	public int deleteUser(LoginDTO loginDTO) {
 		// TODO Auto-generated method stub
@@ -56,8 +60,23 @@ public class LoginService implements LoginServiceI {
 	}
 	
 	@Override
-	public void saveHeat(String user_code, String user_heat) {
-		userRepository.saveHeat(user_code, user_heat);
+	public void saveHeat(String user_code, String user_heat,String check_heat,String board_id) {
+		userRepository.saveHeat(user_code, user_heat,check_heat,board_id);
 	}
+	   @Override
+	   public List<Object> getHeatByUserCode(String user_code){
+	      return userRepository.getHeatByUserCode(user_code);
+	   }
+	   
+		@Override
+		public List<Object>  getCheckHeatByUserCode(String sell_code) {
+			return userRepository.getCheckHeatByUserCode(sell_code);
+		}	   
+		
+		@Override
+		public String getCheckHeatByBoardId(String board_id) {
+			return userRepository.getCheckHeatByBoardId(board_id);
+		}
+		
 
 }

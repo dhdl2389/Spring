@@ -28,5 +28,12 @@ public class OrderRepositoryRealImp implements OrderRepositoryI {
 		return session.selectList(namespace + "selectAll", user_id);
 	}
 	
+	@Override
+	public String selectBoardId(String board_id) {
+		String boardId = session.selectOne(namespace + "selectBoardId", board_id);
+		return boardId;
+	}
+	
+	
 
 }

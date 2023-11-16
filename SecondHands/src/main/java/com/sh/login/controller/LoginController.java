@@ -16,6 +16,8 @@ import com.sh.chatting.domain.ChatDTO;
 import com.sh.chatting.service.ChatService;
 import com.sh.login.domain.LoginDTO;
 import com.sh.login.service.LoginService;
+import com.sh.order.domain.OrderDTO;
+import com.sh.order.service.OrderServiceI;
 
 @Controller
 public class LoginController {
@@ -25,6 +27,8 @@ public class LoginController {
 	// ChatService를 주입
 	@Autowired
 	private ChatService chatService;
+	@Autowired
+	OrderServiceI service;
 
 	@PostMapping("/login")
 	public String processLogin(@ModelAttribute LoginDTO loginDTO, @ModelAttribute ChatDTO chatDTO,
@@ -64,12 +68,30 @@ public class LoginController {
 	}
 
 	@PostMapping("/heat")
-	public String showHeatPage(@RequestParam String sell_code, Model model) {
+	public String showHeatPage(HttpSession session,@RequestParam String sell_code,@RequestParam String board_id, Model model) {
+		
+		
+		//insert하기 위한 조건
+		LoginDTO loggedInUser = (LoginDTO) session.getAttribute("user");
+		List<OrderDTO> orderList = service.getOrdersByUserCode(loggedInUser.getUser_id());
+		System.out.println("허재혁 오더리스트"+orderList);
+		session.setAttribute("orderList", orderList);
+		
+		//비교하기 위한 조건
+		String boardId = service.selectBoardId(board_id);
+		System.out.println("아이디가 나와야함 없으면"+boardId);
+		session.setAttribute("orderList", boardId);
 
 		String user_heat = loginService.selectHeat(sell_code);
 		String user_nickname = loginService.selectHeatU(sell_code);
+		List<Object> code = loginService.getCheckHeatByUserCode(sell_code);
+		System.out.println(code);
+		
+		String checkBoardId = loginService.getCheckHeatByBoardId(board_id);
+		System.out.println("허재혁 보드아이디 체크"+checkBoardId);
 
 		model.addAttribute("sell_code", sell_code);
+		model.addAttribute("board_id",board_id);
 		model.addAttribute("user_heat", user_heat);
 		model.addAttribute("user_nickname", user_nickname);
 		System.out.println(user_nickname);
@@ -78,12 +100,14 @@ public class LoginController {
 
 	@PostMapping("/updateHeat")
 	public String updateHeat(@ModelAttribute LoginDTO loginDTO, @RequestParam String user_heat,
+			@RequestParam String check_heat,			
+			@RequestParam String board_id,
 			@RequestParam String user_code, HttpServletRequest request) {
 		if (loginService.updateHeat(user_heat, user_code) > 0) {
 			List<Object> updatedUser = loginService.selectAll(loginDTO);
 			System.out.println(updatedUser);
 			
-			loginService.saveHeat(user_code, user_heat);
+			loginService.saveHeat(user_code, user_heat,check_heat,board_id);
 			return "/homePage/homePage";
 
 		} else {

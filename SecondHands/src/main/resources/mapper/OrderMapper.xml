@@ -45,5 +45,11 @@
     WHERE user_id = #{user_id}
 </select>
 
+<select id="selectBoardId" resultType="String" parameterType="String">
+    SELECT board_id
+    FROM heat_tbl
+    WHERE board_id = #{board_id}
+</select>
+
 
 </mapper>

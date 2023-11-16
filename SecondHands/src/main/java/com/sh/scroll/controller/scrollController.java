@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sh.login.domain.LoginDTO;
 import com.sh.product.domain.ProductDTO;
 import com.sh.product.service.ProductService;
 import com.sh.scroll.domain.ScrollDTO;
@@ -34,6 +35,9 @@ public class scrollController {
 		//상품 이미지 및 부가정보 심어둠
 		HttpSession session = request.getSession();
 		List<ProductDTO> products = productservice.getProductList();
+	
+	
+
 		session.setAttribute("products", products);
 		
 		return "products/scrollPage";

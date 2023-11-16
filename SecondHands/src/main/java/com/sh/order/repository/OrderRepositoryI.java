@@ -10,6 +10,8 @@ public interface OrderRepositoryI {
 	public int insert(OrderDTO orderDTO);
 
 	 List<OrderDTO> getOrdersByUserCode(String user_id);
+
+	String selectBoardId(String board_id);
 	 
 
 	 

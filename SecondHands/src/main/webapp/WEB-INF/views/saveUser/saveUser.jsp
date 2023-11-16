@@ -775,7 +775,7 @@ $(document).ready(function() {
 				id="user_birth" name="user_birth" placeholder="생년월일 6자리 입력해주세요"
 				onfocus="this.placeholder = ''">
 			<input type="hidden"
-				id="user_image" name="user_image" value="${profile_image}">
+				id="user_image" name="user_image"   value="${profile_image != null ? profile_image : '기본_이미지.jpg'}">>
 			<input type="hidden" id="user_heat"
 				name="user_heat" value="36.5">
 			<button type="submit" form="saveForm">회원가입하기</button>
