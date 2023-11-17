@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+   pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE html>
@@ -136,50 +136,76 @@ input[type=radio]:checked ~ button.eva {
 #temperature {
    display: none;
 }
+footer {
+   background-color: #333;
+   padding: 10px;
+   color: white;
+   text-align: center;
+   bottom: 0;
+}
+footer a{
+
+   text-decoration: none; /* 텍스트 데코레이션 제거 */
+   color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
+}
+
+footer a:hover {
+   text-decoration: none; /* 호버 시 텍스트 데코레이션 제거 유지 */
+   color: inherit; /* 호버 시 색상을 부모 요소로부터 상속 */
+}
 </style>
 
 </head>
 <body>
-	<header>
-		<h2>Second Hands</h2>
-	</header>
-	<h1 id="temperature">
-		온도:
-		<script>document.write(parseFloat(${user_heat}).toFixed(1));</script>
-	</h1>
+   <header>
+      <h2>Second Hands</h2>
+   </header>
+   <h1 id="temperature">
+      온도:
+      <script>document.write(parseFloat(${user_heat}).toFixed(1));</script>
+   </h1>
 
 
-	<c:set var="products" value="${sessionScope.products}" />
-	<div class="satisfyD">
-		<p id="satisfy">"${user_nickname}" 님과의 거래는 어떠셨나요?</p>
-	</div>
+   <c:set var="products" value="${sessionScope.products}" />
+   <div class="satisfyD">
+      <p id="satisfy">"${user_nickname}" 님과의 거래는 어떠셨나요?</p>
+   </div>
 
-	<div class="star">
-		<button class="eva" value="0.2" onmouseover="hoverbtn(this)"
-			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
-		<button class="eva" value="0.1" onmouseover="hoverbtn(this)"
-			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
-		<button class="eva" value="0" onmouseover="hoverbtn(this)"
-			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
-		<button class="eva" value="-0.1" onmouseover="hoverbtn(this)"
-			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
-		<button class="eva" value="-0.2" onmouseover="hoverbtn(this)"
-			onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
-	</div>
-					<c:set value="${sessionScope.orderList}" var="order"/>
-	
+   <div class="star">
+      <button class="eva" value="0.2" onmouseover="hoverbtn(this)"
+         onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
+      <button class="eva" value="0.1" onmouseover="hoverbtn(this)"
+         onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
+      <button class="eva" value="0" onmouseover="hoverbtn(this)"
+         onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
+      <button class="eva" value="-0.1" onmouseover="hoverbtn(this)"
+         onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
+      <button class="eva" value="-0.2" onmouseover="hoverbtn(this)"
+         onmouseout="unhoverbtn(this)" onclick="evabtn(this.value, this)">★</button>
+   </div>
+               <c:set value="${sessionScope.orderList}" var="order"/>
+   
 
-	<form action="/testing/updateHeat" method="post">
-		<input type="hidden" name="user_id" id="user_id" value="" >
-		<input type="text" id="temperatureInput" name="user_heat" value="">
-		<input type="text" name="user_code" value="${sell_code}">
-		<input type="text" name="check_heat" value="T" required>
-		<input type="text" name="board_id" value="${board_id}" required>
+   <form action="/testing/updateHeat" method="post">
+      <input type="hidden" name="user_id" id="user_id" value="" >
+      <input type="text" id="temperatureInput" name="user_heat" value="">
+      <input type="text" name="user_code" value="${sell_code}">
+      <input type="text" name="check_heat" value="T" required>
+      <input type="text" name="board_id" value="${board_id}" required>
 
-		<div class="submitBtn">
-			<button class="submitB" type="submit">평가하기</button>
-		</div>
-	</form>
+      <div class="submitBtn">
+         <button class="submitB" type="submit">평가하기</button>
+      </div>
+   </form>
+      <footer>
+      &copy; 2023 에이콘아카데미 최종프로젝트 <br>
+      <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
+      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
+      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
+      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
+      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
+   </footer>
+   
 <script>
     let user_heat = ${user_heat};
     let clickedIndex = -1;

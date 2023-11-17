@@ -500,7 +500,7 @@ margin-left: 13px;
     let wrapH; //초기 wrap 높이
     let totalPage; // totalpage ajax에서 불러옴
     let loading = false; // 추가 데이터 로딩 중 여부
-   
+   	let list= null;
     $("html, body").animate({scrollTop: 0}, 0);
     PageInit();
   	loadPage(page);
@@ -541,7 +541,11 @@ margin-left: 13px;
 	        	$("body").css("height", wrapH-(cursorH*3));
 	        	let endSql = `     	 
 	         		<div style = 'height:200px; background-color: #333;  padding: 10px; text-align: center; color:white'>
-	        		<p>조장: 김재열 | 조원: 김민규 | 조원: 김병진 | 조원: 이정훈 | 조원: 허재혁</p>	
+	        		 <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
+	        	      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
+	        	      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
+	        	      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
+	        	      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
 	        	</div>  
 	        	`	
 	        	$(".footer").append(endSql);
@@ -552,29 +556,32 @@ margin-left: 13px;
 	        }
 	});
     
-    //페이지 로드
-    function loadPage(pageNumber) {
-		if (!loading) {
-			loading = true;
-			$.ajax({
-				url: "localScroll?page=" + pageNumber + "&mode=" + sort_mode + "&detail_loc=" + detail_loc,
-				type: "GET",
-				success: function(data) {
-					let list = data.loclist;
-					totalPage = data.totalPage;
-					let sql = pageToString(list);
-					$(".scrollWrap").append(sql);
-				   	
-					loading = false;
-				},
-				error: function(error) {
-					console.log("Error:", error);
-					loading = false;
-				}
-			});
-		}
-	}
-    
+	  //페이지 로드
+	   function loadPage(pageNumber) {
+	    if (!loading) {
+	        loading = true;
+	        $.ajax({
+	            url: "localScroll?page=" + pageNumber + "&mode=" + sort_mode + "&detail_loc=" + detail_loc,
+	            type: "GET",
+	            success: function(data) {
+	                list = data.loclist;
+	                if( list.length !== 0){
+	                    totalPage = data.totalPage;
+	                    let sql = pageToString(list);
+	                    $(".scrollWrap").append(sql);
+	                }else{
+	                   alert("해당 지역 내 상품이 없습니다.");
+	                    window.location.href = "/testing/homePage";
+	                                   }
+	                loading = false;
+	            },
+	            error: function(error) {
+	                console.log("Error:", error);
+	                loading = false;
+	            }
+	        });
+	    }
+	}    
     //str문 생성
   	function  pageToString(list){
 	   	 let str = "";

@@ -222,6 +222,7 @@ header.menu-open h2 {
    justify-content: space-between; /* 자식 요소 간의 간격을 최대화하여 정렬 */
    align-items: center; /* 수직 정렬 */
    height: 800px;
+   
 }
 
 .main-middle div {
@@ -261,10 +262,11 @@ header.menu-open h2 {
 }
 
 .main-middle img {
-   max-width: 100%;
-   max-height: 100%;
-   width: 650px;
-   height: 800px;
+    margin: 100px;
+    max-width: 100%;
+    max-height: 100%;
+    width: 400px;
+    height: 500px;
 }
 
 .main-middle div form {
@@ -329,6 +331,16 @@ footer {
    color: white;
    text-align: center;
    bottom: 0;
+}
+footer a{
+
+   text-decoration: none; /* 텍스트 데코레이션 제거 */
+   color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
+}
+
+footer a:hover {
+   text-decoration: none; /* 호버 시 텍스트 데코레이션 제거 유지 */
+   color: inherit; /* 호버 시 색상을 부모 요소로부터 상속 */
 }
 
 #myBtn {
@@ -408,30 +420,35 @@ footer {
 }
 </style>
 <script>
-   //맨위로 올리기
-   $(document).ready(function() {
-      $("html, body").animate({
-         scrollTop : 0
-      }, 400);
-      // 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
-      $("#myBtn").click(function() {
-         $("html, body").animate({
-            scrollTop : 0
-         }, 400); // 1000은 애니메이션 속도를 나타냅니다. 여기서는 1000ms로 설정했습니다.
-      });
-   });
+	$(document).ready(
+			function() {
+				//맨위로 올리기
+				$("html, body").animate({
+					scrollTop : 0
+				}, 400);
 
-   $(document).ready(function() {
-      // 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
-      $(".menu-icon").click(function() {
-         $(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
-      });
-   });
-   
-   
-   //동네 인증 script
-   
-   
+				// 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
+				$("#myBtn").click(function() {
+					$("html, body").animate({
+						scrollTop : 0
+					}, 400); // 1000은 애니메이션 속도를 나타냅니다. 여기서는 1000ms로 설정했습니다.
+				});
+
+				// 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
+				$(".menu-icon").click(function(e) {
+					e.stopPropagation(); // 햄버거 아이콘을 클릭한 경우, document.body의 클릭 이벤트 전파 방지
+					$(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
+				});
+
+				// 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
+				$(document.body).click(
+						function(e) {
+							if (!$(e.target).closest('.menu-container').length
+									&& !$(e.target).hasClass('menu-icon')) {
+								$(".menu-container").slideUp();
+							}
+						});
+			});
 </script>
 </head>
 <body>
@@ -646,9 +663,8 @@ footer {
    <div class="main-middle">
 
       <div>
-         <img
-            src="https://d1unjqcospf8gs.cloudfront.net/assets/home/main/3x/rebranded-image-top-e765d561ee9df7f5ab897f622b8b5a35aaa70314f734e097ea70e6c83bdd73f1.webp"
-            alt="Image">
+      <img id="likeImg" src="${path}/resources/product/sample.png">
+      
       </div>
 
       <div>
@@ -660,10 +676,11 @@ footer {
             동네 주민들과 가깝고 따뜻한 거래를<br> 지금 경험해보세요.
          </p>
 
+        <form action="/testing/localproductList" method="post">
+         <input type="hidden" name="newLocation" value="${detail_loc}" />
+         <button id="localTransactionButton" type="submit">동네거래</button>
+      </form>
          <form action="/testing/scrollHome">
-            <button type="submit">동네거래</button>
-         </form>
-         <form action="/testing/products">
             <button type="submit">중고거래</button>
          </form>
 
@@ -703,14 +720,15 @@ footer {
    </div>
    <div class="main4">test</div>
    <button id="myBtn" title="Go to top">Top</button>
-   <footer>
+     <footer>
       &copy; 2023 에이콘아카데미 최종프로젝트 <br>
-      <p>조장: 김재열</p>
-      <p>조원: 김민규</p>
-      <p>조원: 김병진</p>
-      <p>조원: 이정훈</p>
-      <p>조원: 허재혁</p>
+      <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
+      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
+      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
+      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
+      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
    </footer>
+
 
 
 
@@ -1279,7 +1297,7 @@ footer {
           },
         ];
 
-        const desiredRange = 3; // 변경하고자 하는 거리 범위 (단위: km)
+        const desiredRange = 5; // 변경하고자 하는 거리 범위 (단위: km)
 
         for (let location of locations) {
            
@@ -1306,21 +1324,29 @@ footer {
         }
         
         
+        
         if (locationsWithinRange.length > 0) {
             if (locationsWithinRange.length === 1) {
                 return locationsWithinRange[0].detail_loc;
             } else {
-                let userChoice = prompt(
-                    "여러 지역이 " + desiredRange + "km 이내에 있습니다. 아래에서 선택해주세요:\n " +
-                    locationsWithinRange.map((loc, index) => (index + 1) + ". " + (loc.locCode + "-" + loc.detail_loc)).join('\n')
-                );
+                let userChoice;
+                do {
+                    userChoice = prompt(
+                        "어디에서 거래할까요? (근방 " + desiredRange + "km 지역) \n " +
+                        locationsWithinRange.map((loc, index) => (index + 1) + "." + (loc.locCode + "-" + loc.detail_loc)).join('\n')
+                    );
+
+                    // 숫자 입력 여부 및 범위 확인
+                    if (!/^\d+$/.test(userChoice) || userChoice <= 0 || userChoice > locationsWithinRange.length) {
+                        alert("올바른 숫자를 입력해주세요.");
+                    }
+                } while (!/^\d+$/.test(userChoice) || userChoice <= 0 || userChoice > locationsWithinRange.length);
 
                 userChoice = parseInt(userChoice);
-                if (userChoice && userChoice <= locationsWithinRange.length) {
-                   console.log(locationsWithinRange[userChoice - 1].detail_loc);
-                    return locationsWithinRange[userChoice - 1].detail_loc;
-                }
-          }
+
+                console.log(locationsWithinRange[userChoice - 1].detail_loc);
+                return locationsWithinRange[userChoice - 1].detail_loc;
+            }
         }
 
         return "";
