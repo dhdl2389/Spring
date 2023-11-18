@@ -222,7 +222,6 @@ header.menu-open h2 {
    justify-content: space-between; /* 자식 요소 간의 간격을 최대화하여 정렬 */
    align-items: center; /* 수직 정렬 */
    height: 800px;
-   
 }
 
 .main-middle div {
@@ -262,11 +261,11 @@ header.menu-open h2 {
 }
 
 .main-middle img {
-    margin: 100px;
-    max-width: 100%;
-    max-height: 100%;
-    width: 400px;
-    height: 500px;
+   margin: 100px;
+   max-width: 100%;
+   max-height: 100%;
+   width: 400px;
+   height: 500px;
 }
 
 .main-middle div form {
@@ -332,8 +331,8 @@ footer {
    text-align: center;
    bottom: 0;
 }
-footer a{
 
+footer a {
    text-decoration: none; /* 텍스트 데코레이션 제거 */
    color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
 }
@@ -406,6 +405,21 @@ footer a:hover {
    color: black;
 }
 
+.localsubBtn {
+   background-color: #ff6f0f;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
+   margin-top: -1px;
+}
+
+
+.localsubBtn:hover {
+   background-color: #d55500;
+}
+
 .close {
    color: #aaa;
    float: right;
@@ -420,35 +434,35 @@ footer a:hover {
 }
 </style>
 <script>
-	$(document).ready(
-			function() {
-				//맨위로 올리기
-				$("html, body").animate({
-					scrollTop : 0
-				}, 400);
+   $(document).ready(
+         function() {
+            //맨위로 올리기
+            $("html, body").animate({
+               scrollTop : 0
+            }, 400);
 
-				// 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
-				$("#myBtn").click(function() {
-					$("html, body").animate({
-						scrollTop : 0
-					}, 400); // 1000은 애니메이션 속도를 나타냅니다. 여기서는 1000ms로 설정했습니다.
-				});
+            // 버튼을 클릭하면 페이지 맨 위로 스크롤합니다.
+            $("#myBtn").click(function() {
+               $("html, body").animate({
+                  scrollTop : 0
+               }, 400); // 1000은 애니메이션 속도를 나타냅니다. 여기서는 1000ms로 설정했습니다.
+            });
 
-				// 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
-				$(".menu-icon").click(function(e) {
-					e.stopPropagation(); // 햄버거 아이콘을 클릭한 경우, document.body의 클릭 이벤트 전파 방지
-					$(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
-				});
+            // 햄버거 아이콘을 클릭할 때마다 메뉴의 가시성을 토글
+            $(".menu-icon").click(function(e) {
+               e.stopPropagation(); // 햄버거 아이콘을 클릭한 경우, document.body의 클릭 이벤트 전파 방지
+               $(".menu-container").slideToggle(); // 부드러운 전환을 위해 slideToggle 사용
+            });
 
-				// 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
-				$(document.body).click(
-						function(e) {
-							if (!$(e.target).closest('.menu-container').length
-									&& !$(e.target).hasClass('menu-icon')) {
-								$(".menu-container").slideUp();
-							}
-						});
-			});
+            // 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
+            $(document.body).click(
+                  function(e) {
+                     if (!$(e.target).closest('.menu-container').length
+                           && !$(e.target).hasClass('menu-icon')) {
+                        $(".menu-container").slideUp();
+                     }
+                  });
+         });
 </script>
 </head>
 <body>
@@ -578,7 +592,8 @@ footer a:hover {
                <span class="close" onclick="closeModal()">&times;</span>
 
                <div id="modal-content"></div>
-               <input type="submit" value="동네 인증" id="submit-btn" disabled />
+               <input class="localsubBtn" type="submit" value="동네 인증"
+                  id="submit-btn" disabled />
             </div>
          </div>
 
@@ -663,8 +678,8 @@ footer a:hover {
    <div class="main-middle">
 
       <div>
-      <img id="likeImg" src="${path}/resources/product/sample.png">
-      
+         <img id="likeImg" src="${path}/resources/product/sample.png">
+
       </div>
 
       <div>
@@ -676,10 +691,10 @@ footer a:hover {
             동네 주민들과 가깝고 따뜻한 거래를<br> 지금 경험해보세요.
          </p>
 
-        <form action="/testing/localproductList" method="post">
-         <input type="hidden" name="newLocation" value="${detail_loc}" />
-         <button id="localTransactionButton" type="submit">동네거래</button>
-      </form>
+         <form action="/testing/localproductList" method="post">
+            <input type="hidden" name="newLocation" value="${detail_loc}" />
+            <button id="localTransactionButton" type="submit">동네거래</button>
+         </form>
          <form action="/testing/scrollHome">
             <button type="submit">중고거래</button>
          </form>
@@ -720,13 +735,15 @@ footer a:hover {
    </div>
    <div class="main4">test</div>
    <button id="myBtn" title="Go to top">Top</button>
-     <footer>
+   <footer>
       &copy; 2023 에이콘아카데미 최종프로젝트 <br>
-      <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
-      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
-      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
-      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
-      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
+      <p>
+         <a href="https://github.com/dhdl2389">조장: 김재열</a> | <a
+            href="https://github.com/mvcfvsgdj">조원: 김민규 </a> | <a
+            href="https://github.com/kevinbj0">조원: 김병진 </a> | <a
+            href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> | <a
+            href="https://github.com/lepio1999">조원: 허재혁 </a>
+      </p>
    </footer>
 
 

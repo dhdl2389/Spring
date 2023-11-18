@@ -70,7 +70,8 @@ header button:hover {
 .main-top {
 	max-width: 800px;
 	margin: 0 auto; /* 화면 가운데 정렬 */
-	padding: 20px;
+	    padding: 100px;
+
 	border-radius: 8px;
 	background-color: white; /* 배경색 추가 */
 	height: 700px;

@@ -18,6 +18,7 @@ import com.sh.login.domain.LoginDTO;
 import com.sh.login.service.LoginService;
 import com.sh.order.domain.OrderDTO;
 import com.sh.order.service.OrderServiceI;
+import com.sh.product.service.ProductService;
 
 @Controller
 public class LoginController {
@@ -30,6 +31,9 @@ public class LoginController {
    @Autowired
    OrderServiceI service;
 
+   @Autowired
+   ProductService  productService;
+   
    @PostMapping("/login")
    public String processLogin(@ModelAttribute LoginDTO loginDTO, @ModelAttribute ChatDTO chatDTO,
          HttpServletRequest request) {
@@ -109,8 +113,10 @@ public class LoginController {
          @RequestParam String check_heat,         
          @RequestParam String board_id,
          @RequestParam String user_code, HttpServletRequest request) {
+	   
       if (loginService.updateHeat(user_heat, user_code) > 0) {
-         List<Object> updatedUser = loginService.selectAll(loginDTO);
+    	  productService.deleteProduct(board_id);
+    	  List<Object> updatedUser = loginService.selectAll(loginDTO);
          System.out.println(updatedUser);
          
          loginService.saveHeat(user_code, user_heat,check_heat,board_id);

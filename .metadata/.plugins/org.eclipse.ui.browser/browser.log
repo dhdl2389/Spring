@@ -118,3 +118,8 @@
 
 11월 16, 2023 18:03:51.08 NEW SESSION
 11월 16, 2023 18:03:51.08 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+11월 18, 2023 13:10:27.739 NEW SESSION
+11월 18, 2023 13:10:27.739 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 18, 2023 13:59:51.808 [12320:24528:1118/135951.808:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 18, 2023 14:59:48.724 [12320:25492:1118/145948.724:ERROR:device_event_log_impl.cc(192)] [14:59:48.734] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)

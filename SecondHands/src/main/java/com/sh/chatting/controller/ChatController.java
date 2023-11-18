@@ -15,12 +15,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.sh.chatting.domain.ChatDTO;
 import com.sh.chatting.service.ChatService;
 import com.sh.chatting.service.ChatServiceImp;
+import com.sh.login.service.LoginService;
 
 @Controller
 public class ChatController {
    
    @Autowired
    private ChatService chatService;
+   @Autowired
+   private LoginService loginService;
    
 
    
@@ -88,6 +91,8 @@ public class ChatController {
            System.out.println("성공");
            return "/homePage/homePage";
        } else {
+    	   String user_heat = loginService.selectHeat(sell_code);
+    	      model.addAttribute("user_heat", user_heat);
            model.addAttribute("isCodeValid", false); 
            System.out.println("실패");
            return "/products/productDetail";

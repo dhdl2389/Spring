@@ -33,7 +33,9 @@ public class OrderRepositoryRealImp implements OrderRepositoryI {
       String boardId = session.selectOne(namespace + "selectBoardId", board_id);
       return boardId;
    }
-   
-   
+   @Override
+   public void deleteProduct5(String user_id) {
+       session.delete(namespace + "deleteProduct5", user_id);
+   }
 
 }

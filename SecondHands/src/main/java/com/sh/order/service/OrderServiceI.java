@@ -13,5 +13,6 @@ public interface OrderServiceI {
    
    public String selectBoardId(String board_id);
    
-
+   public void deleteProduct5(String user_id);
+   
    }

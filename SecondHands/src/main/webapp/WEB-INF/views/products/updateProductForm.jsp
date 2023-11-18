@@ -349,6 +349,11 @@ footer a:hover {
 	background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
 	color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
 }
+
+/*글자수 제한*/
+#charCount {
+   margin-left: 574px;
+}
 </style>
 <script>
 	$(document).ready(
@@ -531,17 +536,37 @@ footer a:hover {
 				<option value="경상도">경상도</option>
 				<option value="전라도">전라도</option>
 				<option value="강원도">강원도</option>
-			</select>
-			<select id="detail_loc" name="detail_loc" style="margin-left: 5px;">
-				<!-- 중분류 옵션은 JavaScript에서 처리 -->
-			</select>
-			</div>
-			</div>
-			
-			
-			<label for="board_Text">내용:</label>
-			<textarea id="board_Text" name="board_Text"  required>${product.board_Text}</textarea>
-			<br>
+		       </select> <select id="detail_loc" name="detail_loc"
+                  style="margin-left: 5px;">
+                  <!-- 중분류 옵션은 JavaScript에서 처리 -->
+               </select>
+            </div>
+         </div>
+
+
+         <label for="board_Text">내용:</label>
+         <textarea id="board_Text" name="board_Text" oninput="checkLength()"
+            required></textarea>
+         <span id="charCount">0 / 100</span>
+
+         <script>
+            function checkLength() {
+               var maxLength = 100;
+               var textArea = document.getElementById("board_Text");
+               var charCount = document.getElementById("charCount");
+
+               var usedChars = textArea.value.length;
+               var remainingChars = maxLength - usedChars;
+
+               if (remainingChars < 0) {
+                  // 만약 100자를 초과하면 더 이상 입력을 허용하지 않음
+                  textArea.value = textArea.value.substring(0, maxLength);
+                  usedChars = maxLength; // 사용된 글자 수를 최대값으로 설정
+               }
+
+               charCount.textContent = usedChars + " / 100";
+            }
+         </script>
 			<label for="board_Img">이미지:</label>
 			<input type="file"
 				id="board_Img" name="file" required><br>

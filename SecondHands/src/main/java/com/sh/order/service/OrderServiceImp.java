@@ -32,6 +32,9 @@ public class OrderServiceImp implements OrderServiceI {
       
       return dao.selectBoardId(board_id);
    }
-
+   @Override
+   public void deleteProduct5(String user_id) {
+	   dao.deleteProduct5(user_id);
+   }
 
 }

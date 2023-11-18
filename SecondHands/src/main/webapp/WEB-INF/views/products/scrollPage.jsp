@@ -22,15 +22,15 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <style>
-*{
+* {
    box-sizing: border-box;
    /*outline: 1px solid gray;*/
 }
+
 body {
    margin: 0;
    padding: 0;
    font-family: 'Arial', sans-serif;
-      background: #fffae0;
 }
 
 header {
@@ -64,10 +64,10 @@ header h2 {
 }
 
 header button {
-    margin: 5px 5px; /* 간격을 줄이기 위해 margin 수정 */
+   margin: 5px 5px; /* 간격을 줄이기 위해 margin 수정 */
    padding: 10px;
-   background-color:  #ff6f0f;
-   font-weight:bold;
+   background-color: #ff6f0f;
+   font-weight: bold;
    color: white;
    border: none;
    text-align: center;
@@ -80,7 +80,7 @@ header button {
 }
 
 header button:hover {
-   background-color: #ff6f0f; 
+   background-color: #ff6f0f;
    color: black;
 }
 
@@ -124,7 +124,6 @@ header.menu-open h2 {
 }
 
 .menu-icon:hover {
-
    color: black;
 }
 
@@ -167,81 +166,82 @@ header.menu-open h2 {
 }
 
 .menu-container Button:hover {
-   background-color:#f9f9f9;
+   background-color: #f9f9f9;
    color: #ff6f0f;
 }
 
 .menu-container h2:hover {
-
    color: #ff6f0f;
 }
 
-
-.main-top{
-   background: #fffae0;
-
+.main-top {
+   /* background: #fffae0;*/
    justify-content: center;
    align-items: center;
    padding: 20px;
-
 }
 
 #sort {
+    color: #cfcfcf;
    width: 749px;
-   display:flex;
+   display: flex;
+   align-items: center;
    margin: 0px auto;
+   font-weight: bold;
 }
+
 #sort button {
-   margin-left: 15px;
-   padding: 5px;
-   background-color: #ff6f0f;
-   color: #fff;
+   margin: 0px 6px 0px 6px;
+   padding: 4px;
+   font-weight: bold;
+   background-color:white;
+   color: black;
    border: none;
    border-radius: 4px;
    cursor: pointer;
    transition: background-color 0.3s, color 0.3s;
 }
-#sort button:hover{
-      background-color: #d55500;
+
+#sort button:hover {
+   color: #ff6f0f;;
 }
 
 .search {
-  position: relative;
-  width: 300px;
-  margin-left:230px;
+   position: relative;
+   width: 300px;
+   margin-left: 230px;
 }
 
 .search input {
-  width: 100%;
-  border: 1px solid #bbb;
-  border-radius: 8px;
-  padding: 10px 12px;
-  outline: none;
-  font-size: 14px;
+   width: 100%;
+   border: 1px solid #bbb;
+   border-radius: 8px;
+   padding: 10px 12px;
+   outline: none;
+   font-size: 14px;
 }
 
 .search img {
-  position : absolute;
-  width: 17px;
-  top: 10px;
-  right: 12px;
-  margin: 0;
+   position: absolute;
+   width: 17px;
+   top: 10px;
+   right: 12px;
+   margin: 0;
 }
 
-#srSearch{
-margin-left: 13px;
+#srSearch {
+   margin-left: 13px;
 }
 
-.card_a{
+.card_a {
    text-decoration: none;
-   color:black;
+   color: black;
    font-weight: bold;
-     overflow: hidden;   
-  text-overflow: ellipsis; 
+   overflow: hidden;
+   text-overflow: ellipsis;
 }
-.scrollWrap {
-   
 
+.scrollWrap {
    width: 749px;
    margin: 0 auto;
    margin-top: 40px;
@@ -251,17 +251,18 @@ margin-left: 13px;
 }
 
 .card_wrap {
-   border: 1px solid #ddd;
-    background-color: white;
-    border-radius: 8px;
+   /* border: 1px solid #ddd; 
+    border-radius: 8px; */
+   background-color: white;
    width: 223px;
    height: 340px;
 }
 
 .card_image {
-    border-radius: 12px 12px 0px 0px;
+   /*  border-radius: 12px 12px 0px 0px;
     border-bottom: 1px solid #ddd;
-   border-radius: 6px;
+   border-radius: 6px; */
+   border-radius: 12px;
    height: 223px;
    background-size: cover;
 }
@@ -270,13 +271,19 @@ margin-left: 13px;
    font-size: 14px;
    font-weight: normal;
    margin-bottom: 2px;
+   text-decoration: none;
+   color: black;
+   overflow: hidden;
+   text-overflow: ellipsis;
+   white-space: nowrap; /* 이 부분이 중요합니다. */
 }
 
-.card_date{
+.card_date {
    font-size: 11px;
    color: gray;
    margin-bottom: 4px;
 }
+
 .card_price {
    font-size: 15px;
    font-weight: bold;
@@ -293,17 +300,28 @@ margin-left: 13px;
    display: flex;
    justify-content: space-between;
    align-items: center;
-   height:20px;
+   height: 20px;
 }
 
 .card_like {
-   width:20px;
+   width: 20px;
    border: none;
    background: none;
    margin-right: 20px;
 }
-.footer{
-   margin-top:100px;
+
+.footer {
+   margin-top: 100px;
+}
+
+.footer a {
+   text-decoration: none; /* 텍스트 데코레이션 제거 */
+   color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
+}
+
+.footer a:hover {
+   text-decoration: none; /* 호버 시 텍스트 데코레이션 제거 유지 */
+   color: inherit; /* 호버 시 색상을 부모 요소로부터 상속 */
 }
 
 #topButton {
@@ -324,7 +342,6 @@ margin-left: 13px;
    background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
    color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
 }
-
 
 #likeImg {
    width: 30px;
@@ -365,7 +382,7 @@ margin-left: 13px;
 </head>
 <body>
 
- <%
+   <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
 
    List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
@@ -378,43 +395,46 @@ margin-left: 13px;
       <div class="header-logo">
          <div class="menu-icon">&#9776;</div>
          <form action="/testing/homePage">
-         <button type="submit" >Second Hands</button>
-      </form>
+            <button type="submit">Second Hands</button>
+         </form>
       </div>
 
       <div class="menu-container">
          <ul>
-                  <li><h2> </h2></li>
-            <li>   <% if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+            <li><h2></h2></li>
+            <li>
+               <% if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
       LoginDTO firstSelectedUser = selectedUser.get(0); // Assuming you want the first user in the list
-      %>
-               <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
-                  <h2>
-                  
+      %> <img
+               src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+               style="border-radius: 50%; width: 100px; height: 100px;">
+               <h2>
+
                   Welcome,
                   <%=firstSelectedUser.getUser_nickname()%>님
                </h2>
             </li>
             <li>
-                        <form action="/testing/myPage" method="post">
-               <input type="hidden" name="user_code" value="<%=firstSelectedUser.getUser_code()%>">
+               <form action="/testing/myPage" method="post">
+                  <input type="hidden" name="user_code"
+                     value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">마이페이지 이동</button>
                </form>
             </li>
-                             <li>
-         <form action="/testing/chattingList" method="post">
+            <li>
+               <form action="/testing/chattingList" method="post">
                   <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
                      value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
 
                </form>
-</li>
-                       <li>
-              <form action="/testing/products/add">
-      <button type="submit">게시글작성</button>
-            </form>
-   </li>
+            </li>
+            <li>
+               <form action="/testing/products/add">
+                  <button type="submit">게시글작성</button>
+               </form>
+            </li>
             <li>
                <form action="/testing/showOrder">
                   <button type="submit">주문내역</button>
@@ -442,21 +462,21 @@ margin-left: 13px;
             <%
             }
             %>
-            
+
          </ul>
       </div>
       <div class="header-btn">
-          <form action="/testing/scrollHome">
-         <button type="submit">중고거래</button>
-      </form>
-                <%
+         <form action="/testing/scrollHome">
+            <button type="submit">중고거래</button>
+         </form>
+         <%
       if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
       %>
-      <form action="/testing/localproductList" method="post">
-         <input type="hidden" name="newLocation" value="${detail_loc}" />
-         <button id="localTransactionButton" type="submit">동네거래</button>
-      </form>
-      <script>
+         <form action="/testing/localproductList" method="post">
+            <input type="hidden" name="newLocation" value="${detail_loc}" />
+            <button id="localTransactionButton" type="submit">동네거래</button>
+         </form>
+         <script>
         document.getElementById("localTransactionButton").addEventListener("click", function(e) {
             var newLocationValue = document.getElementsByName("newLocation")[0].value;
             if (newLocationValue.trim() === "") {
@@ -466,17 +486,17 @@ margin-left: 13px;
             }
         });
     </script>
-      <%
+         <%
       } else {
       %>
-      <button id="loginAlertButton" type="button">동네거래</button>
-      <script>
+         <button id="loginAlertButton" type="button">동네거래</button>
+         <script>
         document.getElementById("loginAlertButton").addEventListener("click", function() {
             alert("로그인이 필요한 서비스 입니다.");
             window.location.href = "/testing/login"; 
         });
     </script>
-      <%
+         <%
       }
       %>
       </div>
@@ -497,26 +517,28 @@ margin-left: 13px;
       <%
       }
       %>
-   
-   
+
+
    </header>
    <div class="main-top">
 
-   <div id="sort">
-      <button id="srTime">최신순</button>
-      <button id="srClick">인기순</button>
-      <button id="srLike">관심상품</button>
-      <div class="search">
-  <input type="text" id="srSearch"value=""  placeholder="검색어 입력">
-  <img src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
-</div><br> <br>
-   </div>
-             
-   <div class="scrollWrap"></div>
+      <div id="sort">
+         <button id="srTime">최신순</button>|
+         <button id="srClick">인기순</button>|
+         <button id="srLike">관심상품</button>
+         <div class="search">
+            <input type="text" id="srSearch" value="" placeholder="검색어 입력">
+            <img
+               src="https://s3.ap-northeast-2.amazonaws.com/cdn.wecode.co.kr/icon/search.png">
+         </div>
+         <br> <br>
+      </div>
+
+      <div class="scrollWrap"></div>
 
    </div>
    <div class="footer"></div>
-   
+
 
    <button id="topButton" title="Go to top">Top</button>
 
@@ -571,7 +593,8 @@ margin-left: 13px;
               $("body").css("height", wrapH-(cursorH*3));
               let endSql = `         
                   <div style = 'height:200px; background-color: #333;  padding: 10px; text-align: center; color:white'>
-            	  <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
+            	  &copy; 2023 에이콘아카데미 최종프로젝트 <br>
+              <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
                   <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
                   <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
                   <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |

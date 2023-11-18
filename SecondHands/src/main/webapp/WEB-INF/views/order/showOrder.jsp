@@ -4,14 +4,14 @@
 <%@ page import="java.util.*"%>
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="com.sh.order.domain.OrderDTO"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
-<c:set  var="path"   value="${pageContext.request.contextPath}"/> 
+<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Show Order</title>
-  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 <style>
 /* 23.11.10 수정완료 */
 body {
@@ -118,7 +118,6 @@ header.menu-open h2 {
 
 /* 햄버거 아이콘 스타일 */
 .menu-icon:hover {
-
    color: black; /* 마우스를 올렸을 때의 색상 변경 */
 }
 
@@ -160,7 +159,7 @@ header.menu-open h2 {
 }
 
 .menu-container Button:hover {
-background-color: #f9f9f9;
+   background-color: #f9f9f9;
    color: #ff6f0f; /* 호버 시 색상 변경 */
 }
 
@@ -173,7 +172,6 @@ background-color: #f9f9f9;
    /*border: 1px solid black;*/
    display: flex; /* 자식 요소를 가로로 정렬 */
    justify-content: space-between; /* 자식 요소 간의 간격을 최대화하여 정렬 */
-   
    height: 1000px;
 }
 
@@ -181,7 +179,6 @@ background-color: #f9f9f9;
    width: 50%;
    padding: 20px;
    text-align: center; /* 가운데 정렬 추가 */
-   
 }
 
 .main-top div h1 {
@@ -212,7 +209,6 @@ background-color: #f9f9f9;
 .main-top table {
    margin: 0 auto;
    border-collapse: collapse;
-   
    background-color: white; /* Set background color to white */
    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
    /* Add a subtle shadow effect */
@@ -304,18 +300,29 @@ header.menu-open h2 {
    transition: background-color 0.3s, color 0.3s;
 }
 
+/* 글자 넘어감 방지*/
+.elText {
+   word-break: break-all;
+}
+
+.orderWidth {
+   width: 100px;
+}
+
+.heatBtn {
+   width: 100px;
+}
 
 #saveForm {
-    margin: 20px auto;
-
-    box-shadow: 0px 0px 5px #ccc;
-    width: 1400px;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+   margin: 20px auto;
+   box-shadow: 0px 0px 5px #ccc;
+   width: 1400px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 8px;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
 }
 
 footer {
@@ -325,8 +332,8 @@ footer {
    text-align: center;
    bottom: 0;
 }
-footer a{
 
+footer a {
    text-decoration: none; /* 텍스트 데코레이션 제거 */
    color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
 }
@@ -391,215 +398,219 @@ footer a:hover {
 </head>
 <body>
 
-   
-   
- 
+
+
+
 
    <c:set var="user" value="${sessionScope.user}" />
    <c:set var="selectedUserList" value="${sessionScope.selectedUser}" />
 
-<%
+   <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
    List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
    if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
       LoginDTO firstSelectedUser = selectedUser.get(0);
    %>
-  <c:if test="${not empty user and not empty selectedUserList}">
-        <c:set var="selectedUser" value="${selectedUserList[0]}" />
-    
-       
-        <header>
-      <div class="header-logo">
-         <div class="menu-icon">&#9776;</div>
-         <form action="/testing/homePage">
-         <button type="submit" >Second Hands</button>
-      </form>
-      </div>
-
-      <div class="menu-container">
-          <ul>
-         <li><h2> </h2></li>
-            <li>
-              <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
-               <h2>
-                  <%
-                  if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-                  %>
-                  Welcome,
-                  <%=firstSelectedUser.getUser_nickname()%>님
-               </h2>
-            </li>
-         <li>
-                        <form action="/testing/myPage" method="post">
-               <input type="hidden" name="user_code" value="<%=firstSelectedUser.getUser_code()%>">
-                  <button type="submit">마이페이지 이동</button>
-               </form>
-            </li>
-                             <li>
-         <form action="/testing/chattingList" method="post">
-                  <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
-                     value="<%=firstSelectedUser.getUser_code()%>">
-                  <button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
+   <c:if test="${not empty user and not empty selectedUserList}">
+      <c:set var="selectedUser" value="${selectedUserList[0]}" />
 
 
-               </form>
-</li>
-                       <li>
-              <form action="/testing/products/add">
-      <button type="submit">게시글작성</button>
+      <header>
+         <div class="header-logo">
+            <div class="menu-icon">&#9776;</div>
+            <form action="/testing/homePage">
+               <button type="submit">Second Hands</button>
             </form>
-   </li>
-            <li>
-               <form action="/testing/showOrder">
-                  <button type="submit">주문내역</button>
-               </form>
-            </li>
-            <li>
-               <form action="/testing/qna">
-                  <button type="submit">문의하기</button>
-               </form>
-            </li>
-            <li>
-               <form action="/testing/logout" method="post">
-                  <button type="submit">로그아웃</button>
-               </form>
-            </li>
-            <%
-            } else {
-            %>
-            <li><h2>로그인이 필요한 서비스입니다.</h2></li>
-            <li>
-               <form action="/testing/login">
-                  <button type="submit">가입 및 로그인</button>
-               </form>
-            </li>
-            <%
-            }
-            %>
-            
-         </ul>
-      </div>
-      <div class="header-btn">
-          <form action="/testing/scrollHome">
-         <button type="submit">중고거래</button>
-      </form>
-           <form action="/testing/localproductList" method="post">
-               <input type="hidden" name="newLocation" value="${detail_loc}" />
-         <button type="submit">동네거래</button>
-      </form>
-      </div>
-      <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-      %>
-      <div class="header-btn2">
-         <form action="/testing/logout" method="post">
-            <button type="submit">로그아웃</button>
-         </form>
-      </div>
-      <%
-      } else {
-      %>
-      <form action="/testing/login">
-         <button type="submit">로그인</button>
-      </form>
-      <%
-      }
-      %>
-   </header>
-   <div class="main-top">  
-   <div id=saveForm>
-                 <div style="text-align: center;justify-content: center;"> 
-            <h2>주문
-             목록</h2>
-        </div>
+         </div>
 
-        
-      <table style="border: 1px solid black;">
-         <thead>
-            <tr>
-                        <td>주문아이디</td>
-               <!-- <td>사용자 코드</td>
+         <div class="menu-container">
+            <ul>
+               <li><h2></h2></li>
+               <li><img
+                  src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+                  style="border-radius: 50%; width: 100px; height: 100px;">
+                  <h2>
+                     <%
+                     if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+                     %>
+                     Welcome,
+                     <%=firstSelectedUser.getUser_nickname()%>님
+                  </h2></li>
+               <li>
+                  <form action="/testing/myPage" method="post">
+                     <input type="hidden" name="user_code"
+                        value="<%=firstSelectedUser.getUser_code()%>">
+                     <button type="submit">마이페이지 이동</button>
+                  </form>
+               </li>
+               <li>
+                  <form action="/testing/chattingList" method="post">
+                     <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+                        value="<%=firstSelectedUser.getUser_code()%>">
+                     <button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
+
+
+                  </form>
+               </li>
+               <li>
+                  <form action="/testing/products/add">
+                     <button type="submit">게시글작성</button>
+                  </form>
+               </li>
+               <li>
+                  <form action="/testing/showOrder">
+                     <button type="submit">주문내역</button>
+                  </form>
+               </li>
+               <li>
+                  <form action="/testing/qna">
+                     <button type="submit">문의하기</button>
+                  </form>
+               </li>
+               <li>
+                  <form action="/testing/logout" method="post">
+                     <button type="submit">로그아웃</button>
+                  </form>
+               </li>
+               <%
+               } else {
+               %>
+               <li><h2>로그인이 필요한 서비스입니다.</h2></li>
+               <li>
+                  <form action="/testing/login">
+                     <button type="submit">가입 및 로그인</button>
+                  </form>
+               </li>
+               <%
+               }
+               %>
+
+            </ul>
+         </div>
+         <div class="header-btn">
+            <form action="/testing/scrollHome">
+               <button type="submit">중고거래</button>
+            </form>
+            <form action="/testing/localproductList" method="post">
+               <input type="hidden" name="newLocation" value="${detail_loc}" />
+               <button type="submit">동네거래</button>
+            </form>
+         </div>
+         <%
+         if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+         %>
+         <div class="header-btn2">
+            <form action="/testing/logout" method="post">
+               <button type="submit">로그아웃</button>
+            </form>
+         </div>
+         <%
+         } else {
+         %>
+         <form action="/testing/login">
+            <button type="submit">로그인</button>
+         </form>
+         <%
+         }
+         %>
+      </header>
+      <div class="main-top">
+         <div id=saveForm>
+            <div style="text-align: center; justify-content: center;">
+               <h2>주문 목록</h2>
+            </div>
+
+
+            <table style="border: 1px solid black;">
+               <thead>
+                  <tr>
+                     <td class="orderWidth">주문아이디</td>
+                     <!-- <td>사용자 코드</td>
                <td>사용자 아이디</td>
                <td>사용자 닉네임</td>
                <td>전화 번호</td>
                <td>게시판 ID</td> -->
-               <td>상품</td>
-               <td>가격</td>
-               <td>배송 주소</td>
-               <td>우편번호</td>
-               <td>상세 주소</td>
-               <td>배송 요청</td>
-               <td>주문 날짜</td>
-               <td>평점</td>
-               
-            </tr>
-         </thead>
-         <tbody>
-            <c:forEach items="${orderList}" var="order">
-     
-               <tr>
-               <!-- <td>${order.order_code}</td>
+                     <td>상품</td>
+                     <td>가격</td>
+                     <td>배송 주소</td>
+                     <td class="orderWidth">우편번호</td>
+                     <td>상세 주소</td>
+                     <td>배송 요청</td>
+                     <td>주문 날짜</td>
+                     <td class="heatBtn">평점</td>
+
+                  </tr>
+               </thead>
+               <tbody>
+                  <c:forEach items="${orderList}" var="order">
+
+                     <tr>
+                        <!-- <td>${order.order_code}</td>
                   ${order.user_code}</td>
                   <td>${order.user_nickname}</td>
                   <td>${order.user_nickname}</td>
                   <td>${order.phone_num}</td> -->
-                  
-                  <td>${order.board_id}</td>
-                  <td>${order.board_title}</td>
-                  <td>${order.board_price}</td>
-                  <td>${order.member_addr}</td>
-                  <td>${order.member_post}</td>
-                  <td>${order.detailed_address}</td>
-                  <td>${order.delivery_req}</td>
-                  <td>${order.order_date}</td>
-                  <td>    
-                     <form action="/testing/heat" method="post">
-                  <input type="text" name="sell_code" value="${order.sell_code}" required>
-                  <input type="text" name="board_id" value="${order.board_id}" required>
-                  <button type="submit" >평가하기</button>
-                     </form>
 
-                  </td>
-               
-               </tr>
+                        <td>${order.board_id}</td>
+                        <td class="elText">${order.board_title}</td>
+                        <td>${order.board_price}</td>
+                        <td class="elText">${order.member_addr}</td>
+                        <td>${order.member_post}</td>
+                        <td class="elText">${order.detailed_address}</td>
+                        <td>${order.delivery_req}</td>
+                        <td>${order.order_date}</td>
+                        <td>
+                           <form action="/testing/heat" method="post">
+                              <input type="hidden" name="sell_code"
+                                 value="${order.sell_code}" required> <input
+                                 type="hidden" name="board_id" value="${order.board_id}"
+                                 required>
+                              <button type="submit">평가하기</button>
+                           </form>
 
-            </c:forEach>
-         </tbody>
+                        </td>
 
-      </table>
-      
+                     </tr>
+
+                  </c:forEach>
+               </tbody>
+
+            </table>
+
+         </div>
       </div>
-      </div>
-         <button id="myBtn" title="Go to top">Top</button>
+      <button id="myBtn" title="Go to top">Top</button>
    </c:if>
-   
+
    <!-- HTML 페이지 일부분 -->
-<script>
-    // Java 코드에서 전달된 메시지를 JavaScript로 가져와 Alert로 띄우기
-    var message = "${message}"; // Spring MVC의 경우 해당 변수를 가져옵니다.
+   <script>
+      // Java 코드에서 전달된 메시지를 JavaScript로 가져와 Alert로 띄우기
+      var message = "${message}"; // Spring MVC의 경우 해당 변수를 가져옵니다.
 
-    // 메시지가 비어있지 않은 경우에만 Alert를 띄웁니다.
-    if (message.trim() !== "") {
-        alert(message);
-    }
-</script>
-           
+      // 메시지가 비어있지 않은 경우에만 Alert를 띄웁니다.
+      if (message.trim() !== "") {
+         alert(message);
+      }
+   </script>
 
 
-   
+
+
    <footer>
       &copy; 2023 에이콘아카데미 최종프로젝트 <br>
-      <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
-      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
-      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
-      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
-      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
+      <p>
+         <a href="https://github.com/dhdl2389">조장: 김재열</a> | <a
+            href="https://github.com/mvcfvsgdj">조원: 김민규 </a> | <a
+            href="https://github.com/kevinbj0">조원: 김병진 </a> | <a
+            href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> | <a
+            href="https://github.com/lepio1999">조원: 허재혁 </a>
+      </p>
    </footer>
 
    <%
    }
    %>
-     
+
 </body>
 </html>

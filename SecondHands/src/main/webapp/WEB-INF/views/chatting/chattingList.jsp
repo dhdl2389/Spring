@@ -226,10 +226,7 @@ background-color: #f9f9f9;
    text-align: center;
 }
 
-.main-top th {
-   background-color: #f2f2f2;
-   /* Light gray background color for header cells */
-}
+
 
 .main-top td {
    background-color: #fdfdfd;
@@ -355,6 +352,9 @@ footer a:hover {
 #myBtn:hover {
    background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
    color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
+}
+.chatting_table{
+width: 1000px;
 }
 </style>
 <body>
@@ -509,46 +509,49 @@ footer a:hover {
    </header>
 
  <div class="main-top">  
+ 
+ 
    <div id=saveForm>
    
-   <table border="1">
-      <tr>
-              <th>상품이름</th>
-         <th>판매자 닉네임</th>
-         <th>채팅하기</th>
-     </tr>
-      <c:forEach items="${chatList}" var="chat">
-
-         <tr>
-
+   
+   
+  <table class="chatting_table" border="1">
+    <tr>
+        <th></th>
+        <th>상품이름</th>
+        <th>판매자 닉네임</th>
+        <th>채팅하기</th>
+        <th>채팅삭제</th>
+    </tr>
+    <c:forEach items="${chatList}" var="chat" varStatus="loop">
+        <tr>
+            <td>${loop.index + 1}</td>
             <td>${chat.board_Title}</td>
             <td>${chat.user_nickname}</td>
-	
             <td>
-               <form action="/testing/inchat" method="post">
-                  <input type="hidden" name="chat_code" value="${chat.chat_code}" />
-                  <button type="submit">채팅</button>
-
-               </form>
-
-               <form action="/testing/deleteChatting" method="post">
-                  <label for="chat_code"></label> 
-                  <input type="hidden"
-                     name="chat_code" id="chat_code" value="${chat.chat_code}"
-                     required /> <label for="buy_code"></label> 
-                     <input
-                     type="hidden" name="buy_code" id="buy_code"
-                     value="${chat.buy_code}" required />
-                  <button type="submit">채팅 삭제</button>
-               </form>
+                <form action="/testing/inchat" method="post">
+                    <input type="hidden" name="chat_code" value="${chat.chat_code}" />
+                    <button type="submit">채팅</button>
+                </form>
             </td>
-         </tr>
-      </c:forEach>
+            <td>
+                <form action="/testing/deleteChatting" method="post">
+                    <label for="chat_code"></label> 
+                    <input type="hidden" name="chat_code" id="chat_code" value="${chat.chat_code}" required /> 
+                    <label for="buy_code"></label> 
+                    <input type="hidden" name="buy_code" id="buy_code" value="${chat.buy_code}" required />
+                    <button type="submit">채팅 삭제</button>
+                </form>
+            </td>
+        </tr>
+    </c:forEach>
    </table>
 </div>
 </div>
          <button id="myBtn" title="Go to top">Top</button>
    </c:if>
+   
+  
    
    
      <footer>
@@ -558,6 +561,8 @@ footer a:hover {
       <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
       <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
       <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
+      
+      
    </footer>
 
    <%

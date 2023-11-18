@@ -136,23 +136,11 @@ input[type=radio]:checked ~ button.eva {
 #temperature {
    display: none;
 }
-footer {
-   background-color: #333;
-   padding: 10px;
-   color: white;
-   text-align: center;
-   bottom: 0;
-}
-footer a{
-
-   text-decoration: none; /* 텍스트 데코레이션 제거 */
-   color: inherit; /* 링크의 색상을 부모 요소로부터 상속 */
+.body_info{
+height: 100px;
 }
 
-footer a:hover {
-   text-decoration: none; /* 호버 시 텍스트 데코레이션 제거 유지 */
-   color: inherit; /* 호버 시 색상을 부모 요소로부터 상속 */
-}
+
 </style>
 
 </head>
@@ -160,6 +148,7 @@ footer a:hover {
    <header>
       <h2>Second Hands</h2>
    </header>
+   <div class="body_info"></div>
    <h1 id="temperature">
       온도:
       <script>document.write(parseFloat(${user_heat}).toFixed(1));</script>
@@ -188,24 +177,16 @@ footer a:hover {
 
    <form action="/testing/updateHeat" method="post">
       <input type="hidden" name="user_id" id="user_id" value="" >
-      <input type="text" id="temperatureInput" name="user_heat" value="">
-      <input type="text" name="user_code" value="${sell_code}">
-      <input type="text" name="check_heat" value="T" required>
-      <input type="text" name="board_id" value="${board_id}" required>
+      <input type="hidden" id="temperatureInput" name="user_heat" value="">
+      <input type="hidden" name="user_code" value="${sell_code}">
+      <input type="hidden" name="check_heat" value="T" required>
+      <input type="hidden" name="board_id" value="${board_id}" required>
 
       <div class="submitBtn">
          <button class="submitB" type="submit">평가하기</button>
       </div>
    </form>
-      <footer>
-      &copy; 2023 에이콘아카데미 최종프로젝트 <br>
-      <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
-      <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
-      <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
-      <a href="https://github.com/LeeJungHoon1">조원: 이정훈 </a> |
-      <a href="https://github.com/lepio1999">조원: 허재혁 </a></p>
-   </footer>
-   
+
 <script>
     let user_heat = ${user_heat};
     let clickedIndex = -1;

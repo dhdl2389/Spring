@@ -566,6 +566,9 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
    </header>
 
 		<div class="main-top">
+		<form action="/testing/deleteUser">
+    <button type="submit">회원삭제</button>
+</form>
     <form id="saveForm" action="/testing/update" method="post">
           <div style="text-align: center;"> <!-- Add this div for centering -->
             <h2>정보수정</h2>
@@ -613,6 +616,7 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
         <button type="submit">정보수정하기</button>
        
     </form>
+    
     <button id="myBtn" title="Go to top">Top</button>
      </div>
 	

@@ -574,82 +574,82 @@ footer a:hover {
       %>
 
 
-	<header>
-		<div class="header-logo">
-			<div class="menu-icon">&#9776;</div>
-			<form action="/testing/homePage">
-			<button type="submit" >Second Hands</button>
-		</form>
-		</div>
+   <header>
+      <div class="header-logo">
+         <div class="menu-icon">&#9776;</div>
+         <form action="/testing/homePage">
+         <button type="submit" >Second Hands</button>
+      </form>
+      </div>
 
-		<div class="menu-container">
-			<ul>
-			         <li><h2> </h2></li>
-				<li>
-				   <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
-						<h2>
-						<%
-						if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-						%>
-						Welcome,
-						<%=firstSelectedUser.getUser_nickname()%>님
-					</h2>
-				</li>
-				<li>
-				            <form action="/testing/myPage" method="post">
+      <div class="menu-container">
+         <ul>
+                  <li><h2> </h2></li>
+            <li>
+               <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
+                  <h2>
+                  <%
+                  if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+                  %>
+                  Welcome,
+                  <%=firstSelectedUser.getUser_nickname()%>님
+               </h2>
+            </li>
+            <li>
+                        <form action="/testing/myPage" method="post">
                <input type="hidden" name="user_code" value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">마이페이지 이동</button>
                </form>
-				</li>
-				           		<li>
-			<form action="/testing/chattingList" method="post">
-						<input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
-							value="<%=firstSelectedUser.getUser_code()%>">
-						<button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
+            </li>
+                             <li>
+         <form action="/testing/chattingList" method="post">
+                  <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+                     value="<%=firstSelectedUser.getUser_code()%>">
+                  <button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
 
-					</form>
+               </form>
 </li>
                        <li>
               <form action="/testing/products/add">
       <button type="submit">게시글작성</button>
-   			</form>
+            </form>
    </li>
-				<li>
-					<form action="/testing/showOrder">
-						<button type="submit">주문내역</button>
-					</form>
-				</li>
-				<li>
-					<form action="/testing/qna">
-						<button type="submit">문의하기</button>
-					</form>
-				</li>
-				<li>
-					<form action="/testing/logout" method="post">
-						<button type="submit">로그아웃</button>
-					</form>
-				</li>
-				<%
-				} else {
-				%>
-				<li><h2>로그인이 필요한 서비스입니다.</h2></li>
-				<li>
-					<form action="/testing/login">
-						<button type="submit">가입 및 로그인</button>
-					</form>
-				</li>
-				<%
-				}
-				%>
-				
-			</ul>
-		</div>
-		<div class="header-btn">
-			 <form action="/testing/scrollHome">
+            <li>
+               <form action="/testing/showOrder">
+                  <button type="submit">주문내역</button>
+               </form>
+            </li>
+            <li>
+               <form action="/testing/qna">
+                  <button type="submit">문의하기</button>
+               </form>
+            </li>
+            <li>
+               <form action="/testing/logout" method="post">
+                  <button type="submit">로그아웃</button>
+               </form>
+            </li>
+            <%
+            } else {
+            %>
+            <li><h2>로그인이 필요한 서비스입니다.</h2></li>
+            <li>
+               <form action="/testing/login">
+                  <button type="submit">가입 및 로그인</button>
+               </form>
+            </li>
+            <%
+            }
+            %>
+            
+         </ul>
+      </div>
+      <div class="header-btn">
+          <form action="/testing/scrollHome">
          <button type="submit">중고거래</button>
       </form>
-			       <%
+                <%
       if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
       %>
       <form action="/testing/localproductList" method="post">
@@ -679,27 +679,27 @@ footer a:hover {
       <%
       }
       %>
-		</div>
-		<%
-		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-		%>
-		<div class="header-btn2">
-			<form action="/testing/logout" method="post">
-				<button type="submit">로그아웃</button>
-			</form>
-		</div>
-		<%
-		} else {
-		%>
-		<form action="/testing/login">
-			<button type="submit">로그인</button>
-		</form>
-		<%
-		}
-		%>
-	
-	
-	</header>
+      </div>
+      <%
+      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      %>
+      <div class="header-btn2">
+         <form action="/testing/logout" method="post">
+            <button type="submit">로그아웃</button>
+         </form>
+      </div>
+      <%
+      } else {
+      %>
+      <form action="/testing/login">
+         <button type="submit">로그인</button>
+      </form>
+      <%
+      }
+      %>
+   
+   
+   </header>
 
 
 
@@ -777,7 +777,7 @@ footer a:hover {
 
                <div style="border-bottom: 1px solid #dbcfcf;"></div>
 
-               <div style="margin-top: 20px; line-height: 1.5;">
+               <div style="margin-top: 20px;line-height: 1.5;word-break: break-all;">
 
                   ${product.board_Text}</div>
 
@@ -818,14 +818,19 @@ footer a:hover {
                            value="${product.user_code}" required><br> <input
                            type="hidden" name="board_id" value="${product.board_Id}"
                            required><br>
-                       <input type="text" name="board_Title" value="${product.board_Title}" required><br> 
-                           <input type="text" name="user_nickname" value="${product.user_nickname}" required><br>
+                       <input type="hidden" name="board_Title" value="${product.board_Title}" required><br> 
+                           <input type="hidden" name="user_nickname" value="${product.user_nickname}" required><br>
                         <button type="submit">채팅신청하기</button>
 
                      </form>
+                                                              <form action="/testing/scrollHome">
+         <button type="submit">리스트로 돌아가기</button>
+      </form>
                      <div class="like1">
                         <button id="like">관심 버튼</button>
+       
                      </div>
+         
                   </div>
                </div>
             </c:if>
@@ -864,9 +869,13 @@ footer a:hover {
                      <input type="hidden" name="boardId" value="${product.board_Id}">
                      <button type="submit">끌어올리기</button>
                   </form>
+                                                           <form action="/testing/scrollHome">
+         <button type="submit">리스트로 돌아가기</button>
+      </form>
                   <div class="like1">
                      <button id="like">관심 버튼</button>
                   </div>
+          
                </c:if>
             </div>
          </div>
