@@ -547,12 +547,12 @@ footer a:hover {
 
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
-   List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUserList = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
    %>
    <%
-   if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
-      LoginDTO selectedUser = selectedUserList.get(0);
+   if (user != null && selectedUserList != null) {
+      LoginDTO selectedUser = selectedUserList;
    %>
 
 
@@ -571,7 +571,7 @@ footer a:hover {
                style="border-radius: 50%; width: 100px; height: 100px;">
                <h2>
                   <%
-                  if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+                  if (user != null && selectedUserList != null) {
                   %>
                   Welcome,
                   <%=selectedUser.getUser_nickname()%>님
@@ -635,7 +635,7 @@ footer a:hover {
          <button type="submit">동네거래</button>
       </form>
       <%
-      if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+      if (user != null && selectedUserList != null) {
       %>
       <form action="/testing/logout" method="post">
          <button type="submit">로그아웃</button>
@@ -652,7 +652,7 @@ footer a:hover {
    </header>
 
    <%
-   if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+   if (user != null && selectedUserList != null) {
    %>
 
 

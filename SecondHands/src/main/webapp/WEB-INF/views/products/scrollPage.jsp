@@ -182,7 +182,7 @@ header.menu-open h2 {
 }
 
 #sort {
-    color: #cfcfcf;
+   color: #cfcfcf;
    width: 749px;
    display: flex;
    align-items: center;
@@ -194,7 +194,7 @@ header.menu-open h2 {
    margin: 0px 6px 0px 6px;
    padding: 4px;
    font-weight: bold;
-   background-color:white;
+   background-color: white;
    color: black;
    border: none;
    border-radius: 4px;
@@ -311,7 +311,7 @@ header.menu-open h2 {
 }
 
 .footer {
-   margin-top: 100px;
+   margin-top: 300px;
 }
 
 .footer a {
@@ -385,7 +385,7 @@ header.menu-open h2 {
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
 
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
       %>
 
@@ -403,8 +403,8 @@ header.menu-open h2 {
          <ul>
             <li><h2></h2></li>
             <li>
-               <% if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-      LoginDTO firstSelectedUser = selectedUser.get(0); // Assuming you want the first user in the list
+               <% if (user != null && selectedUser != null) {
+      LoginDTO firstSelectedUser = selectedUser; // Assuming you want the first user in the list
       %> <img
                src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
                style="border-radius: 50%; width: 100px; height: 100px;">
@@ -470,7 +470,7 @@ header.menu-open h2 {
             <button type="submit">중고거래</button>
          </form>
          <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
          <form action="/testing/localproductList" method="post">
             <input type="hidden" name="newLocation" value="${detail_loc}" />
@@ -501,7 +501,7 @@ header.menu-open h2 {
       %>
       </div>
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
       <div class="header-btn2">
          <form action="/testing/logout" method="post">
@@ -523,8 +523,10 @@ header.menu-open h2 {
    <div class="main-top">
 
       <div id="sort">
-         <button id="srTime">최신순</button>|
-         <button id="srClick">인기순</button>|
+         <button id="srTime">최신순</button>
+         |
+         <button id="srClick">인기순</button>
+         |
          <button id="srLike">관심상품</button>
          <div class="search">
             <input type="text" id="srSearch" value="" placeholder="검색어 입력">
@@ -593,7 +595,7 @@ header.menu-open h2 {
               $("body").css("height", wrapH-(cursorH*3));
               let endSql = `         
                   <div style = 'height:200px; background-color: #333;  padding: 10px; text-align: center; color:white'>
-            	  &copy; 2023 에이콘아카데미 최종프로젝트 <br>
+                 &copy; 2023 에이콘아카데미 최종프로젝트 <br>
               <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
                   <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
                   <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
@@ -791,24 +793,53 @@ header.menu-open h2 {
          LikeList();
       });
       
-      //검색
+      // 검색
       $("#srSearch").on('input', function() {
-         let searchTerm = $("#srSearch").val();
-         loadSearchResults(searchTerm);
+          let searchTerm = $("#srSearch").val();
+          loadSearchResults(searchTerm);
       });
 
       function loadSearchResults(searchTerm) {
-         $.ajax({
-            url: "search?searchTerm=" + searchTerm,
-            type: "GET",
-            success: function(data) {
-               let resultHtml = pageToString(data);
-               $(".scrollWrap").empty().append(resultHtml);
-            },
-            error: function(error) {
-               console.log("Error:", error);
-            }
-         });
+          // localStorage에 저장된 검색 결과 불러오기
+          const storedResults = loadSearchResultsFromLocalStorage(searchTerm);
+
+          if (storedResults) {
+              // localStorage에 저장된 결과가 있으면 그 결과를 사용
+              let resultHtml = pageToString(storedResults);
+              $(".scrollWrap").empty().append(resultHtml);
+          } else {
+              // localStorage에 저장된 결과가 없으면 Ajax 요청을 보내고 결과를 localStorage에 저장
+              $.ajax({
+                  url: "search?searchTerm=" + searchTerm,
+                  type: "GET",
+                  success: function(data) {
+                      // 검색 결과를 localStorage에 저장
+                      saveSearchResultsToLocalStorage(searchTerm, data);
+                      
+                      let resultHtml = pageToString(data);
+                      $(".scrollWrap").empty().append(resultHtml);
+                  },
+                  error: function(error) {
+                      console.log("Error:", error);
+                  }
+              });
+          }
+      } 
+      
+      // 검색 결과를 localStorage에 저장
+      function saveSearchResultsToLocalStorage(searchTerm, data) {
+          // searchTerm을 key로 사용하여 검색 결과를 저장
+          localStorage.setItem(searchTerm, JSON.stringify(data));
+      }
+
+      // 검색 결과를 localStorage에서 불러오기
+      function loadSearchResultsFromLocalStorage(searchTerm) {
+          // searchTerm을 이용해 localStorage에서 데이터를 가져오기
+          const storedData = localStorage.getItem(searchTerm);
+          
+          // localStorage에 저장된 데이터가 있으면 파싱하여 반환
+          // 없으면 null 반환
+          return storedData ? JSON.parse(storedData) : null;
       }
       
    });

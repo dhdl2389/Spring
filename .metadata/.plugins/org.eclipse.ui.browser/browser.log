@@ -123,3 +123,11 @@
 11월 18, 2023 13:10:27.739 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
 11월 18, 2023 13:59:51.808 [12320:24528:1118/135951.808:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
 11월 18, 2023 14:59:48.724 [12320:25492:1118/145948.724:ERROR:device_event_log_impl.cc(192)] [14:59:48.734] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+11월 20, 2023 15:53:00.164 NEW SESSION
+11월 20, 2023 15:53:00.164 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 20, 2023 16:10:14.596 [27324:22596:1120/161014.596:ERROR:device_event_log_impl.cc(192)] [16:10:14.597] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+11월 20, 2023 16:28:37.794 [27324:22596:1120/162837.794:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 20, 2023 17:16:18.615 [27324:22596:1120/171618.615:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 20, 2023 17:16:18.615 [27324:22596:1120/171618.615:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 20, 2023 17:19:53.603 [27324:22596:1120/171953.603:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost

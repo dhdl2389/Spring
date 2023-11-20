@@ -19,9 +19,9 @@
 <%
 List<ProductDTO> products = (List<ProductDTO>) session.getAttribute("products");
     LoginDTO user = (LoginDTO) session.getAttribute("user");
-    List<LoginDTO> selectedUserList = (List<LoginDTO>) session.getAttribute("selectedUser");
-    if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
-        LoginDTO selectedUser = selectedUserList.get(0); 
+    LoginDTO selectedUserList = (LoginDTO) session.getAttribute("selectedUser");
+    if (user != null && selectedUserList != null) {
+        LoginDTO selectedUser = selectedUserList; 
 %>
 
     <form action="/testing/delete" method="post">

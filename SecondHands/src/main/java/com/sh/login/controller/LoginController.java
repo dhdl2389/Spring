@@ -41,22 +41,16 @@ public class LoginController {
          // System.out.println("dfdfdf===>" + loginDTO);
 
          HttpSession session = request.getSession();
-
-         session.setAttribute("user", loginDTO);
-
-         // 세션에서 유저 정보 가져오기
-         LoginDTO loggedInUser = (LoginDTO) session.getAttribute("user");
-         // System.out.println("Logged in user: " + loggedInUser);
+  
 
          // selectAll 메소드 호출하여 유저 정보 가져오기
-         List<Object> selectedUser = loginService.selectAll(loginDTO);
-         System.out.println("Selected user: " + selectedUser);
-
-         LoginDTO firstSelectedUser = (LoginDTO) selectedUser.get(0);
+         String userId = loginDTO.getUser_id();
+         LoginDTO selectedUser = loginService.getLoginDTO(userId);
+         session.setAttribute("user", selectedUser);
 
          // 세션에 selectedUser 저장
          session.setAttribute("selectedUser", selectedUser);
-         String chatlogin = firstSelectedUser.getUser_code();
+         String chatlogin = selectedUser.getUser_code();
          System.out.println("코드뽑아오기" + chatlogin);
 
          List<Object> chatList = chatService.selectAllCode(chatlogin);
@@ -116,8 +110,6 @@ public class LoginController {
 	   
       if (loginService.updateHeat(user_heat, user_code) > 0) {
     	  productService.deleteProduct(board_id);
-    	  List<Object> updatedUser = loginService.selectAll(loginDTO);
-         System.out.println(updatedUser);
          
          loginService.saveHeat(user_code, user_heat,check_heat,board_id);
          return "/homePage/homePage";

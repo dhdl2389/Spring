@@ -21,11 +21,11 @@ public class LoginService implements LoginServiceI {
    }
 
    @Override
-   public List<Object> selectAll(LoginDTO loginDTO) {
-      // TODO Auto-generated method stub
-      return userRepository.selectAll(loginDTO);
-   }
-
+   public LoginDTO getLoginDTO(String userId) {
+		// TODO Auto-generated method stub
+		return userRepository.getLoginDTO(userId);
+	}
+   
    @Override
    public int updateUser(LoginDTO loginDTO) {
       // TODO Auto-generated method stub

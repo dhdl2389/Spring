@@ -469,7 +469,7 @@ footer a:hover {
 
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
    %>
 
@@ -485,8 +485,8 @@ footer a:hover {
          <ul>
 
             <%
-            if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-               LoginDTO firstSelectedUser = selectedUser.get(0);
+            if (user != null && selectedUser != null) {
+               LoginDTO firstSelectedUser = selectedUser;
             %>
             <li><h2></h2></li>
             <li><img
@@ -505,8 +505,13 @@ footer a:hover {
                </form>
             </li>
             <li>
+               <form action="/testing/sellProducts">
+                  <button type="submit">판매내역</button>
+               </form>
+            </li>
+            <li>
                <form action="/testing/showOrder">
-                  <button type="submit">주문내역</button>
+                  <button type="submit">구매내역</button>
                </form>
             </li>
             <li>
@@ -549,7 +554,7 @@ footer a:hover {
 
 
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
       <form action="/testing/localproductList" method="post">
          <input type="hidden" name="newLocation" value="${detail_loc}" />
@@ -582,7 +587,7 @@ footer a:hover {
 
 
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
       <!-- 동네 인증 -->
       <form id="location_form" method="post" action="location_form">
@@ -622,8 +627,8 @@ footer a:hover {
 
 
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-         LoginDTO firstSelectedUser = selectedUser.get(0);
+      if (user != null && selectedUser != null) {
+         LoginDTO firstSelectedUser = selectedUser;
       %>
       <form action="/testing/logout" method="post">
          <button type="submit">로그아웃</button>
@@ -652,8 +657,8 @@ footer a:hover {
             보기</a> <a class="link2"
             href="https://dbdiagram.io/d/653b74c9ffbf5169f092c009">알아보기</a>
          <%
-         if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-            LoginDTO firstSelectedUser = selectedUser.get(0);
+         if (user != null && selectedUser != null) {
+            LoginDTO firstSelectedUser = selectedUser;
          %>
 
          <%

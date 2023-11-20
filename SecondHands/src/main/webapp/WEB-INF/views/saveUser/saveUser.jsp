@@ -646,7 +646,7 @@ $(document).ready(function() {
 
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    %>
 
 
@@ -664,8 +664,8 @@ $(document).ready(function() {
             <li>
                <h2>
                   <%
-                  if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-                     LoginDTO firstSelectedUser = selectedUser.get(0);
+                  if (user != null && selectedUser != null) {
+                     LoginDTO firstSelectedUser = selectedUser;
                   %>
                   Welcome,
                   <%=firstSelectedUser.getUser_nickname()%>님
@@ -717,8 +717,8 @@ $(document).ready(function() {
          </form>
       </div>
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-         LoginDTO firstSelectedUser = selectedUser.get(0);
+      if (user != null && selectedUser != null) {
+         LoginDTO firstSelectedUser = selectedUser;
       %>
       <div class="header-btn2">
          <form action="/testing/logout" method="post">

@@ -11,220 +11,221 @@
 <head>
 <style>
 body {
-	margin: 0;
-	padding: 0;
-	font-family: 'Arial', sans-serif;
+   margin: 0;
+   padding: 0;
+   font-family: 'Arial', sans-serif;
 }
 
 header {
-	margin: 0 auto;
-	background-color: #ff6f0f;
-	padding: 10px;
-	position: sticky;
-	top: 0;
-	color: white;
-	z-index: 1000;
-	text-align: center;
-	display: flex;
-	justify-content: space-between;
-	align-items: center;
-	width: 100%;
-	height: 100px;
-	box-sizing: border-box;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+   margin: 0 auto;
+   background-color: #ff6f0f;
+   padding: 10px;
+   position: sticky;
+   top: 0;
+   color: white;
+   z-index: 1000;
+   text-align: center;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   width: 100%;
+   height: 100px;
+   box-sizing: border-box;
+   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 header h2 {
-	margin: 0;
-	font-size: 24px;
+   margin: 0;
+   font-size: 24px;
 }
 
 .menu-icon {
-	order: -1;
-	font-size: 24px;
-	cursor: pointer;
-	margin-right: 20px;
+   order: -1;
+   font-size: 24px;
+   cursor: pointer;
+   margin-right: 20px;
 }
 
 header button {
-	 margin: 5px 5px; /* 간격을 줄이기 위해 margin 수정 */
-	padding: 10px;
-	background-color:  #ff6f0f;
-	font-weight:bold;
-	color: white;
-	border: none;
-	text-align: center;
-	text-decoration: none;
-	display: inline-block;
-	font-size: 20px;
-	cursor: pointer;
-	/* border-radius: 5px; 모서리 둥글게 */
-	transition: background-color 0.3s, color 0.3s;
+    margin: 5px 5px; /* 간격을 줄이기 위해 margin 수정 */
+   padding: 10px;
+   background-color:  #ff6f0f;
+   font-weight:bold;
+   color: white;
+   border: none;
+   text-align: center;
+   text-decoration: none;
+   display: inline-block;
+   font-size: 20px;
+   cursor: pointer;
+   /* border-radius: 5px; 모서리 둥글게 */
+   transition: background-color 0.3s, color 0.3s;
 }
 
 header button:hover {
-	background-color: #ff6f0f; 
-	color: black;
+   background-color: #ff6f0f; 
+   color: black;
 }
 
 header.menu-open {
-	flex-direction: column;
-	align-items: flex-start;
+   flex-direction: column;
+   align-items: flex-start;
 }
 
 header.menu-open form {
-	display: block;
+   display: block;
 }
 
 header.menu-open h2 {
-	margin-top: 10px;
+   margin-top: 10px;
 }
 
 .header-logo {
-	display: flex;
+   display: flex;
 }
 
 .header-logo h2 {
-	font-size: 32px;
+   font-size: 32px;
 }
 
 .header-btn {
-	display: flex;
-	margin: 0px 0px 0px 500px;
+   display: flex;
+   margin: 0px 0px 0px 500px;
 }
 
 header.menu-open {
-	flex-direction: column;
-	align-items: flex-start;
+   flex-direction: column;
+   align-items: flex-start;
 }
 
 header.menu-open form {
-	display: block;
+   display: block;
 }
 
 header.menu-open h2 {
-	margin-top: 10px;
+   margin-top: 10px;
 }
 
 .menu-icon:hover {
 
-	color: black;
+   color: black;
 }
 
 .menu-container {
-	display: none;
-	position: fixed;
-	top: 100px;
-	left: 0;
-	width: 20%;
-	height: 100%;
-	background-color: #f9f9f9;
-	z-index: 999;
-	background-color: #f9f9f9;
+   display: none;
+   position: fixed;
+   top: 100px;
+   left: 0;
+   width: 20%;
+   height: 100%;
+   background-color: #f9f9f9;
+   z-index: 999;
+   background-color: #f9f9f9;
 }
 
 .menu-container ul {
-	list-style-type: none;
-	padding: 0;
-	margin: 0;
-	text-align: center;
+   list-style-type: none;
+   padding: 0;
+   margin: 0;
+   text-align: center;
 }
 
 .menu-container li {
-	padding: 15px;
-	border-bottom: 1px solid #ddd;
+   padding: 15px;
+   border-bottom: 1px solid #ddd;
 }
 
 .menu-container h2 {
-	text-decoration: none;
-	color: #333;
-	font-weight: bold;
-	font-size: 18px;
-	transition: color 0.3s;
+   text-decoration: none;
+   color: #333;
+   font-weight: bold;
+   font-size: 18px;
+   transition: color 0.3s;
 }
 
 .menu-container button {
-	color: black;
-	background-color: #f9f9f9;
-	font-weight: bold;
+   color: black;
+   background-color: #f9f9f9;
+   font-weight: bold;
 }
 
 .menu-container Button:hover {
-	background-color:#f9f9f9;
-	color: #ff6f0f;
+   background-color:#f9f9f9;
+   color: #ff6f0f;
 }
 
 .menu-container h2:hover {
 
-	color: #ff6f0f;
+   color: #ff6f0f;
 }
 
 .main-top {
-	background: #fffae0;
-	border-bottom: 1px solid #ddd;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	padding: 20px; /* 추가된 부분 */
+   background: #fffae0;
+   border-bottom: 1px solid #ddd;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   padding: 20px; /* 추가된 부분 */
+   
 }
 
 .main-top div {
-	text-align: center;
+   
 }
 
 .main-top div h1 {
-	font-weight: bold;
-	font-size: 52px;
+   font-weight: bold;
+   font-size: 52px;
 }
 
 .main-top div p {
-	font-size: 22px;
-	color: grey;
+   font-size: 22px;
+   color: grey;
 }
 
 .main-top div a {
-	display: inline-block;
-	width: 180px;
-	height: 25px;
-	padding: 15px 20px;
-	margin: 10px;
-	background-color: #ff6f0f;
-	color: white;
-	font-size: 18px;
-	border-radius: 10px;
-	text-decoration: none;
-	font-weight: bold;
-	transition: background-color 0.3s, color 0.3s;
-	margin: 5px 20px -1px 10px;
+   display: inline-block;
+   width: 180px;
+   height: 25px;
+   padding: 15px 20px;
+   margin: 10px;
+   background-color: #ff6f0f;
+   color: white;
+   font-size: 18px;
+   border-radius: 10px;
+   text-decoration: none;
+   font-weight: bold;
+   transition: background-color 0.3s, color 0.3s;
+   margin: 5px 20px -1px 10px;
 }
 
 .main-top div a:hover {
-	background-color: #d55500;
-	color: white;
+   background-color: #d55500;
+   color: white;
 }
 
 .main-top-form {
-	max-width: 100%; /* 수정 */
-	margin: 0 auto; /* 추가 */
-	height: 800px;
-	padding: 20px;
-	background-color: #fff;
-	border-radius: 8px;
-	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+   max-width: 100%; /* 수정 */
+   margin: 0 auto; /* 추가 */
+   height: 800px;
+   padding: 20px;
+   background-color: #fff;
+   border-radius: 8px;
+   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .main-top-form label, .main-top-form input {
-	display: block;
-	margin-bottom: 15px;
+   display: block;
+   margin-bottom: 15px;
 }
 
 .main-top-form input[type="checkbox"], .main-top-form button {
-	display: inline-block;
-	margin-top: 10px;
+   display: inline-block;
+   margin-top: 10px;
 }
 
       #saveForm {
-    	box-shadow: 0px 0px 5px #ccc;
+       box-shadow: 0px 0px 5px #ccc;
     margin: 20px auto;
     /* HEIGHT: 297PX; */
     width: 650px;
@@ -236,7 +237,7 @@ header.menu-open h2 {
         }
 
 #saveForm input {
-	width: 96%;
+   width: 96%;
     margin: 9px 0px 15px;
     padding: 10px;
     margin-bottom: 15px;
@@ -246,7 +247,7 @@ header.menu-open h2 {
 
 .password-input-container {
     display: flex;
-   	position: relative;
+      position: relative;
     align-items: center;
 }
 
@@ -259,17 +260,17 @@ header.menu-open h2 {
 }
 
 button {
-	padding: 5px;
-	background-color: #ff6f0f;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s, color 0.3s;
+   padding: 5px;
+   background-color: #ff6f0f;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
 }
 
 button:hover {
-	background-color: #d55500;
+   background-color: #d55500;
 }
 
 
@@ -341,29 +342,50 @@ button:hover {
 }
 
 #member_post {
-	width: 400px;
+   width: 400px;
 }
 
 #member_addr {
-	width: 400px;
+   width: 400px;
 }
 
 
 
 button[type="submit"][form="saveForm"] {
-	display: block;
-	margin: 20px auto; /* 중앙 정렬 및 아래쪽 여백 조절 */
-	padding: 10px;
-	background-color: #ff6f0f;
-	color: #fff;
-	border: none;
-	border-radius: 4px;
-	cursor: pointer;
-	transition: background-color 0.3s, color 0.3s;
+   display: block;
+   margin: 20px auto; /* 중앙 정렬 및 아래쪽 여백 조절 */
+   padding: 10px;
+   background-color: #ff6f0f;
+   color: #fff;
+   border: none;
+   border-radius: 4px;
+   cursor: pointer;
+   transition: background-color 0.3s, color 0.3s;
 }
 
 button[type="submit"][form="saveForm"]:hover {
-	background-color: #d55500;
+   background-color: #d55500;
+}
+
+.button-container {
+        display: flex; /* 부모 요소를 플렉스 컨테이너로 만듦 */
+        justify-content: space-between; /* 자식 요소 사이의 공간을 최대화하여 우측 정렬 */
+        align-items: center; /* 세로 정렬을 가운데로 설정 */
+        flex-direction: column;
+    }
+
+    /* 삭제 버튼에 대한 스타일 */
+    .deleteUBtn {
+        background-color: #ff6f0f; /* 적절한 배경색을 지정 */
+        color: white; /* 텍스트 색상을 흰색으로 지정 */
+        padding: 5px 10px; /* 적절한 여백 설정 */
+        border: none; /* 테두리 제거 */
+        cursor: pointer; /* 커서 모양을 손가락으로 변경하여 클릭 가능한 상태로 표시 */
+    }
+#deleteForm{
+       margin-top: -70px;
+    margin-left: 596px;
+    margin-bottom: 88px;
 }
 
 footer {
@@ -384,22 +406,22 @@ footer a:hover {
    color: inherit; /* 호버 시 색상을 부모 요소로부터 상속 */
 }
 #myBtn {
-	position: fixed;
-	bottom: 20px;
-	right: 30px;
-	z-index: 99;
-	border: none;
-	outline: none;
-	background-color: #ff6f0f;
-	color: white;
-	cursor: pointer;
-	padding: 15px;
-	border-radius: 10px;
+   position: fixed;
+   bottom: 20px;
+   right: 30px;
+   z-index: 99;
+   border: none;
+   outline: none;
+   background-color: #ff6f0f;
+   color: white;
+   cursor: pointer;
+   padding: 15px;
+   border-radius: 10px;
 }
 
 #myBtn:hover {
-	background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
-	color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
+   background-color: #d55500; /* 마우스를 올렸을 때의 배경 색상을 흰색으로 변경 */
+   color: white; /* 마우스를 올렸을 때의 텍스트 색상을 주황색으로 변경 */
 }
 
 
@@ -467,42 +489,42 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
         LoginDTO selectedUser = selectedUserList.get(0); // Assuming you want the first user in the list
 %>
 
-	<header>
-		<div class="header-logo">
-		<div class="menu-icon">&#9776;</div>
-		<form action="/testing/homePage">
-			<button type="submit" >Second Hands</button>
-		</form></div>
-		<div class="menu-container">
-		    <ul>
+   <header>
+      <div class="header-logo">
+      <div class="menu-icon">&#9776;</div>
+      <form action="/testing/homePage">
+         <button type="submit" >Second Hands</button>
+      </form></div>
+      <div class="menu-container">
+          <ul>
          <li><h2> </h2></li>
             <li>
               <img src="${path}/images/<%=selectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
-					<h2>
-						<%
-						if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
-						%>
-						Welcome,
-						<%=selectedUser.getUser_nickname()%>:님
-					</h2>
-				</li>
-			         <li>
+               <h2>
+                  <%
+                  if (user != null && selectedUserList != null && !selectedUserList.isEmpty()) {
+                  %>
+                  Welcome,
+                  <%=selectedUser.getUser_nickname()%>:님
+               </h2>
+            </li>
+                  <li>
               
-				               <form action="/testing/myPage" method="post">
+                           <form action="/testing/myPage" method="post">
                <input type="hidden" name="user_code" value="<%=selectedUser.getUser_code()%>">
                   <button type="submit">마이페이지 이동</button>
                </form>
               
             </li>
-            		<li>
-					<form action="/testing/chattingList" method="post">
-						<input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
-							value="<%=selectedUser.getUser_code()%>">
-						<button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
+                  <li>
+               <form action="/testing/chattingList" method="post">
+                  <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
+                     value="<%=selectedUser.getUser_code()%>">
+                  <button type="submit">새 채팅 ${fn:length(chatList)} 개</button>
 
 
-					</form>
-				</li>
+               </form>
+            </li>
             <li>
                <form action="/testing/products/add">
                   <button type="submit">게시글작성</button>
@@ -515,9 +537,9 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
                </form>
             </li>
             <li>
-           		<form action="/testing/qna">
-						<button type="submit">문의하기</button>
-					</form>
+                 <form action="/testing/qna">
+                  <button type="submit">문의하기</button>
+               </form>
             </li>
 
             <li>
@@ -565,10 +587,8 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
       %>
    </header>
 
-		<div class="main-top">
-		<form action="/testing/deleteUser">
-    <button type="submit">회원삭제</button>
-</form>
+      <div class="main-top">
+<div class="button-container">
     <form id="saveForm" action="/testing/update" method="post">
           <div style="text-align: center;"> <!-- Add this div for centering -->
             <h2>정보수정</h2>
@@ -616,17 +636,36 @@ List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chat
         <button type="submit">정보수정하기</button>
        
     </form>
+    <form id="deleteForm" action="/testing/delete" method="post">
+        <input type="hidden" name="user_code" value="<%= selectedUser.getUser_code() %>">
+        <input type="hidden" name="user_id" value="<%= selectedUser.getUser_id() %>">
+        <button class = "deleteUBtn" type="submit" onclick="confirmDelete()">삭제</button>
+    </form>
     
+    <script>
+function confirmDelete() {
+    // 확인 대화 상자를 표시하고 사용자의 응답을 확인합니다.
+    var result = confirm("정말로 삭제하시겠습니까?");
+
+    // 사용자가 확인을 선택한 경우에만 폼을 제출합니다.
+    if (result) {
+        document.getElementById("deleteForm").submit();
+    }
+}
+</script>
+    
+    
+    </div>
     <button id="myBtn" title="Go to top">Top</button>
      </div>
-	
+   
 
-	<%
-	}
-	%>
+   <%
+   }
+   %>
 
 
-	
+   
    <footer>
       &copy; 2023 에이콘아카데미 최종프로젝트 <br>
       <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |

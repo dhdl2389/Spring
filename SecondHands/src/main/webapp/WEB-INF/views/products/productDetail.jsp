@@ -566,10 +566,10 @@ footer a:hover {
  <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
  List<ProductDTO> products = (List<ProductDTO>) session.getAttribute("products");
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
-   if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-      LoginDTO firstSelectedUser = selectedUser.get(0); // Assuming you want the first user in the list
+   if (user != null && selectedUser != null) {
+      LoginDTO firstSelectedUser = selectedUser; // Assuming you want the first user in the list
       ProductDTO product = products.get(0);
       %>
 
@@ -589,7 +589,7 @@ footer a:hover {
                <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
                   <h2>
                   <%
-                  if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+                  if (user != null && selectedUser != null) {
                   %>
                   Welcome,
                   <%=firstSelectedUser.getUser_nickname()%>님
@@ -650,7 +650,7 @@ footer a:hover {
          <button type="submit">중고거래</button>
       </form>
                 <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
       <form action="/testing/localproductList" method="post">
          <input type="hidden" name="newLocation" value="${detail_loc}" />
@@ -681,7 +681,7 @@ footer a:hover {
       %>
       </div>
       <%
-      if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+      if (user != null && selectedUser != null) {
       %>
       <div class="header-btn2">
          <form action="/testing/logout" method="post">

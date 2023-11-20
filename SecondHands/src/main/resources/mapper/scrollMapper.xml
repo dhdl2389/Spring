@@ -90,4 +90,9 @@
       SELECT count(*) FROM
       user_board where detail_loc = #{location}
    </select>
+   
+   <!-- 판매중인 물건 ㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡㅡ -->
+   <select id="SellProducts" resultType="ScrollDTO">
+   		select * from user_board where user_code = #{user_code} ORDER BY board_date DESC
+   </select>
 </mapper>

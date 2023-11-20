@@ -392,10 +392,10 @@ footer a:hover {
 <body>
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
-   if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-      LoginDTO firstSelectedUser = selectedUser.get(0); // Assuming you want the first user in the list
+   if (user != null && selectedUser != null) {
+      LoginDTO firstSelectedUser = selectedUser; // Assuming you want the first user in the list
    %>
 	<header>
 		<div class="header-logo">
@@ -412,7 +412,7 @@ footer a:hover {
 				   <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
 						<h2>
 						<%
-						if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+						if (user != null && selectedUser != null) {
 						%>
 						Welcome,
 						<%=firstSelectedUser.getUser_nickname()%>님
@@ -478,7 +478,7 @@ footer a:hover {
       </form>
 		</div>
 		<%
-		if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+		if (user != null && selectedUser != null) {
 		%>
 		<div class="header-btn2">
 			<form action="/testing/logout" method="post">

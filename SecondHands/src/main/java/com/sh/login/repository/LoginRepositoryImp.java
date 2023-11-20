@@ -36,13 +36,12 @@ public class LoginRepositoryImp implements LoginRepositoryI {
          return false; // 로그인 실패
       }
    }
-
+   
    @Override
-   public List<Object> selectAll(LoginDTO loginDTO) {
-
-      List<Object> user1 = session.selectList(namespace + "selectAllU", loginDTO);
-      return user1;
-   }
+	public LoginDTO getLoginDTO(String userId) {
+	   	LoginDTO user = session.selectOne(namespace + "selectAllU", userId);
+		return user;
+	}
 
    @Override
    public int update(LoginDTO loginDTO) {

@@ -379,16 +379,16 @@ footer a:hover {
    <c:set var="selectedUserList" value="${sessionScope.selectedUser}" />
    <%
    LoginDTO user = (LoginDTO) session.getAttribute("user");
-   List<LoginDTO> selectedUser = (List<LoginDTO>) session.getAttribute("selectedUser");
+   LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
    List<Object> chatList = (List<Object>) request.getAttribute("chatList"); // chatList 추가
    %>
 
    <%
-   if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
-      LoginDTO firstSelectedUser = selectedUser.get(0);
+   if (user != null && selectedUser != null) {
+      LoginDTO firstSelectedUser = selectedUser;
    %>
-   <c:if test="${not empty user and not empty selectedUserList}">
-      <c:set var="selectedUser" value="${selectedUserList[0]}" />
+   <c:if test="${not empty user}">
+      <c:set var="selectedUser" value="${selectedUser}" />
 
 
       <header>
@@ -408,7 +408,7 @@ footer a:hover {
 
                   <h2>
                      <%
-                     if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+                     if (user != null && selectedUser != null) {
                      %>
                      Welcome,
                      <%=firstSelectedUser.getUser_nickname()%>님
@@ -474,7 +474,7 @@ footer a:hover {
             </form>
          </div>
          <%
-         if (user != null && selectedUser != null && !selectedUser.isEmpty()) {
+         if (user != null && selectedUser != null) {
          %>
          <div class="header-btn2">
             <form action="/testing/logout" method="post">
@@ -573,7 +573,7 @@ footer a:hover {
    </footer>
 
 
-   <c:if test="${empty user or empty selectedUserList}">
+   <c:if test="${empty user}">
       <p>유저 정보가 없습니다.</p>
    </c:if>
 

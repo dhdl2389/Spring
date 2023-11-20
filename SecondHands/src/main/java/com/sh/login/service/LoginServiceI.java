@@ -8,7 +8,7 @@ public interface LoginServiceI {
 
    public boolean checkLogin(LoginDTO loginDTO);
 
-   List<Object> selectAll(LoginDTO loginDTO);
+   LoginDTO getLoginDTO(String userId);
 
    public int updateUser(LoginDTO loginDTO);
    

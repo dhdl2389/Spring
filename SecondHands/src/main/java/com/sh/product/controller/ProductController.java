@@ -86,12 +86,20 @@ public class ProductController {
 	      return "products/productDetail";
 	   }
 
-	@PostMapping("/products/updateDate")
-	public String updateDate(@RequestParam String boardId) {
-
-		productservice.updateDate(boardId);
-		return "redirect:/scrollHome";
-	}
+	   //끌어올리기
+	   @PostMapping("/products/updateDate")
+	   public String updateDate(@RequestParam String boardId) {
+	      productservice.updateDate(boardId);
+	      return "redirect:/scrollHome";
+	   }
+	   
+	   
+	   //끌어올리기 Ajax
+	   @ResponseBody
+	   @PostMapping("/products/upEvent")
+	   public void upEvent(@RequestParam String boardId) {
+	      productservice.updateDate(boardId);
+	   }
 	///////////////////////////// 상품등록
 	///////////////////////////// /////////////////////////////////////////////////////////////////////
 
