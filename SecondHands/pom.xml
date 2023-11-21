@@ -15,18 +15,18 @@
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
 	<dependencies>
-	
-	      <dependency>
-         <groupId>org.springframework</groupId>
-         <artifactId>spring-websocket</artifactId>
-         <version>${org.springframework-version}</version>
-      </dependency>
-      <dependency>
-         <groupId>com.fasterxml.jackson.core</groupId>
-         <artifactId>jackson-databind</artifactId>
-         <version>2.9.6</version>
-      </dependency>
-	
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-websocket</artifactId>
+			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+			<version>2.9.6</version>
+		</dependency>
+
 		<!-- 이메일 인증 dependency -->
 		<dependency>
 			<groupId>org.springframework</groupId>
@@ -34,11 +34,11 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
-	<dependency>
-    <groupId>com.sun.mail</groupId>
-    <artifactId>javax.mail</artifactId>
-    <version>1.6.2</version> <!-- 최신 버전에 맞게 업데이트해 주세요 -->
-</dependency>
+		<dependency>
+			<groupId>com.sun.mail</groupId>
+			<artifactId>javax.mail</artifactId>
+			<version>1.6.2</version> <!-- 최신 버전에 맞게 업데이트해 주세요 -->
+		</dependency>
 
 
 		<!-- 파일/업로드 gson 관련 디펜던시 ^^ -->
@@ -268,8 +268,8 @@
 		<!-- Servlet -->
 		<dependency>
 			<groupId>javax.servlet</groupId>
-			<artifactId>servlet-api</artifactId>
-			<version>2.5</version>
+			<artifactId>javax.servlet-api</artifactId>
+			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>

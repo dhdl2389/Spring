@@ -523,14 +523,22 @@ width: 1000px;
         <th>채팅하기</th>
         <th>채팅삭제</th>
     </tr>
-    <c:forEach items="${chatList}" var="chat" varStatus="loop">
+   <c:forEach items="${chatList}" var="chat" varStatus="loop">
         <tr>
             <td>${loop.index + 1}</td>
             <td>${chat.board_Title}</td>
             <td>${chat.user_nickname}</td>
             <td>
                 <form action="/testing/inchat" method="post">
-                    <input type="hidden" name="chat_code" value="${chat.chat_code}" />
+                    <input type="text" name="chat_code" value="${chat.chat_code}" />
+                    sell_code:<input type="text" name="sell_code" value="${chat.sell_code}" />
+                    buy_code:<input type="text" name="buy_code" value="${chat.buy_code}" />
+                    <input type="text" name="board_id" value="${chat.board_id}" />
+                    <input type="text" name="board_Price" value="${chat.board_Price}" />
+                    <input type="text" name="board_Img" value="${chat.board_Img}" />
+                    <input type="text" name="board_Title" value="${chat.board_Title}" />
+                    
+                    
                     <button type="submit">채팅</button>
                 </form>
             </td>

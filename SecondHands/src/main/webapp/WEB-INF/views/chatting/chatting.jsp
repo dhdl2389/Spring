@@ -15,7 +15,6 @@
    src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-
     var wsocket;
     var selectedNickname = "";
 
@@ -91,10 +90,12 @@
         $('#exitBtn').click(function() { disconnect(); });
     });
 
-    // 상대방의 메시지를 대화창에 출력
+ // 상대방의 메시지를 대화창에 출력
     function appendRecvMessage(msg, sender) {
         if (sender != selectedNickname) {
-            $("#chatMessageArea").append("<div class='recv'>" +  "상대 채팅: " + msg + "</div>");
+            $("#chatMessageArea").append("<div class='recv'>" +"<br>"+  $('#targetNickname').val()+"님 :" + msg + "</div>");
+            
+
         } 
         scrollTop();
     }
@@ -102,9 +103,8 @@
     // 자신의 메시지를 대화창에 출력
     function appendSendMessage(sender, msg) {
         if (sender != selectedNickname) {
-           //selectedUser.getUser_nickname()
-           //selectedProduct.getUser_nickname()
-            $("#chatMessageArea").append("<div class='send'>" + "내 채팅:  " + msg + "</div>");
+            $("#chatMessageArea").append("<div class='send'>" + "<br>"+  $('#nickname').val()+"님 :" + msg + "</div>");
+
         }
         scrollTop();
     }
@@ -139,21 +139,44 @@
 </style>
 </head>
 <body>
-   
- <c:forEach items="${chatCode}" var="chat">
 
- <input type="text" id="nickname" value="${chat}">
- <input type="text" id="targetNickname" value="${chat}">
+       
+
+<c:set var="nickNameCheck" value="${user.user_nickname eq nickName}" />
+<c:set var="TargetNickNameCheck" value="${user.user_nickname eq targetNickName}" />
+
+<c:set var="my_heatCheck" value="${user.user_heat eq my_heat}" />
+<c:set var="target_heatCheck" value="${user.user_heat eq target_heat}" />
+
+<!-- 
+    'nickNameCheck'와 'TargetNickNameCheck' 변수에는 각각 'true' 또는 'false'가 저장됩니다.
+    해당 변수들을 사용하여 'nickname'과 'targetNickname' input 요소의 값을 설정합니다.
+    'nickNameCheck'가 'true'일 경우 'nickName'이 'nickname' input에 설정되며,
+    그렇지 않은 경우 'targetNickName'이 'nickname' input에 설정됩니다.
+    'TargetNickNameCheck'가 'true'일 경우 'nickName'이 'targetNickname' input에 설정되며,
+    그렇지 않은 경우 'targetNickName'이 'targetNickname' input에 설정됩니다.
+-->
+
+<input type="hidden" id="nickname" value="${nickNameCheck ? nickName : targetNickName}">
+<input type="hidden" id="targetNickname" value="${TargetNickNameCheck ? nickName : targetNickName}">
+
+<input type="hidden" id=my_heat value="${my_heatCheck ? my_heat : target_heat}">
+<input type="hidden" id="target_heat" value="${target_heatCheck ? my_heat : target_heat}">
+
 <input type="button" id="connectBtn" value="입장" onclick="connect()">
 <input type="button" id="exitBtn" value="나가기" onclick="disconnect()">
 <h1>대화 영역</h1>
+	<div>${board_Title}</div>
+		<div>${board_Price}</div>
+	<div>${board_Img}</div>
+	<div>${target_heatCheck ? my_heat : target_heat}℃ </div>
+
+
 <div id="chatArea">
     <div id="chatMessageArea"></div>
 </div>
 <br />
 <input type="text" id="message">
 <input type="button" id="sendBtn" value="전송" onclick="send()">
-    </c:forEach>
-
 </body>
 </html>

@@ -2,7 +2,7 @@
 <section name="Workbench">
 	<item key="org.eclipse.jdt.ui.last.selected.jre.kind2" value="2"/>
 	<item key="org.eclipse.jdt.ui.last.selected.execution.enviroment" value="JavaSE-11"/>
-	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\dhdl2\OneDrive\바탕 화면"/>
+	<item key="org.eclipse.jdt.ui.lastextjar" value="C:\Users\dhdl2\OneDrive\바탕 화면\apache-tomcat-9.0.80\bin"/>
 	<item key="TypeHierarchyViewPart.hierarchyview" value="2"/>
 	<item key="TypeHierarchyViewPart.qualifiednames" value="false"/>
 	<item key="TypeHierarchyViewPart.linkeditors" value="false"/>
@@ -155,5 +155,19 @@
 		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_HEIGHT" value="300"/>
 		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_SIZE" value="true"/>
 		<item key="org.eclipse.jdt.internal.ui.text.JavaOutlineInformationControlDIALOG_USE_PERSISTED_LOCATION" value="false"/>
+	</section>
+	<section name="NewAnnotationWizardPage">
+		<item key="add_documented" value="false"/>
+		<section name="AddRetention">
+			<item key="enabled" value="false"/>
+			<list key="selectedEnums">
+				<item value="CLASS"/>
+			</list>
+		</section>
+		<section name="AddTarget">
+			<item key="enabled" value="false"/>
+			<list key="selectedEnums">
+			</list>
+		</section>
 	</section>
 </section>

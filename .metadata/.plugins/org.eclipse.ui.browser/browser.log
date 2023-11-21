@@ -131,3 +131,64 @@
 11월 20, 2023 17:16:18.615 [27324:22596:1120/171618.615:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 11월 20, 2023 17:16:18.615 [27324:22596:1120/171618.615:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
 11월 20, 2023 17:19:53.603 [27324:22596:1120/171953.603:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 20, 2023 17:50:15.291 [27324:30380:1120/175015.291:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 21, 2023 08:39:15.98 [27324:30380:1121/083914.973:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 21, 2023 08:39:34.165 [27324:22596:1121/083934.165:ERROR:device_event_log_impl.cc(192)] [08:39:34.164] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+11월 21, 2023 10:47:03.00 [27324:22596:1121/104702.999:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 21, 2023 10:54:18.555 [27324:22596:1121/105418.555:ERROR:CONSOLE(1)] "Uncaught (in promise) RangeError: Invalid line number 1250 in 1-line document", source: devtools://devtools/bundled/devtools-frontend/front_end/third_party/codemirror.next/chunk/codemirror.js (1)
+11월 21, 2023 11:10:17.35 [27324:22596:1121/111017.035:ERROR:device_event_log_impl.cc(192)] [11:10:17.034] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+11월 21, 2023 12:31:53.494 NEW SESSION
+11월 21, 2023 12:31:53.494 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 21, 2023 12:34:37.38 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 21, 2023 13:22:14.736 [39884:27420:1121/132214.735:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
+
+11월 21, 2023 13:37:51.938 NEW SESSION
+11월 21, 2023 13:37:51.938 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 21, 2023 13:39:04.85 [7812:8472:1121/133904.084:ERROR:device_event_log_impl.cc(192)] [13:39:04.084] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
+
+11월 21, 2023 14:18:28.197 NEW SESSION
+11월 21, 2023 14:18:28.197 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 21, 2023 15:16:28.117 [1121/151628.116:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:16:28.118 [1121/151628.117:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:20:43.576 [1121/152043.576:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:20:43.576 [1121/152043.576:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:33:26.632 [1121/153326.631:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:33:26.632 [1121/153326.632:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:35:10.17 [1121/153510.017:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:35:10.18 [1121/153510.017:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:43:54.165 [1121/154354.165:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:43:54.166 [1121/154354.166:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:46:07.810 [1121/154607.810:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:46:07.811 [1121/154607.810:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:47:38.464 [1121/154738.463:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:47:38.465 [1121/154738.465:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:49:56.381 [1121/154956.381:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:49:56.382 [1121/154956.382:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:51:10.863 [1121/155110.862:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 15:51:10.864 [1121/155110.863:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 16:14:32.549 [1121/161432.548:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 16:14:32.550 [1121/161432.549:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 16:16:31.525 [1121/161631.525:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 16:16:31.526 [1121/161631.525:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 16:40:52.184 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 21, 2023 17:02:07.764 [27100:26880:1121/170207.764:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 21, 2023 17:04:39.848 [1121/170439.847:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:04:39.848 [1121/170439.848:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:06:59.398 [27100:26880:1121/170659.398:ERROR:CONSOLE(1)] "Uncaught (in promise) RangeError: Invalid line number 1221 in 1-line document", source: devtools://devtools/bundled/devtools-frontend/front_end/third_party/codemirror.next/chunk/codemirror.js (1)
+11월 21, 2023 17:09:10.344 [1121/170910.344:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:09:10.345 [1121/170910.344:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:09:47.596 [1121/170947.596:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:09:47.597 [1121/170947.597:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:12:00.609 [1121/171200.609:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:12:00.610 [1121/171200.610:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:36:43.426 [1121/173643.426:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:36:43.429 [1121/173643.426:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:37:03.508 [1121/173703.508:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:37:03.508 [1121/173703.508:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:39:49.275 [1121/173949.275:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:39:49.275 [1121/173949.275:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:43:52.954 [1121/174352.954:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:43:52.956 [1121/174352.954:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:44:01.229 [1121/174401.229:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+11월 21, 2023 17:44:01.231 [1121/174401.229:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)

@@ -793,7 +793,7 @@ header.menu-open h2 {
          LikeList();
       });
       
-      // 검색
+   // 검색
       $("#srSearch").on('input', function() {
           let searchTerm = $("#srSearch").val();
           loadSearchResults(searchTerm);

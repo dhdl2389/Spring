@@ -699,6 +699,7 @@ footer a:hover {
       %>
    
    
+   
    </header>
 
 
@@ -708,7 +709,7 @@ footer a:hover {
 
    <!-- 로그인한 유저 코드와 게시글 작성한 유저 코드가 일치할시 수정/삭제버튼이 나옴 -->
    <c:set var="owner"
-      value="${product.user_code  == selectedUser[0].user_code}"></c:set>
+      value="${product.user_code  == selectedUser}"></c:set>
 
 
 
@@ -795,7 +796,7 @@ footer a:hover {
                   신청한 채팅입니다.</p>
             </c:if>
 
-            <c:if test="${selectedUser[0].user_code ne product.user_code}">
+            <c:if test="${selectedUser ne product.user_code}">
                <div class="buy_product">
                   <form action="/testing/order">
                      <input type="hidden" name="boardId" value="${product.board_Id}">
@@ -812,18 +813,21 @@ footer a:hover {
 
                   <div class="chat_likes">
                      <form action="/testing/checkCode" method="post">
-                        <input type="hidden" name="buy_code"
-                           value="${selectedUser[0].user_code}" required><br>
-                        <input type="hidden" name="sell_code"
+                        <input type="text" name="buy_code"
+                           value="${selectedUser.user_code}" required><br>
+                        <input type="text" name="sell_code"
                            value="${product.user_code}" required><br> <input
                            type="hidden" name="board_id" value="${product.board_Id}"
                            required><br>
-                       <input type="hidden" name="board_Title" value="${product.board_Title}" required><br> 
-                           <input type="hidden" name="user_nickname" value="${product.user_nickname}" required><br>
+                       <input type="text" name="board_Title" value="${product.board_Title}" required><br> 
+                           <input type="text" name="user_nickname" value="${product.user_nickname}" required><br>
+                           <input type="text" name="board_Price" value="${product.board_Price}" required><br>
+                            <input type="text" name="board_Img" value="${product.board_Img}" required><br>
+                           
                         <button type="submit">채팅신청하기</button>
 
                      </form>
-                                                              <form action="/testing/scrollHome">
+                     <form action="/testing/scrollHome">
          <button type="submit">리스트로 돌아가기</button>
       </form>
                      <div class="like1">

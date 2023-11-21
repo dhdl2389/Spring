@@ -1,20 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.acorn.service.MyRepository"/>
-    <fullyQualifiedTypeName name="lombok.extern.log4j.Log4j"/>
-    <fullyQualifiedTypeName name="com.acorn.inter.MemberService"/>
-    <fullyQualifiedTypeName name="com.sun.java.util.jar.pack.Package.Class.Member"/>
-    <fullyQualifiedTypeName name="java.lang.reflect.Member"/>
-    <fullyQualifiedTypeName name="lombok.RequiredArgsConstructor"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RestController"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.RequestBody"/>
-    <fullyQualifiedTypeName name="java.util.Properties"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
-    <fullyQualifiedTypeName name="com.acorn.testing.kakaouserDAO"/>
     <fullyQualifiedTypeName name="com.acorn.testing.KakaoUserDTO"/>
     <fullyQualifiedTypeName name="com.acorn.testing2.AddressServiceI"/>
     <fullyQualifiedTypeName name="com.acorn.testing.KakaoMemberRepositoryI"/>
-    <fullyQualifiedTypeName name="java.util.Date"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
     <fullyQualifiedTypeName name="com.acorn.testing.KakaoMemberServiceI"/>
     <fullyQualifiedTypeName name="com.sh.login.UserDTO"/>
@@ -25,9 +13,7 @@
     <fullyQualifiedTypeName name="java.sql.Driver"/>
     <fullyQualifiedTypeName name="java.sql.DriverManager"/>
     <fullyQualifiedTypeName name="java.sql.PreparedStatement"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.PlatformTransactionManager"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.TransactionStatus"/>
     <fullyQualifiedTypeName name="org.springframework.transaction.support.DefaultTransactionDefinition"/>
     <fullyQualifiedTypeName name="com.acorn.day9.UserService"/>
@@ -38,7 +24,6 @@
     <fullyQualifiedTypeName name="com.sh.kakaologin.repository.KakaoMemberRepositoryI"/>
     <fullyQualifiedTypeName name="com.sh.kakaologin.domain.KakaoUserDTO"/>
     <fullyQualifiedTypeName name="com.sh.myPage.domain.MyPageDTO"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.sh.login.LoginService"/>
     <fullyQualifiedTypeName name="com.sh.saveUser.domain.UserDTO"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.ModelAttribute"/>
@@ -51,13 +36,28 @@
     <fullyQualifiedTypeName name="java.util.Map"/>
     <fullyQualifiedTypeName name="java.util.HashMap"/>
     <fullyQualifiedTypeName name="oracle.jdbc.proxy.annotation.Post"/>
-    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
     <fullyQualifiedTypeName name="java.util.List"/>
-    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="javax.servlet.http.HttpSession"/>
     <fullyQualifiedTypeName name="com.sh.product.domain.ProductDTO"/>
-    <fullyQualifiedTypeName name="java.lang.Override"/>
     <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.PostMapping"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Controller"/>
+    <fullyQualifiedTypeName name="org.springframework.web.bind.annotation.GetMapping"/>
     <fullyQualifiedTypeName name="lombok.Data"/>
+    <fullyQualifiedTypeName name="javax.servlet.http.HttpSessionListener"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Repository"/>
+    <fullyQualifiedTypeName name="com.sh.VisitCount.domain.visitorDTO"/>
+    <fullyQualifiedTypeName name="com.sh.VisitCount.domain.VisitorDTO"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Service"/>
+    <fullyQualifiedTypeName name="java.lang.Override"/>
+    <fullyQualifiedTypeName name="com.sh.VisitCount.Listner.WebListener"/>
+    <fullyQualifiedTypeName name="javax.servlet.annotation.WebListener"/>
     <fullyQualifiedTypeName name="java.sql.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.ImportResource"/>
+    <fullyQualifiedTypeName name="com.sh.VisitCount.service.visitCountService"/>
+    <fullyQualifiedTypeName name="java.util.Date"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
+    <fullyQualifiedTypeName name="com.sh.VisitCount.service.visitCountServiceImp"/>
+    <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
+    <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
+    <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan"/>
 </qualifiedTypeNameHistroy>
