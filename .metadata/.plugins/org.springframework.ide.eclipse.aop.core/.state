@@ -11,6 +11,7 @@
 <aop-project name="day5Test"/>
 <aop-project name="day9"/>
 <aop-project name="dbtest"/>
+<aop-project name="mysqlPrj"/>
 <aop-project name="sessionSU"/>
 <aop-project name="cartBatis"/>
 <aop-project name="helloPrj"/>

@@ -10,8 +10,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class LogoutController {
 
 	@PostMapping("/logout")
-	public String logout(HttpSession s) {
-		s.invalidate();		
+	public String logout(HttpServletRequest request) {
+		HttpSession session = request.getSession(false);
+		if (session != null) {
+			session.invalidate(); // 세션 무효화
+		}
 		return "/homePage/homePage"; // 로그아웃 성공 페이지 또는 로그인 페이지로 리다이렉트
 	}
 }

@@ -192,3 +192,11 @@
 11월 21, 2023 17:43:52.956 [1121/174352.954:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
 11월 21, 2023 17:44:01.229 [1121/174401.229:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
 11월 21, 2023 17:44:01.231 [1121/174401.229:ERROR:filesystem_win.cc(130)] GetFileAttributes C:\Users\dhdl2\AppData\Local\Google\Chrome\User Data\Crashpad\attachments\7f2b0df2-d121-4d0e-afbe-28ba6872b786: 지정된 파일을 찾을 수 없습니다. (0x2)
+
+11월 22, 2023 10:50:43.586 NEW SESSION
+11월 22, 2023 10:50:43.586 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 22, 2023 11:07:10.650 [25080:28252:1122/110710.650:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+11월 22, 2023 14:26:29.912 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 22, 2023 15:33:31.48 [60804:83724:1122/153331.048:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+11월 22, 2023 16:33:50.308 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+11월 22, 2023 17:45:14.741 [94408:94480:1122/174514.741:ERROR:interface_endpoint_client.cc(702)] Message 0 rejected by interface blink.mojom.WidgetHost
