@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <qualifiedTypeNameHistroy>
-    <fullyQualifiedTypeName name="com.acorn.testing2.AddressServiceI"/>
     <fullyQualifiedTypeName name="com.acorn.testing.KakaoMemberRepositoryI"/>
     <fullyQualifiedTypeName name="com.sun.tools.javac.util.List"/>
     <fullyQualifiedTypeName name="com.acorn.testing.KakaoMemberServiceI"/>
@@ -54,10 +53,11 @@
     <fullyQualifiedTypeName name="org.springframework.context.annotation.ImportResource"/>
     <fullyQualifiedTypeName name="com.sh.VisitCount.service.visitCountService"/>
     <fullyQualifiedTypeName name="java.util.Date"/>
-    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
     <fullyQualifiedTypeName name="com.sh.VisitCount.service.visitCountServiceImp"/>
     <fullyQualifiedTypeName name="org.springframework.stereotype.Component"/>
     <fullyQualifiedTypeName name="org.springframework.context.ApplicationContext"/>
     <fullyQualifiedTypeName name="org.springframework.context.annotation.ComponentScan"/>
     <fullyQualifiedTypeName name="java.util.Scanner"/>
+    <fullyQualifiedTypeName name="org.springframework.web.client.HttpClientErrorException"/>
+    <fullyQualifiedTypeName name="org.springframework.beans.factory.annotation.Autowired"/>
 </qualifiedTypeNameHistroy>

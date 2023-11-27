@@ -12,7 +12,7 @@
 
 
 <!--${path} -->
-<!--${path2}  -->
+<!--${path}2}  -->
 
 <!DOCTYPE html>
 <html>
@@ -399,7 +399,7 @@ header.menu-open h2 {
    <header>
       <div class="header-logo">
          <div class="menu-icon">&#9776;</div>
-         <form action="/secondHands/homePage">
+         <form action="${path}/homePage">
             <button type="submit">Second Hands</button>
          </form>
       </div>
@@ -420,14 +420,14 @@ header.menu-open h2 {
                </h2>
             </li>
             <li>
-               <form action="/secondHands/myPage" method="post">
+               <form action="${path}/myPage" method="post">
                   <input type="hidden" name="user_code"
                      value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">마이페이지</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/chattingList" method="post">
+               <form action="${path}/chattingList" method="post">
                   <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
                      value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">채팅 ${fn:length(chatList)} 개</button>
@@ -436,27 +436,27 @@ header.menu-open h2 {
                </form>
             </li>
             <li>
-               <form action="/secondHands/products/add">
+               <form action="${path}/products/add">
                   <button type="submit">게시글작성</button>
                </form>
             </li>
                 <li>
-               <form action="/secondHands/sellProducts">
+               <form action="${path}/sellProducts">
                   <button type="submit">판매내역</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/showOrder">
+               <form action="${path}/showOrder">
                   <button type="submit">주문내역</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/qna">
+               <form action="${path}/qna">
                   <button type="submit">문의하기</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/logout" method="post">
+               <form action="${path}/logout" method="post">
                   <button type="submit">로그아웃</button>
                </form>
             </li>
@@ -465,7 +465,7 @@ header.menu-open h2 {
             %>
             <li><h2>로그인이 필요한 서비스입니다.</h2></li>
             <li>
-               <form action="/secondHands/login">
+               <form action="${path}/login">
                   <button type="submit">가입 및 로그인</button>
                </form>
             </li>
@@ -476,13 +476,13 @@ header.menu-open h2 {
          </ul>
       </div>
       <div class="header-btn">
-         <form action="/secondHands/scrollHome">
+         <form action="${path}/scrollHome">
             <button type="submit">중고거래</button>
          </form>
          <%
       if (user != null && selectedUser != null) {
       %>
-         <form action="/secondHands/localproductList" method="post">
+         <form action="${path}/localproductList" method="post">
             <input type="hidden" name="newLocation" value="${detail_loc}" />
             <button id="localTransactionButton" type="submit">동네거래</button>
          </form>
@@ -503,7 +503,7 @@ header.menu-open h2 {
          <script>
         document.getElementById("loginAlertButton").addEventListener("click", function() {
             alert("로그인이 필요한 서비스 입니다.");
-            window.location.href = "/secondHands/login"; 
+            window.location.href = "${path}/login"; 
         });
     </script>
          <%
@@ -514,14 +514,14 @@ header.menu-open h2 {
       if (user != null && selectedUser != null) {
       %>
       <div class="header-btn2">
-         <form action="/secondHands/logout" method="post">
+         <form action="${path}/logout" method="post">
             <button type="submit">로그아웃</button>
          </form>
       </div>
       <%
       } else {
       %>
-      <form action="/secondHands/login">
+      <form action="${path}/login">
          <button type="submit">로그인</button>
       </form>
       <%
@@ -539,7 +539,7 @@ header.menu-open h2 {
          |
          <button id="srLike">관심상품</button>
          |
-             <form action="/secondHands/products/add"  onsubmit="return checkLogin()">
+             <form action="${path}/products/add"  onsubmit="return checkLogin()">
                   <button type="submit"  >게시글작성</button>
                </form>
          <div class="search">
@@ -658,7 +658,7 @@ header.menu-open h2 {
                                    
                    <%if(user != null){%>
                    <h2 class="card_title">   
-                   <a class="card_a" href="/secondHands/products/detail?boardId=<%="${item.board_id}" %>&user_code=<%="${item.user_code}"%>">
+                   <a class="card_a" href="${path}/products/detail?boardId=<%="${item.board_id}" %>&user_code=<%="${item.user_code}"%>">
                    <%="${item.board_title}"%> </a></h2>
                   <%}else{%>
                   <h2 class="card_title"><a class="card_a" onclick = "goLogin()"> <%="${item.board_title}"%> </a></h2>

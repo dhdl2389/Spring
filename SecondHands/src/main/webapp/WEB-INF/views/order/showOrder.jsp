@@ -5,6 +5,7 @@
 <%@ page import="com.sh.login.domain.LoginDTO"%>
 <%@ page import="com.sh.order.domain.OrderDTO"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn"%>
+ <html xmlns:th="http://www.thymeleaf.org">
 <c:set var="path" value="${pageContext.request.contextPath}" />
 <!DOCTYPE html>
 <html>
@@ -407,6 +408,9 @@ footer a:hover {
 
 
 
+
+
+
    <c:set var="user" value="${sessionScope.user}" />
    <c:set var="selectedUserList" value="${sessionScope.selectedUser}" />
 
@@ -424,7 +428,7 @@ footer a:hover {
       <header>
          <div class="header-logo">
             <div class="menu-icon">&#9776;</div>
-            <form action="/secondHands/homePage">
+            <form action="${path}/homePage">
                <button type="submit">Second Hands</button>
             </form>
          </div>
@@ -435,14 +439,14 @@ footer a:hover {
 %>
      
       <li>
-            <form action="/secondHands/admin" method="post">
+            <form action="${path}/admin" method="post">
             <button type="submit">관리자 페이지</button>
         </form>
    </li>     <%
          }
          %>
                <li><img
-                  src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+                  src="${path}}/images/<%=firstSelectedUser.getUser_image()%>"
                   style="border-radius: 50%; width: 100px; height: 100px;">
                   <h2>
                      <%
@@ -452,14 +456,14 @@ footer a:hover {
                      <%=firstSelectedUser.getUser_nickname()%>님
                   </h2></li>
                <li>
-                  <form action="/secondHands/myPage" method="post">
+                  <form action="${path}/myPage" method="post">
                      <input type="hidden" name="user_code"
                         value="<%=firstSelectedUser.getUser_code()%>">
                      <button type="submit">마이페이지</button>
                   </form>
                </li>
                <li>
-                  <form action="/secondHands/chattingList" method="post">
+                  <form action="${path}/chattingList" method="post">
                      <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
                         value="<%=firstSelectedUser.getUser_code()%>">
                      <button type="submit">채팅 ${fn:length(chatList)} 개</button>
@@ -468,27 +472,27 @@ footer a:hover {
                   </form>
                </li>
                <li>
-                  <form action="/secondHands/products/add">
+                  <form action="${path}/products/add">
                      <button type="submit">게시글작성</button>
                   </form>
                </li>
                  <li>
-               <form action="/secondHands/sellProducts">
+               <form action="${path}/sellProducts">
                   <button type="submit">판매내역</button>
                </form>
             </li>
                <li>
-                  <form action="/secondHands/showOrder">
+                  <form action="${path}/showOrder">
                      <button type="submit">주문내역</button>
                   </form>
                </li>
                <li>
-                  <form action="/secondHands/qna">
+                  <form action="${path}/qna">
                      <button type="submit">문의하기</button>
                   </form>
                </li>
                <li>
-                  <form action="/secondHands/logout" method="post">
+                  <form action="${path}/logout" method="post">
                      <button type="submit">로그아웃</button>
                   </form>
                </li>
@@ -497,7 +501,7 @@ footer a:hover {
                %>
                <li><h2>로그인이 필요한 서비스입니다.</h2></li>
                <li>
-                  <form action="/secondHands/login">
+                  <form action="${path}/login">
                      <button type="submit">가입 및 로그인</button>
                   </form>
                </li>
@@ -508,10 +512,10 @@ footer a:hover {
             </ul>
          </div>
          <div class="header-btn">
-            <form action="/secondHands/scrollHome">
+            <form action="${path}/scrollHome">
                <button type="submit">중고거래</button>
             </form>
-            <form action="/secondHands/localproductList" method="post">
+            <form action="${path}/localproductList" method="post">
                <input type="hidden" name="newLocation" value="${detail_loc}" />
                <button type="submit">동네거래</button>
             </form>
@@ -520,14 +524,14 @@ footer a:hover {
          if (user != null && selectedUser != null) {
          %>
          <div class="header-btn2">
-            <form action="/secondHands/logout" method="post">
+            <form action="${path}/logout" method="post">
                <button type="submit">로그아웃</button>
             </form>
          </div>
          <%
          } else {
          %>
-         <form action="/secondHands/login">
+         <form action="${path}/login">
             <button type="submit">로그인</button>
          </form>
          <%
@@ -580,7 +584,7 @@ footer a:hover {
                         <td>${order.delivery_req}</td>
                         <td>${order.order_date}</td>
                         <td>
-                           <form action="/secondHands/heat" method="post">
+                           <form action="${path}/heat" method="post">
                               <input type="hidden" name="sell_code"
                                  value="${order.sell_code}" required> <input
                                  type="hidden" name="board_id" value="${order.board_id}"
@@ -613,6 +617,21 @@ footer a:hover {
       }
    </script>
 
+
+
+카카오페이 결제가 정상적으로 완료되었습니다.
+ 
+결제일시:     [[${info.approved_at}]]<br/>
+주문번호:    [[${info.partner_order_id}]]<br/>
+상품명:    [[${info.item_name}]]<br/>
+상품수량:    [[${info.quantity}]]<br/>
+결제금액:    [[${info.amount.total}]]<br/>
+결제방법:    [[${info.payment_method_type}]]<br/>
+
+ 
+ 
+ 
+<h2>[[${info}]]</h2>
 
 
 

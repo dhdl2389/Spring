@@ -8,6 +8,7 @@
 <%@ page import="java.util.*"%>
 <c:set var="path" value="${pageContext.request.contextPath}" />
 
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -410,6 +411,7 @@ footer a:hover {
 }
 
 .modal-content {
+   border-radius: 12px;
    background-color: #fefefe;
    position: absolute;
    top: 50%;
@@ -422,15 +424,21 @@ footer a:hover {
    text-align: center;
    color: black;
 }
+#new-location{
 
+font-weight: bold;
+}
 .localsubBtn {
+    position: fixed;
+    bottom: 7px;
+    right: 285px;
    background-color: #ff6f0f;
    color: #fff;
    border: none;
    border-radius: 4px;
    cursor: pointer;
    transition: background-color 0.3s, color 0.3s;
-   margin-top: -1px;
+   margin-top: 15px;
 }
 
 .localsubBtn:hover {
@@ -493,7 +501,7 @@ footer a:hover {
 
 
    <header>
-      <form action="/secondHands/homePage">
+      <form action="${path}/homePage">
          <button type="submit">Second Hands</button>
       </form>
       <div class="menu-icon">&#9776;</div>
@@ -508,7 +516,7 @@ footer a:hover {
             %>
 
             <li>
-               <form action="/secondHands/admin" method="post">
+               <form action="${path}/admin" method="post">
                   <button type="submit">관리자 페이지</button>
                </form>
             </li>
@@ -524,14 +532,14 @@ footer a:hover {
                   <%=firstSelectedUser.getUser_nickname()%>님
                </h2></li>
             <li>
-               <form action="/secondHands/myPage" method="post">
+               <form action="${path}/myPage" method="post">
                   <input type="hidden" name="user_code"
                      value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">마이페이지</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/chattingList" method="post">
+               <form action="${path}/chattingList" method="post">
                   <input type="hidden" name="buy_code" placeholder="채팅 코드 입력"
                      value="<%=firstSelectedUser.getUser_code()%>">
                   <button type="submit">채팅 ${fn:length(chatList)} 개</button>
@@ -540,23 +548,23 @@ footer a:hover {
                </form>
             </li>
             <li>
-               <form action="/secondHands/sellProducts">
+               <form action="${path}/sellProducts">
                   <button type="submit">판매내역</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/showOrder">
+               <form action="${path}/showOrder">
                   <button type="submit">구매내역</button>
                </form>
             </li>
 
             <li>
-               <form action="/secondHands/qna">
+               <form action="${path}/qna">
                   <button type="submit">문의하기</button>
                </form>
             </li>
             <li>
-               <form action="/secondHands/logout" method="post">
+               <form action="${path}/logout" method="post">
                   <button type="submit">로그아웃</button>
                </form>
             </li>
@@ -565,7 +573,7 @@ footer a:hover {
             %>
             <li><h2>로그인이 필요한 서비스입니다.</h2></li>
             <li>
-               <form action="/secondHands/login">
+               <form action="${path}/login">
                   <button type="submit">가입 및 로그인</button>
                </form>
             </li>
@@ -575,7 +583,7 @@ footer a:hover {
          </ul>
       </div>
 
-      <form action="/secondHands/scrollHome">
+      <form action="${path}/scrollHome">
          <button type="submit">중고거래</button>
       </form>
 
@@ -583,7 +591,7 @@ footer a:hover {
       <%
       if (user != null && selectedUser != null) {
       %>
-      <form action="/secondHands/localproductList" method="post">
+      <form action="${path}/localproductList" method="post">
          <input type="hidden" name="newLocation" value="${detail_loc}" />
          <button id="localTransactionButton" type="submit">동네거래</button>
       </form>
@@ -604,7 +612,7 @@ footer a:hover {
       <script>
         document.getElementById("loginAlertButton").addEventListener("click", function() {
             alert("로그인이 필요한 서비스 입니다.");
-            window.location.href = "/secondHands/login"; 
+            window.location.href = "${path}/login"; 
         });
     </script>
       <%
@@ -644,7 +652,7 @@ footer a:hover {
       <script>
          document.getElementById("find-me1").addEventListener("click", function() {
             alert("로그인이 필요한 서비스 입니다.");
-            window.location.href = "/secondHands/login"; 
+            window.location.href = "${path}/login"; 
         });
          </script>
       <%
@@ -657,13 +665,13 @@ footer a:hover {
       if (user != null && selectedUser != null) {
          LoginDTO firstSelectedUser = selectedUser;
       %>
-      <form action="/secondHands/logout" method="post">
+      <form action="${path}/logout" method="post">
          <button type="submit">로그아웃</button>
       </form>
       <%
       } else {
       %>
-      <form action="/secondHands/login">
+      <form action="${path}/login">
          <button type="submit">로그인</button>
       </form>
       <%
@@ -691,8 +699,8 @@ footer a:hover {
          <%
          } else {
          %><p>지금 저희와 함께하세요.</p>
-         <form id="saveForm" method="post" action="/secondHands/saveForm">
-            <a class="link2" href="/secondHands/shSaveUser">회원가입</a>
+         <form id="saveForm" method="post" action="${path}/saveForm">
+            <a class="link2" href="${path}/shSaveUser">회원가입</a>
          </form>
 
          <%
@@ -727,7 +735,7 @@ footer a:hover {
          <%
          if (user != null && selectedUser != null) {
          %>
-         <form action="/secondHands/localproductList" method="post">
+         <form action="${path}/localproductList" method="post">
             <input type="hidden" name="newLocation" value="${detail_loc}" />
             <button id="localTransactionButton1" type="submit">동네거래</button>
          </form>
@@ -749,13 +757,13 @@ footer a:hover {
          <script>
     function redirectToLogin() {
         alert("로그인이 필요한 서비스입니다.");
-        window.location.href = "/secondHands/login";
+        window.location.href = "${path}/login";
     }
 </script>
          <%
          }
          %>
-         <form action="/secondHands/scrollHome">
+         <form action="${path}/scrollHome">
             <button type="submit">중고거래</button>
          </form>
 

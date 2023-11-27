@@ -3,6 +3,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ page import="com.sh.kakaologin.domain.KakaoUserDTO"%>
 <%@ page import="com.sh.saveUser.domain.UserDTO"%>
+<c:set var="path" value="${pageContext.request.contextPath}" />
 
 <!DOCTYPE html>
 <html>
@@ -207,7 +208,7 @@ footer a:hover {
 	<header>
 
 
-		<form action="/secondHands/homePage">
+		<form action="${path}/homePage">
 			<button type="submit" >Second Hands</button>
 		</form>
 		
@@ -303,14 +304,14 @@ footer a:hover {
 		<div class="inner-div">
 			<h2>LOGIN</h2>
 
-			<form id="kakaoForm" method="post" action="/secondHands/kakaoForm">
+			<form id="kakaoForm" method="post" action="${path}/kakaoForm">
 				<input type="hidden" id="user_kakao" name="user_kakao" value="" />
 				<input type="hidden" id="nickname" name="nickname" value="" /> <input
 					type="hidden" id="profile_image" name="profile_image" value="" />
 			</form>
 
 
-			<form action="/secondHands/login" method="post">
+			<form action="${path}/login" method="post">
 				<div>
 					<label for="user_id"></label> <input type="text" id="user_id"
 					placeholder="아이디"	name="user_id">
@@ -339,8 +340,8 @@ footer a:hover {
 
 		
 			</form>
-<form id="saveForm" method="post" action="/secondHands/saveForm" style="text-align: right;">
-    <a href="/secondHands/shSaveUser" style="text-decoration: none; color: #4d4d4d; font-weight: bold;">회원가입</a>
+<form id="saveForm" method="post" action="${path}/saveForm" style="text-align: right;">
+    <a href="${path}/shSaveUser" style="text-decoration: none; color: #4d4d4d; font-weight: bold;">회원가입</a>
 </form>
 			
 		</div>

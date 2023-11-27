@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="goLogin"/>
+		<item key="selection" value="headers.add"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
-			<item value="goLogin"/>
-			<item value="방지"/>
-			<item value="방자ㅣ"/>
-			<item value="폼 제출"/>
-			<item value="goLogin1"/>
-			<item value="로그인이 필요한"/>
-			<item value="admin"/>
-			<item value="detail_loc"/>
-			<item value="mysql"/>
-			<item value="user_code"/>
-			<item value="ora"/>
-			<item value="oracle"/>
-			<item value="oracel"/>
-			<item value="preventDefault"/>
-			<item value="verification_code"/>
+			<item value="headers.add"/>
+			<item value="init"/>
+			<item value="var map = new kakao.maps.Map(node, options);"/>
+			<item value="kakao.maps.load(function"/>
+			<item value="script"/>
+			<item value="document.write"/>
+			<item value="do"/>
+			<item value="write"/>
+			<item value="navigator.geolocation.getCurrentPosition"/>
+			<item value="확인되지"/>
+			<item value="localhost"/>
+			<item value="local"/>
+			<item value="testing"/>
+			<item value="new-location"/>
+			<item value="올바르지"/>
 		</list>
 		<list key="replacehistory">
 			<item value="location_form"/>
