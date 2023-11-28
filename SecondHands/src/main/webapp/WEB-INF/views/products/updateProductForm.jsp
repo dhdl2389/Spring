@@ -424,7 +424,7 @@ textarea {
          }
          %>
 		<li><img
-			src="${path}}/images/<%=firstSelectedUser.getUser_image()%>"
+			src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
 			style="border-radius: 50%; width: 100px; height: 100px;">
 			<h2>
 			<%

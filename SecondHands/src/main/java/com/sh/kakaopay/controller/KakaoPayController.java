@@ -117,7 +117,6 @@ public class KakaoPayController {
    System.out.println("33333333333333333333333333333333333333333333333333");
       log.info("kakaoPaySuccess pg_token : " + pg_token);
        model.addAttribute("info"+kakaopay.kakaoPayInfo(pg_token, order)); 
-      log.info("kakaoPaySuccess pg_token : " + kakaopay.kakaoPayInfo(pg_token, order));
 
       
       service.registerOrder(order);

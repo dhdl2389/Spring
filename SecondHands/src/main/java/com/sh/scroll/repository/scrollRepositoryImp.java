@@ -27,10 +27,11 @@ public class scrollRepositoryImp implements scrollRepositoryI{
    @Override
    public List<ScrollDTO> getScroll(int curpage, int pageSize, String mode) {
       int endIndex = pageSize*curpage;
-      int startIndex = endIndex - pageSize;
+      int startIndex = endIndex - pageSize+1;
       Map<String, Object> map = new HashMap<String,Object>();
-      map.put("endIndex", endIndex);
+      System.out.println("인덱스 : " + startIndex + ", " + endIndex);
       map.put("startIndex",startIndex);
+      map.put("endIndex", endIndex);
       
       return session.selectList( namespace + mode, map);
    }
@@ -54,6 +55,7 @@ public class scrollRepositoryImp implements scrollRepositoryI{
       int endIndex = pageSize*curpage;
       int startIndex = endIndex - pageSize;
       Map<String, Object> map = new HashMap<String,Object>();
+      System.out.println("동네시작 : " + startIndex + ", 동네 끝 : " + endIndex);
       map.put("endIndex", endIndex);
       map.put("startIndex",startIndex);
       map.put("detail_loc",detail_loc);

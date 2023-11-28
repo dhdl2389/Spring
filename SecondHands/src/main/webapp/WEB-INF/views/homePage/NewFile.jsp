@@ -183,7 +183,7 @@ header.menu-open h2 {
 			<ul>
 			         <li><h2> </h2></li>
 				<li>
-				   <img src="${path}}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
+				   <img src="${path}/images/<%=firstSelectedUser.getUser_image()%>" style="border-radius: 50%; width: 100px; height: 100px;">
 						<h2>
 						<%
 						if (user != null && selectedUser != null) {

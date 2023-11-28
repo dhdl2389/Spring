@@ -41,7 +41,7 @@
 
 	<p>카카오(다음) 주소찾기</p>
 	<div>Address</div>
-	<form id="addressForm" method="post" action="/${path}}/addressForm">
+	<form id="addressForm" method="post" action="/${path}/addressForm">
 		<input id="member_post" name="member_post" type="text" placeholder="Zip Code" readonly>
 		<input id="member_addr" name="member_addr" type="text" placeholder="Address" readonly>
 		<br> 

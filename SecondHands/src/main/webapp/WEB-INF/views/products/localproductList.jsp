@@ -416,7 +416,7 @@ border-radius: 12px;
          }
          %>
             <li><img
-               src="${path}}/images/<%=firstSelectedUser.getUser_image()%>"
+               src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
                style="border-radius: 50%; width: 100px; height: 100px;">
                <h2>
                   <%
@@ -587,7 +587,7 @@ border-radius: 12px;
               $("body").css("height", wrapH-(cursorH*3));
               let endSql = `         
                   <div style = 'height:200px; background-color: #333;  padding: 10px; text-align: center; color:white'>
-            	  &copy; 2023 에이콘아카데미 최종프로젝트 <br>   
+                 &copy; 2023 에이콘아카데미 최종프로젝트 <br>   
               <p><a href="https://github.com/dhdl2389">조장: 김재열</a> |
                     <a href="https://github.com/mvcfvsgdj">조원: 김민규 </a> |
                     <a href="https://github.com/kevinbj0">조원: 김병진 </a> |
@@ -665,7 +665,7 @@ border-radius: 12px;
     //좋아요 Insert
    function likeEvent(boardId) {
            $.ajax({
-               url: "${path}}/products/like",
+               url: "${path}/products/like",
                type: "POST",
                data: {
                    userId: userId,
@@ -675,11 +675,11 @@ border-radius: 12px;
                  if(data.onClick == false){
                     $("#"+boardId).empty();
                     //빈하트
-                    $("#"+boardId).append(`<img id="likeImg" src="${path}}/resources/product/heart.png">`);
+                    $("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/heart.png">`);
                  }else if(data.onClick == true){
                     $("#"+boardId).empty();
                     //꽉찬 하트
-                    $("#"+boardId).append(`<img id="likeImg" src="${path}}/resources/product/hfull.png">`);
+                    $("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/hfull.png">`);
                  }
                  
                  $("#srLike").empty();
@@ -699,7 +699,7 @@ border-radius: 12px;
     //좋아요 클릭 유무 따라 하트 출력
    function likeLoad(boardId) {
         $.ajax({
-            url: "${path}}/products/likeEvent",
+            url: "${path}/products/likeEvent",
             type: "POST",
             data: {
                 userId: userId,
@@ -709,11 +709,11 @@ border-radius: 12px;
               if(data == false){
                  $("#"+boardId).empty();
                  //빈하트
-                 $("#"+boardId).append(`<img id="likeImg" src="${path}}/resources/product/heart.png">`);
+                 $("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/heart.png">`);
               }else if(data == true){
                  $("#"+boardId).empty();
                  //꽉찬 하트
-                 $("#"+boardId).append(`<img id="likeImg" src="${path}}/resources/product/hfull.png">`);
+                 $("#"+boardId).append(`<img id="likeImg" src="${path}/resources/product/hfull.png">`);
               }
             },
             error: function(error) {
@@ -811,7 +811,7 @@ border-radius: 12px;
       if (!loading) {
         loading = true;
         $.ajax({
-           url: "${path}}/likeList",
+           url: "${path}/likeList",
            type: "POST",
            data: {userId:userId},
            success: function(data) {
