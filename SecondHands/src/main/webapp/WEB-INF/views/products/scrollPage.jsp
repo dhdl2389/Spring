@@ -376,8 +376,7 @@ header.menu-open h2 {
             // 문서 클릭 이벤트: 메뉴 영역이나 아이콘 외부를 클릭하면 메뉴 숨김
             $(document.body).click(
                   function(e) {
-                     if (!$(e.target).closest('.menu-container').length
-                           && !$(e.target).hasClass('menu-icon')) {
+                     if (!$(e.target).closest('.menu-container').length && !$(e.target).hasClass('menu-icon')) {
                         $(".menu-container").slideUp();
                      }
                   });
