@@ -27,12 +27,13 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 		
 		//  시작페이지			마지막 페이지
 		int startPage = 0, endPage = 0;
-		startPage = ((currentPage-1)*pageSize)+1;
+		startPage = ((currentPage-1)*pageSize);
 		endPage = currentPage * pageSize;
 		
 		
 		Map<String,Object> map = new HashMap<String, Object>();
 		
+		map.put("pageSize", pageSize);
 		map.put("startPage", startPage);
 		map.put("endPage", endPage);
 		
@@ -40,7 +41,7 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	}
 	
 	@Override
-	public QnaDTO getListOne(String q_code){
+	public QnaDTO getListOne(int q_code){
 
 		return session.selectOne(namespace + ".getListOne" , q_code);
 	}
@@ -52,7 +53,7 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	
 	@Override
 	public void insertQna(QnaDTO dto){
-		session.selectOne(namespace + ".insert", dto);
+		session.insert(namespace + ".insert", dto);
 	}
 	
 	@Override
@@ -62,14 +63,36 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	}
 	
 	@Override
-	public int deleteQna(String code){
+	public int deleteQna(int code){
 		return session.delete(namespace + ".delete" , code);
-
 	}
 	
+	@Override
+	public int insertcomment(QnaDTO dto) {
+		return session.insert(namespace + ".insertco",dto);
+	}
 	
+	@Override
+	public List<QnaDTO> getCommentList(int q_code){
+		return session.selectList(namespace + ".getCommentList",q_code);
+	}
 	
+	@Override
+	public QnaDTO getCommentOne(int q_code){
+		return session.selectOne(namespace + ".getCommentOne",q_code);
+	}
 	
+	@Override
+	public int updateComment(QnaDTO dto) {
+		return session.update(namespace + ".updateco",dto);
+	}
+	
+	@Override
+	public int deleteComment(QnaDTO dto){
+		return session.delete(namespace + ".deleteco" , dto);
+	}
+	
+
 	
 	
 

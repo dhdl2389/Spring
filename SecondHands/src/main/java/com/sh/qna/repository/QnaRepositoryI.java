@@ -11,7 +11,11 @@ public interface QnaRepositoryI {
 	public int getTotalCount();
 	public void insertQna(QnaDTO dto);
 	public int updateQna(QnaDTO dto);
-	public int deleteQna(String code);
-	public QnaDTO getListOne(String code);
-	
+	public int deleteQna(int code);
+	public QnaDTO getListOne(int code);
+	public int insertcomment(QnaDTO dto);
+	public List<QnaDTO> getCommentList(int code);
+	public int updateComment(QnaDTO dto);
+	public int deleteComment(QnaDTO dto);
+	public QnaDTO getCommentOne(int q_code);
 }

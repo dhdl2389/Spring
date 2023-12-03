@@ -125,7 +125,7 @@ public class ProductController {
 		String fileRealName = "";
 		if (!file.isEmpty()) {
 			fileRealName = file.getOriginalFilename();
-			System.out.println(fileRealName);
+		//	System.out.println(fileRealName);
 			String fullPath = fileDir + fileRealName; // "C:\\test\\upload\\test.jpg"
 			file.transferTo(new File(fullPath));
 			model.addAttribute("fileName", fileRealName);

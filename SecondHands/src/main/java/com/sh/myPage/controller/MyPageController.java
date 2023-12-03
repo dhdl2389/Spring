@@ -28,7 +28,7 @@ public class MyPageController {
    @PostMapping("/myPage")
    public String myPage(@RequestParam String user_code, HttpServletRequest request) {
 
-      System.out.println("테스트" + user_code);
+    //  System.out.println("테스트" + user_code);
 
       HttpSession session = request.getSession();
 
@@ -39,7 +39,7 @@ public class MyPageController {
       String jsonResult = gson.toJson(updatedUser);
       //return jsonResult;
       
-      System.out.println(jsonResult);
+    //  System.out.println(jsonResult);
 
       session.setAttribute("updatedUserData", jsonResult);
 

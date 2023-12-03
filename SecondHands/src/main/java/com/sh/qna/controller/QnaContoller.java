@@ -12,7 +12,10 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.sh.login.domain.LoginDTO;
 import com.sh.qna.domain.QnaDTO;
 import com.sh.qna.domain.QnaHandler;
@@ -38,44 +41,59 @@ public class QnaContoller {
 		}
 		
 		int  totRecords = rep.getTotalCount();
-		int pageSize = 4;
-		int grpSize = 3;
+		int pageSize = 10;
+		int grpSize = 5;
 		
 		HttpSession session = request.getSession();
 		QnaHandler handler = new QnaHandler(currentPage, totRecords, pageSize, grpSize);
 		List<QnaDTO> list = rep.getListPage(currentPage, pageSize);
 		LoginDTO user = (LoginDTO) session.getAttribute("user");
-
+		
 		if(user != null) {
 			String userid = user.getUser_id();
 			model.addAttribute("userid",userid);
 		}else {
-			String userid = null;
-			model.addAttribute("userid",userid);
+			String useriderr = "id없음";
+			model.addAttribute("useriderr",useriderr);
 		}
 
 		model.addAttribute("list",list);	
 		model.addAttribute("handler", handler);
 
-		
-		
 		return "/qna/qna";
 	}
 
+	
 	@PostMapping()
-	public String qnaView(@RequestParam("code") String code, HttpServletRequest request, Model model) {
+	public String qnaView(@RequestParam("code") int code, HttpServletRequest request, Model model) {
 	    HttpSession session = request.getSession();
-	    
+	    List<QnaDTO> cometlist = rep.getCommentList(code);
 	    QnaDTO userImp = rep.getListOne(code);
 	    if (userImp != null) {
-	        LoginDTO user = (LoginDTO) session.getAttribute("user");
-	        if (user != null) {
-	            model.addAttribute("userImp", userImp);
-	            model.addAttribute("userid", user.getUser_id());
+	    	LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
+	        if (selectedUser != null) {
+		        String id = selectedUser.getUser_id();
+		        String writer = selectedUser.getUser_nickname();
+
+		        model.addAttribute("userImp", userImp);
+		        model.addAttribute("id", id);
+		        model.addAttribute("writer", writer);
+		        String cometnull;
+		        if(cometlist.size() > 0) {
+		        	cometnull="f";
+		        	model.addAttribute("cometnull",cometnull);
+		        	
+		        	//자바객체를   json 객체로 변환 
+		        	Gson gson = new GsonBuilder().create();
+		        	String  jsonList  = gson.toJson(cometlist);		        	
+		        	model.addAttribute("cometlist",jsonList);    /// 데이타  List 받은데이터 - > 자바객체 
+		        	
+		        }else {
+		        	cometnull ="t";
+		        	model.addAttribute("cometnull",cometnull);
+		        }
 	            return "/qna/qnaview";
 	        } else {
-	        	int message = 1;
-	        	model.addAttribute("message",message);
 	            return "redirect:/qna";
 	        }
 	    } else {
@@ -83,15 +101,36 @@ public class QnaContoller {
 	    }
 	}
 	
+	@ResponseBody
+	@PostMapping(value="/cometreg")
+	public QnaDTO commentReg( QnaDTO   dto, Model model ) {	
+		rep.insertcomment(dto);
+		QnaDTO dto2 = rep.getCommentOne(dto.getQ_code());
+		//System.out.println(dto);
+		//System.out.println(dto2);
+		return dto2;
+	}
+	
+	@ResponseBody
+	@PostMapping(value="/cometup")	
+	public void commentup(QnaDTO   dto) {	
+		//System.out.println(dto);
+		rep.updateComment(dto);
+		
+	}
+	@ResponseBody
+	@PostMapping(value="/cometdel")	
+	public void commentdel(QnaDTO dto ) {	
+		//System.out.println(dto);
+		rep.deleteComment(dto);
+		
+	}
+	
 	@GetMapping(value="/reg")
 	public String qnaRegPage(HttpServletRequest request,Model model) {
 		HttpSession session = request.getSession();
-
-		List<Object> selectedUserList = (List<Object>) session.getAttribute("selectedUser");
-		
-		if (selectedUserList != null) {
-	       
-	        LoginDTO selectedUser  = (LoginDTO) selectedUserList.get(0);
+		LoginDTO selectedUser = (LoginDTO) session.getAttribute("selectedUser");
+		if (selectedUser != null) {
 	        String id = selectedUser.getUser_id();
 	        String writer = selectedUser.getUser_nickname();
 
@@ -100,13 +139,10 @@ public class QnaContoller {
 
 	        return "/qna/qnareg";
 	    }else {
-	    	int message = 1;
-        	model.addAttribute("message",message);
 	    	return "redirect:/qna";
 	    }
-
-		
 	}
+	
 	@PostMapping(value="/reg")
 	public String qnaReg(@RequestParam("id") String id,@RequestParam("title") String title,@RequestParam("contents") String contents,
 			@RequestParam("check") String check ,@RequestParam("writer") String writer,Model model) {
@@ -116,22 +152,22 @@ public class QnaContoller {
 		
 		return "redirect:/qna";
 	}
+	
 	@GetMapping(value="/qup")
-	public String qnaupdatePage(@RequestParam("code") String code,Model model) {
+	public String qnaupdatePage(@RequestParam("code") int code,Model model) {
 
-		System.out.println("받은 코드값=" + code);
+		//System.out.println("받은 코드값=" + code);
 		
 		QnaDTO userImp = (QnaDTO) rep.getListOne(code);
 		model.addAttribute("user",userImp);
-
-		
 		return "/qna/qnaupdate";
 	}
+	
 	@PostMapping(value="/qup")
-	public String qnaupdate(@RequestParam("code") String code,@RequestParam("title") String title,@RequestParam("contents") String contents,
+	public String qnaupdate(@RequestParam("code") int code,@RequestParam("title") String title,@RequestParam("contents") String contents,
 			@RequestParam("check") String check ,Model model) {
 		
-		System.out.println("받은 코드값=" + code);
+		//System.out.println("받은 코드값=" + code);
 		
 		QnaDTO dto = new QnaDTO(code,title,contents,check);
 		
@@ -139,14 +175,14 @@ public class QnaContoller {
 		
 		return "redirect:/qna";
 	}
+	
 	@PostMapping(value="/qdel")
-	public String qnadelete(@RequestParam("code") String code ,Model model) {
+	public String qnadelete(@RequestParam("code") int code ,Model model) {
 		
-		System.out.println("받은 코드값=" + code);
+		//System.out.println("받은 코드값=" + code);
 		
 		rep.deleteQna(code);
 
 		return "redirect:/qna";
 	}
-
 }

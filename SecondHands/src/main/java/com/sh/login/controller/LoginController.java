@@ -53,10 +53,10 @@ public class LoginController {
          // 세션에 selectedUser 저장
          session.setAttribute("selectedUser", selectedUser);
          String chatlogin = selectedUser.getUser_code();
-         System.out.println("코드뽑아오기" + chatlogin);
+        // System.out.println("코드뽑아오기" + chatlogin);
 
          List<Object> chatList = chatService.selectAllCode(chatlogin);
-         System.out.println("넘어갈때 리스트@@@@@@" + chatList);
+        // System.out.println("넘어갈때 리스트@@@@@@" + chatList);
          session.setAttribute("chatList", chatList);
 
          return "/homePage/homePage";

@@ -5,15 +5,17 @@ import lombok.Data;
 @Data
 public class QnaDTO {
 
-	private String q_code;
+	private int q_code;
 	private String q_id;
 	private String q_title;
 	private String q_contents;
 	private String q_date;
 	private String q_time;
 	private String q_check;
-	private int num;
 	private String q_writer;
+	private String q_comment;
+	private int q_code_co;
+	private int num;
 	
 
 	public QnaDTO() {
@@ -21,7 +23,7 @@ public class QnaDTO {
 	}
 	
 
-	public QnaDTO(String q_code,String q_id, String q_title ,String q_contents, String q_date,String q_time, String q_check, String q_writer) {
+	public QnaDTO(int q_code,String q_id, String q_title ,String q_contents, String q_date,String q_time, String q_check, String q_writer) {
 		super();
 		this.q_code = q_code;
 		this.q_id = q_id;
@@ -44,7 +46,7 @@ public class QnaDTO {
 	}
 
 
-	public QnaDTO(String q_code, String q_title, String q_contents, String q_check) {
+	public QnaDTO(int q_code, String q_title, String q_contents, String q_check) {
 		super();
 		this.q_code = q_code;
 		this.q_title = q_title;
@@ -53,6 +55,15 @@ public class QnaDTO {
 	}
 
 
+	public QnaDTO(int q_code, String q_writer, String q_comment) {
+		super();
+		this.q_code = q_code;
+		this.q_writer = q_writer;
+		this.q_comment = q_comment;
+	}
+
+
+	
 
 
 
