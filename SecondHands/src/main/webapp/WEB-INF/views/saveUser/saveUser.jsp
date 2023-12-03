@@ -610,6 +610,7 @@ $(document).ready(function () {
    
    $(document).ready(function() {
       $('#auth_btn').click(function() {
+    	  alert('인증번호가 전송되었습니다.');
          var email = $('#address').val(); /*입력한 이메일*/
          console.log('완성된 이메일 : ' + email); /* 이메일 오는지 확인*/
          var checkInput = $('.mail-check-input'); /* 인증번호 입력 */
@@ -624,7 +625,7 @@ $(document).ready(function () {
                console.log("data : " + data);
                checkInput.prop('disabled', false); /* 데이터가 성공적으로 들어오면 인증번호 입력란이 활성화되도록 */
                code = data;
-               alert('인증번호가 전송되었습니다.');
+               
             },
             error : function(xhr, status, error) {
                console.error("Error:", error);
@@ -748,7 +749,7 @@ $(document).ready(function () {
          <br> <input type="date" id="user_birth" name="user_birth"
              min="1900-01-01" max="2015-01-01" onfocus="this.placeholder = ''">
          <input type="hidden" id="user_image" name="user_image"
-            value="${profile_image != null ? profile_image : '기본_이미지.jpg'}">
+            value="${profile_image != null ? profile_image : '/resources/user/default.jpg'}">
          <input type="hidden" id="user_heat" name="user_heat" value="36.5">
          <button type="submit" form="saveForm">회원가입</button>
 

@@ -212,3 +212,8 @@
 11월 29, 2023 18:23:22.335 [258392:197984:1129/182322.335:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
 11월 29, 2023 18:23:33.435 [258392:197984:1129/182333.435:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
 11월 29, 2023 18:24:33.938 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+
+12월 03, 2023 13:52:36.899 NEW SESSION
+12월 03, 2023 13:52:36.899 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.
+12월 03, 2023 13:56:15.427 [326740:300976:1203/135615.427:ERROR:CONSOLE(1)] "Uncaught (in promise) RangeError: Invalid line number 630 in 1-line document", source: devtools://devtools/bundled/devtools-frontend/front_end/third_party/codemirror.next/chunk/codemirror.js (1)
+12월 03, 2023 14:36:09.910 [326740:300976:1203/143609.909:ERROR:device_event_log_impl.cc(192)] [14:36:09.909] USB: usb_service_win.cc:104 SetupDiGetDeviceProperty({{A45C254E-DF1C-4EFD-8020-67D146A850E0}, 6}) failed: 요소가 없습니다. (0x490)
