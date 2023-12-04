@@ -28,31 +28,8 @@ public class ChatController {
 	@Autowired
 	private ProductService productService;
 
-//   @GetMapping("/chatinsert")
-//   public String chatinsert() {
-//      return "/homePage/homePage"; 
-//   }
-
-//   @PostMapping("/insertchatcode")
-//   public String chatcode(ChatDTO chatDTO, HttpSession session) {
-//       session.setAttribute("buy_code", chatDTO.getBuy_code());
-//       chatService.insertChat(chatDTO);
-//       System.out.println("성공");
-//       return "/homePage/homePage";
-//   }
-
-//   @GetMapping("/chattingList")
-//   public String chattingList() {
-//      return "chattingList"; 
-//   }
-
-//   @PostMapping("/chattingList")
-//   public String chatList(@RequestParam String buy_code, HttpSession session) {
-//       List<Object> chatList = chatService.selectAllCode(buy_code);
-//       session.setAttribute("chatList", chatList);
-//       return "/chatting/chattingList";
-//   }
-
+	
+	// 채팅 리스트 조회
 	@PostMapping("/chattingList")
 	public String chatList(@RequestParam String buy_code, HttpSession session, Model model) {
 		List<Object> chatList = chatService.selectAllCode(buy_code);
@@ -61,7 +38,8 @@ public class ChatController {
 		session.setAttribute("chatList", chatList);
 		return "/chatting/chattingList";
 	}
-
+	
+	// 채팅내 유저들 정보
 	@GetMapping("/inchat")
 	public String inchat(@RequestParam String chat_code, @RequestParam String sell_code, @RequestParam String buy_code,
 			@RequestParam String board_Title, @RequestParam String board_Price, @RequestParam String board_Img,
@@ -95,7 +73,8 @@ public class ChatController {
 		// System.out.println(chatCode);
 		return "chatting/chatting";
 	}
-
+	
+	// 판매자 코드 확인
 	@PostMapping("/checkCode")
 	public String checkCode(ChatDTO chatDTO, @RequestParam String buy_code, @RequestParam String sell_code,
 			@RequestParam String board_id, @RequestParam String board_Title, @RequestParam String user_nickname,
@@ -124,11 +103,7 @@ public class ChatController {
 		}
 	}
 
-//   @GetMapping("/deleteChat")
-//   public String deleteChat() {
-//      return "/chatting/deleteChatting";
-//   }
-
+	// 채팅 삭제
 	@PostMapping("/deleteChatting")
 	public String deleteChatting(ChatDTO chatDTO, @RequestParam String chat_code, @RequestParam String buy_code,
 			HttpSession session, Model model) {

@@ -358,6 +358,7 @@ $(document).ready(
                  });
         });
         
+//이전 페이지로 이동하는 함수
 function prevPage(){
 	if(${handler.currentPage} > ${handler.grpSize}){
 		window.location.href='${path}/qna?p=${handler.grpStartPage-1 }';
@@ -366,7 +367,7 @@ function prevPage(){
 		window.location.href='${path}/qna?p=${handler.grpStartPage }';
 	}
 }
-
+//다음 페이지로 이동하는 함수
 function nextPage(){
 	if(${handler.grpEndPage} < ${handler.totalPage}){
 		window.location.href='${path}/qna?p=${handler.grpEndPage+1 }';
@@ -374,7 +375,7 @@ function nextPage(){
 		alert("마지막 페이지입니다.");
 	}
 }
-
+//로그인 체크 함수
 function logincheck(){
 	let useriderr = "${useriderr}";
 	if(useriderr != ""){
@@ -570,7 +571,7 @@ function logincheck(){
 				</tbody>
 			</table>
 			<div class="reg">
-				<input type="button" class="reg-btn" value="글등록"
+				<input type="button" class="reg-btn" value="등록"
 					onclick="window.location.href='${path}/qna/reg'">
 			</div>
 			<div class="page-btn">

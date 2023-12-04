@@ -24,7 +24,7 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	
 	@Override
 	public List<QnaDTO> getListPage(int currentPage , int pageSize){
-		
+		// 문의 게시글 조회 (페이징)
 		//  시작페이지			마지막 페이지
 		int startPage = 0, endPage = 0;
 		startPage = ((currentPage-1)*pageSize);
@@ -42,54 +42,69 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	
 	@Override
 	public QnaDTO getListOne(int q_code){
-
+		// 문의 게시글 하나 조회
 		return session.selectOne(namespace + ".getListOne" , q_code);
 	}
 	
 	@Override
 	public int getTotalCount() {
+		// 문의게시글 전체 갯수
 		return session.selectOne(namespace + ".getTotalCount");
 	}
 	
 	@Override
 	public void insertQna(QnaDTO dto){
+		// 문의게시글 등록
 		session.insert(namespace + ".insert", dto);
 	}
 	
 	@Override
 	public int updateQna(QnaDTO dto) {
+		//문의 게시글 수정
 		return session.update(namespace + ".update",dto );
 		
 	}
 	
 	@Override
 	public int deleteQna(int code){
+		//문의 게시글 삭제
 		return session.delete(namespace + ".delete" , code);
 	}
 	
 	@Override
 	public int insertcomment(QnaDTO dto) {
+		// 문의댓글 등록
 		return session.insert(namespace + ".insertco",dto);
 	}
 	
 	@Override
 	public List<QnaDTO> getCommentList(int q_code){
+		// 문의 댓글 전체 조회
 		return session.selectList(namespace + ".getCommentList",q_code);
 	}
 	
 	@Override
 	public QnaDTO getCommentOne(int q_code){
+		// 문의 댓글 조회
 		return session.selectOne(namespace + ".getCommentOne",q_code);
 	}
 	
 	@Override
 	public int updateComment(QnaDTO dto) {
+		// 문의 댓글 수정
 		return session.update(namespace + ".updateco",dto);
 	}
 	
 	@Override
 	public int deleteComment(QnaDTO dto){
 		return session.delete(namespace + ".deleteco" , dto);
+	}
+	
+	@Override
+	public int deleteAllComment(int code) {
+		//문의 댓글 삭제
+		// TODO Auto-generated method stub
+		return session.delete(namespace + ".deleteAllco" , code);
 	}
 	
 

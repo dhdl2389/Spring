@@ -489,7 +489,7 @@ textarea {
 								<option value="">선택하세요</option>
 								<option value="t">공개</option>
 								<option value="f">비공개</option>
-						</select> <input type="submit" class="submit-btn" value="수정하기"></td>
+						</select> <input type="submit" class="submit-btn" value="수정"></td>
 					</tr>
 				</table>
 			</form>

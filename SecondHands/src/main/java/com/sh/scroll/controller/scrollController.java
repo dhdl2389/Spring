@@ -71,12 +71,14 @@ public class scrollController {
 		return map;
 	}
 
+	//검색 기능
 	@ResponseBody
 	@GetMapping("/search")
 	public List<ScrollDTO> searchGet(String searchTerm) {
 		return service.getSearchList(searchTerm);
 	}
 	
+	//관심상품 목록
 	@ResponseBody
 	@PostMapping("/likeList")
 	public List<ScrollDTO> likeList(String userId) {
