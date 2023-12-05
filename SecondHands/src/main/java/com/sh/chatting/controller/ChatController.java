@@ -31,10 +31,11 @@ public class ChatController {
 	
 	// 채팅 리스트 조회
 	@PostMapping("/chattingList")
-	public String chatList(@RequestParam String buy_code, HttpSession session, Model model) {
+	public String chatList(@RequestParam String buy_code,HttpSession session, Model model) {
 		List<Object> chatList = chatService.selectAllCode(buy_code);
 
-		// System.out.println("넘어갈때 리스트"+chatList);
+		
+		 System.out.println("넘어갈때 리스트"+chatList);
 		session.setAttribute("chatList", chatList);
 		return "/chatting/chattingList";
 	}
@@ -70,16 +71,17 @@ public class ChatController {
 		// System.out.println("제목"+board_Title);
 
 		// System.out.println(buy_code);
-		// System.out.println(chatCode);
+		 System.out.println(chatCode);
 		return "chatting/chatting";
 	}
 	
 	// 판매자 코드 확인
 	@PostMapping("/checkCode")
 	public String checkCode(ChatDTO chatDTO, @RequestParam String buy_code, @RequestParam String sell_code,
-			@RequestParam String board_id, @RequestParam String board_Title, @RequestParam String user_nickname,
+			@RequestParam String board_id, @RequestParam String board_Title, @RequestParam String sell_nickname,
+			@RequestParam String buy_nickname,
 			@RequestParam String board_Price, @RequestParam String board_Img, HttpSession session, Model model) {
-		boolean isCodeValid = chatService.cheackCode(buy_code, sell_code, board_id, board_Title, user_nickname,
+		boolean isCodeValid = chatService.cheackCode(buy_code, sell_code, board_id, board_Title, sell_nickname,buy_nickname,
 				board_Price, board_Img);
 		model.addAttribute("isCodeValid", isCodeValid);
 		// System.out.println(isCodeValid);

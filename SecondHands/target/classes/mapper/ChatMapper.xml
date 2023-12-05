@@ -17,7 +17,8 @@
       sell_code = #{sell_code} AND
       board_id = #{board_id} AND
       board_title = #{board_Title} AND
-      user_nickname = #{user_nickname}
+      sell_nickname = #{sell_nickname} AND
+      buy_nickname = #{buy_nickname} 
 
    </select>
 
@@ -31,7 +32,8 @@
       sell_code,
       board_id,
       board_title,
-      user_nickname,
+      sell_nickname,
+      buy_nickname,
       board_price,
       board_img
       )
@@ -41,7 +43,8 @@
       #{sell_code},
       #{board_id},
       #{board_Title},
-      #{user_nickname},
+      #{sell_nickname},
+      #{buy_nickname},
       #{board_Price},
       #{board_Img}
       
