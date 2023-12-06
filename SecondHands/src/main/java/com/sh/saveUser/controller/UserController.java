@@ -72,7 +72,14 @@ public class UserController {
 		String num = Integer.toString(checkNum);
 		return num;
 	}
-
+	
+	
+	   @ResponseBody
+	   @PostMapping("/isUserIdExists")
+	   public boolean isUserIdExists(@RequestParam String user_id) {
+	      return service.isUserIdExists(user_id);
+	   }
+	
 	// 이메일 형태 확인 로직 (정규식)
 	private boolean isValidEmailAddress(String email) {
 		// 정규식 패턴: 이메일 주소의 유효성을 검사하는 패턴입니다.

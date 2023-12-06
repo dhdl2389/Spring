@@ -69,7 +69,6 @@ window.onload = function() {
     // 채팅 창 영역에 메시지를 맨 위에 추가
     var connectionMessage = document.getElementById('connectionMessage');
     connectionMessage.appendChild(messageElement);
-    connectionMessage.scrollIntoView(); // 채팅창 맨 아래로 스크롤
 }
 
     // 메시지를 받았을 때 호출될 함수
@@ -84,7 +83,7 @@ window.onload = function() {
         var messageParts = data.substring(4).split(":");
         var sender = messageParts[0]; // 메시지 보낸 사람
         var messageContent = messageParts[1]; // 메시지 내용
-
+        
         // chatCode가 일치할때만 보내고 받은 메시지 보임
         if (sender == $("#chatCode").val()) {
             appendRecvMessage(messageContent, sender); // 받은 메시지를 출력
@@ -105,31 +104,42 @@ window.onload = function() {
         var chatCode = $("#chatCode").val()
 
         // '입장' 버튼을 누르지 않았을 때 안내 메시지 출력
+        // '입장' 버튼을 눌렀는지 안눌렀는지 확인
         if ($('#connectBtn').is(':visible')) {
-            var entryMessage = "입장버튼을 누르고 채팅을 시작하세요!"; // 안내 메시지
-            appendEntryMessage(entryMessage); // 채팅창에 안내 메시지 추가
+            var entryMessage = "  ------------------------------------- 입장버튼을 누르고 채팅을 시작하세요 --------------------------------------"; // 안내 메시지                              
+            appendEntryMessage(entryMessage); // 채팅창에 안내 메시지 추가            
             return; // 메시지 전송을 중단
         }
-		
+      
         
-        if (targetNickname && msg) {
-            wsocket.send("msg:" + chatCode + ":" + msg);
-            $("#message").val("");
-            appendSendMessage(chatCode, msg);
+        
+        if (msg) {
+            // WebSocket을 통해 서버에 메시지 전송
+            wsocket.send("msg:" + chatCode + ":" + msg);            
+            // 메시지를 전송한 후에는 입력란 비우기
+            $("#message").val("");           
+            // 자신이 보낸 메시지를 채팅창에 추가하여 표시
+             appendSendMessage(chatCode, msg);
         }
     }
 
     // '입장' 버튼을 누르지 않았을 때 채팅창에 안내 메시지 추가
-    function appendEntryMessage(entryMessage) {
-        // 메시지가 이미 존재하는 경우 추가하지 않도록 처리
-        var chatMessageArea = document.getElementById('chatMessageArea');
-        if (chatMessageArea.innerHTML.indexOf(entryMessage) === -1) {
-            var entryElement = document.createElement('div'); // 새로운 <div> 엘리먼트 생성
-            entryElement.textContent = entryMessage; // 메시지 설정
-            chatMessageArea.appendChild(entryElement); // 채팅창에 안내 메시지 추가
-            scrollTop(); // 채팅창 맨 아래로 스크롤
-        }
+function appendEntryMessage(entryMessage) {
+    var chatMessageArea = document.getElementById('chatMessageArea');
+    // 'chatMessageArea' 요소의 내부 HTML에서 'entryMessage' 문자열을 찾음
+    //  indexOf() 메서드는 검색된 문자열이 없을 경우 -1을 반환
+    // 'entryMessage' 문자열이 'chatMessageArea'에 존재하지 않을 때 아래 코드를 실행
+    if (chatMessageArea.innerHTML.indexOf(entryMessage) == -1) {
+        // 새 <div> 엘리먼트를 생성하고 'entryMessage'를 텍스트 내용으로 설정
+        var entryElement = document.createElement('div');
+        entryElement.textContent = entryMessage;
+        // 새로운 엘리먼트의 텍스트를 가운데 정렬
+        entryElement.style.textAlign = "center";
+        // 'entryElement'를 'chatMessageArea'의 첫 번째 자식 요소로 추가하여 채팅창의 맨 위에 표시
+        chatMessageArea.insertBefore(entryElement, chatMessageArea.firstChild);
     }
+}   
+    
     $(document).ready( function(){    
         // 엔터 키로 메시지 전송
         $('#message').keypress(function(event){
@@ -167,15 +177,16 @@ window.onload = function() {
     }
 
     // 대화창 스크롤을 아래로 이동
+    // 'chatArea'의 스크롤 위치를 설정하여 현재 스크롤 위치를 대화창의 최하단으로 이동합니다.
+   // 'scrollTop'은 엘리먼트의 위쪽 끝에서 스크롤된 거리를 나타내며,
+   // 'scrollHeight'는 엘리먼트의 전체 높이를 나타냅니다.
+   // 대화창이 스크롤 가능한 경우, 'scrollTop'을 'scrollHeight'로 설정함으로써 최하단으로 스크롤이 이동됩니다.
 function scrollTop() {
     var chatArea = document.getElementById('chatArea');
     chatArea.scrollTop = chatArea.scrollHeight;
 }
-    
-    
 
     
-
 
 </script>
 <style>

@@ -178,25 +178,21 @@ button:hover {
 	background-color: #d55500;
 }
 
-
-
-
 textarea {
 	resize: none;
-	
 }
 
 .qna {
 	margin: 0 auto;
 	align-items: center;
-    justify-content: center;
-    text-align: center;
+	justify-content: center;
+	text-align: center;
 }
 
 .main-title {
 	font-size: 50px;
-    display: inline-block;
-    margin-top: 60px;
+	display: inline-block;
+	margin-top: 60px;
 }
 
 .qna-list {
@@ -246,6 +242,17 @@ tbody {
 	text-align: center;
 	position: relative;
 }
+
+.writer span {
+border-left: 1px solid #0000006b;
+    display: inline-block;
+    height: 45px;
+    position: absolute;
+    right: 199px;
+    top: 38px;
+}
+
+
 
 .date span {
 	border-left: 1px solid #0000006b;
@@ -345,34 +352,34 @@ $(document).ready(
         
 //이전 페이지로 이동하는 함수
 function prevPage(){
-	if(${handler.currentPage} > ${handler.grpSize}){
-		window.location.href='${path}/qna?p=${handler.grpStartPage-1 }';
-	}else if(${handler.currentPage} <= ${handler.grpSize}){
-		alert("첫 페이지입니다.");
-		window.location.href='${path}/qna?p=${handler.grpStartPage }';
-	}
+   if(${handler.currentPage} > ${handler.grpSize}){
+      window.location.href='${path}/qna?p=${handler.grpStartPage-1 }';
+   }else if(${handler.currentPage} <= ${handler.grpSize}){
+      alert("첫 페이지입니다.");
+      window.location.href='${path}/qna?p=${handler.grpStartPage }';
+   }
 }
 //다음 페이지로 이동하는 함수
 function nextPage(){
-	if(${handler.grpEndPage} < ${handler.totalPage}){
-		window.location.href='${path}/qna?p=${handler.grpEndPage+1 }';
-	}else if(${handler.grpEndPage} == ${handler.totalPage}){
-		alert("마지막 페이지입니다.");
-	}
+   if(${handler.grpEndPage} < ${handler.totalPage}){
+      window.location.href='${path}/qna?p=${handler.grpEndPage+1 }';
+   }else if(${handler.grpEndPage} == ${handler.totalPage}){
+      alert("마지막 페이지입니다.");
+   }
 }
 //로그인 체크 함수
 function logincheck(){
-	let useriderr = "${useriderr}";
-	if(useriderr != ""){
-		alert("로그인이 필요한 서비스입니다.");
-		let result = confirm("로그인 페이지로 이동하시겠습니까?");
-		if(result){
-			window.location.href='${path}/login';
-			return false;
-		}
-	}else{
-		return true;
-	}
+   let useriderr = "${useriderr}";
+   if(useriderr != ""){
+      alert("로그인이 필요한 서비스입니다.");
+      let result = confirm("로그인 페이지로 이동하시겠습니까?");
+      if(result){
+         window.location.href='${path}/login';
+         return false;
+      }
+   }else{
+      return true;
+   }
 }
 </script>
 
@@ -408,8 +415,7 @@ function logincheck(){
 				<%
 				}
 				%>
-				<li><img
-					src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+				<li><img src="<%=firstSelectedUser.getUser_image()%>"
 					style="border-radius: 50%; width: 100px; height: 100px;">
 					<h2>
 						<%
@@ -501,7 +507,7 @@ function logincheck(){
 		}
 		%>
 	</header>
-
+	<!-- 문의 게시판 -->
 	<div class="qna">
 		<span class="main-title"> 문의사항</span>
 		<div class="qna-list">
@@ -509,7 +515,9 @@ function logincheck(){
 				<thead>
 					<tr>
 						<td class="title">제목</td>
+						<td class="writer"><span></span>작성자</td>
 						<td class="date"><span></span>작성일</td>
+						
 					</tr>
 				</thead>
 				<tbody>
@@ -525,6 +533,7 @@ function logincheck(){
 												class="secret">비밀</span>
 										</form>
 									</td>
+									<td class="date"><span></span>${list.q_writer}</td>
 									<td class="date"><span></span>${list.q_date}</td>
 								</tr>
 							</c:when>
@@ -538,16 +547,19 @@ function logincheck(){
 												class="title-btn" onclick="return logincheck()" />
 										</form>
 									</td>
+									<td class="date"><span></span>${list.q_writer}</td>
 									<td class="date"><span></span>${list.q_date}</td>
 								</tr>
 							</c:when>
 							<c:when test="${list.q_check eq 'f' }">
+
 								<tr>
 									<td class="title"><input type="hidden"
 										value="${list.q_code}" name="code" /> <input type="submit"
-										value="비밀글" id="title" class="title-btn"
+										value="비밀글 입니다." id="title" class="title-btn"
 										onclick="return logincheck()" /> <span class="secret">비밀</span>
 									</td>
+									<td class="date"><span></span>${list.q_writer}</td>
 									<td class="date"><span></span>${list.q_date}</td>
 								</tr>
 							</c:when>

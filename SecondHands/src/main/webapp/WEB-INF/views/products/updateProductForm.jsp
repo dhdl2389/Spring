@@ -519,47 +519,68 @@ textarea {
 			<div style="text-align: center;">
 				<h2>게시글 수정</h2>
 			</div>
-			<div style="display: flex; margin: 26px 0px 25px 0px;">
+ <div style="display: flex; margin: 26px 0px 25px 0px;">
 
-				<label for="board_cate">분류:</label> <select id="board_cate"
-					name="board_cate" style="margin: -11px 22px 0px;">
-					<option value="판매">판매</option>
-					<option value="나눔">나눔</option>
-				</select>
-			</div>
-			<label for="board_Title">제목:</label> <input type="text"
-				id="board_Title" name="board_Title" value="${product.board_Title}"
-				required> <br>
+            <label for="board_cate">분류:</label> <select id="board_cate"
+               name="board_cate" style="margin: -11px 22px 0px;"
+               onchange="checkboardCate()">
+               <option value="판매">판매</option>
+               <option value="나눔">나눔</option>
+            </select>
+         </div>
+         <div></div>
+         <label for="board_Title">제목:</label> <input type="text"
+            id="board_Title" name="board_Title" required> <br>
 
-			<div class="detail-container">
-				<label id="detail">가격:</label> <input type="number" id="board_Price"
-					value="${product.board_Price}" name="board_Price" step="1000"
-					min="1000" max="999990000" required style="margin-right: 102px;">
-				<br> <label id="detail">카테고리:</label>
-				<div class="cate-container">
+         <div class="detail-container">
+            <label id="detail">가격:</label> <input type="number" id="board_Price"
+               name="board_Price" step="1000" min="1000" max="999990000" required
+               style="margin-right: 102px;"> <br> <label id="detail">카테고리:</label>
 
-					<select id="loc_code" name="loc_code" style="margin-right: 5px;">
-						<option value="서울시">서울</option>
-						<option value="제주도">제주도</option>
-						<option value="경기도">경기도</option>
-						<option value="충청도">충청도</option>
-						<option value="경상도">경상도</option>
-						<option value="전라도">전라도</option>
-						<option value="강원도">강원도</option>
-					</select> <select id="detail_loc" name="detail_loc"
-						style="margin-left: 5px;">
-						<!-- 중분류 옵션은 JavaScript에서 처리 -->
-					</select>
-				</div>
-			</div>
+            <script>
+               // 상품 게시 카테고리 구분 (  나눔 OR 판매  )
+               function checkboardCate() {
+
+                  var boardCate = document.getElementById("board_cate");
+                  var boardPrice = document.getElementById("board_Price");
+
+                  if (boardCate.value === "나눔") {
+
+                     boardPrice.value = 0;
+                     boardPrice.readOnly = true;
+                  } else {
+                     boardPrice.value = "";
+                     boardPrice.readOnly = false;
+                  }
+               }
+            </script>
 
 
-			<label for="board_Text">내용:</label>
-			<textarea id="board_Text" name="board_Text" oninput="checkLength()"
-				required style="font-size: 18px;">${product.board_Text}</textarea>
-			<span id="charCount">0 / 100</span>
+            <div class="cate-container">
 
-			<script>
+               <select id="loc_code" name="loc_code" style="margin-right: 5px;">
+                  <option value="서울시">서울</option>
+                  <option value="제주도">제주도</option>
+                  <option value="경기도">경기도</option>
+                  <option value="충청도">충청도</option>
+                  <option value="경상도">경상도</option>
+                  <option value="전라도">전라도</option>
+                  <option value="강원도">강원도</option>
+               </select> <select id="detail_loc" name="detail_loc"
+                  style="margin-left: 5px;">
+                  <!-- 중분류 옵션은 JavaScript에서 처리 -->
+               </select>
+            </div>
+         </div>
+
+
+         <label for="board_Text">내용:</label>
+         <textarea id="board_Text" name="board_Text" oninput="checkLength()"
+            required style="font-size: 18px;"></textarea>
+         <span id="charCount">0 / 100</span>
+
+         <script>
+            // board_text의 길이제한 두는 함수 
             function checkLength() {
                var maxLength = 100;
                var textArea = document.getElementById("board_Text");

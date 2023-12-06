@@ -1,28 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="글등록하기"/>
+		<item key="selection" value="web"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="web"/>
+			<item value="chat"/>
+			<item value="cjat"/>
+			<item value="웹"/>
+			<item value="ws"/>
+			<item value=".title"/>
+			<item value="비밀글"/>
+			<item value="detail-container"/>
+			<item value="default"/>
+			<item value="board_cate"/>
 			<item value="글등록하기"/>
 			<item value="title-btn"/>
 			<item value="title.title"/>
 			<item value="글등록"/>
 			<item value="getDistanceFromLatLonInKm("/>
-			<item value="3.201.65."/>
-			<item value="System"/>
-			<item value="alert"/>
-			<item value="boardId"/>
-			<item value="recv"/>
-			<item value="r"/>
-			<item value="receive"/>
-			<item value="recieve"/>
-			<item value="recvBox"/>
-			<item value="local"/>
 		</list>
 		<list key="replacehistory">
 			<item value="location_form"/>

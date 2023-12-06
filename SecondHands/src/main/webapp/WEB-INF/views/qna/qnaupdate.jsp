@@ -187,8 +187,7 @@ textarea {
 .update {
 	min-height: 700px;
 	margin: 0 auto;
-	margin-top: 20px;
-	margin-bottom: 115px;
+	margin-top: 115px;
 	border-radius: 26px;
 	width: 1008px;
 }
@@ -353,7 +352,7 @@ textarea {
 				}
 				%>
 				<li><img
-					src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+					src="<%=firstSelectedUser.getUser_image()%>"
 					style="border-radius: 50%; width: 100px; height: 100px;">
 					<h2>
 						<%

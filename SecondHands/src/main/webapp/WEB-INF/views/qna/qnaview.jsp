@@ -200,7 +200,8 @@ footer a:hover {
 textarea {
     resize: none;
 }
-	
+
+   
 </style>
 <style>
     .qnaview{
@@ -211,15 +212,15 @@ textarea {
         width:1008px;
     }
     .qnaview input[type=button]{
-	background-color: #ff6f0f;
-   	color: #fff;
+   background-color: #ff6f0f;
+      color: #fff;
     border-radius: 4px;
     border: none;
     cursor: pointer;
-	}
-	.qnaview input[type=button]:hover{
-		background-color: #d55500;
-	}
+   }
+   .qnaview input[type=button]:hover{
+      background-color: #d55500;
+   }
     .qna{
         margin:0 auto;
         width:1008px;
@@ -233,22 +234,22 @@ textarea {
         padding: 30px 20px 10px 20px;
     }
     .title{
-    	border-bottom: 1px solid #0000002e;
-    	font-size: 38px;
-    	font-weight: 600;
-    	padding-botton:20px;
-    	position:relative;
+       border-bottom: 1px solid #0000002e;
+       font-size: 38px;
+       font-weight: 600;
+       padding-botton:20px;
+       position:relative;
     }
     .qna-datetime{
-    	font-size:15px;
-    	font-weight:500;
-    	color:#0000006b;
-    	position:absolute;
-    	left: 24px;
-    	bottom: 13px;
+       font-size:15px;
+       font-weight:500;
+       color:#0000006b;
+       position:absolute;
+       left: 24px;
+       bottom: 2px;
     }
     .contents{
-    	
+       
     }
 
 
@@ -258,14 +259,14 @@ textarea {
         border-bottom: 2px solid #0000002e;
     }
     .comment-title{
-    	padding:10px;
-    	font-size:25px;
-    	font-weight:700;
+       padding:10px;
+       font-size:25px;
+       font-weight:700;
     }
     .cometnull{
-    	height:20px;
-    	font-size:20px;
-    	font-weight:500;
+       height:20px;
+       font-size:20px;
+       font-weight:500;
     }
     
     .back{
@@ -273,112 +274,112 @@ textarea {
         top: 10px;
         left: 10px;
         background-color: #ff6f0f;
-   		color: #fff;
-   	 	border-radius: 4px;
-   	 	border: none;
-    	cursor: pointer;
+         color: #fff;
+          border-radius: 4px;
+          border: none;
+       cursor: pointer;
     }
     .update{
         position: absolute;
         top: 10px;
         right: 10px;
         background-color: #ff6f0f;
-   		color: #fff;
-    	border-radius: 4px;
-    	border: none;
-    	cursor: pointer;
+         color: #fff;
+       border-radius: 4px;
+       border: none;
+       cursor: pointer;
     }
     .delete{
         position: absolute;
         top: 10px;
         right: 80px;
         background-color: #ff6f0f;
-   		color: #fff;
-    	border-radius: 4px;
-    	border: none;
-    	cursor: pointer;
+         color: #fff;
+       border-radius: 4px;
+       border: none;
+       cursor: pointer;
     }
-	.back:hover{
-	background-color: #d55500;
-	}
-	.update:hover{
-	background-color: #d55500;
-	}
-	.delete:hover{
-	background-color: #d55500;
-	}
-	.comment{
-     	background-color: #fffcebd4;
-	}
+   .back:hover{
+   background-color: #d55500;
+   }
+   .update:hover{
+   background-color: #d55500;
+   }
+   .delete:hover{
+   background-color: #d55500;
+   }
+   .comment{
+        background-color: #fffcebd4;
+   }
     .comment-textbox{
         padding: 20px 10px 10px 10px;
         height: 86px;
         position:relative;
     }
     .comment-text{
-    	width: 961px;
-    	height: 36px;
-    	resize: vertical;
-    	padding:9px;
+       width: 961px;
+       height: 36px;
+       resize: vertical;
+       padding:9px;
     }
     .comment-btn{
-    	position:relative;
-    	display:block;
-    	height:30px;
+       position:relative;
+       display:block;
+       height:30px;
     }
-	.comment-btn input{
-		position:absolute;
-		right: 7px;
-		bottom: 8px;
-	}
+   .comment-btn input{
+      position:absolute;
+      right: 7px;
+      bottom: 8px;
+   }
     .cometbox {
-    	min-height:75px;
-    	padding: 5px 20px 5px 10px;
-    	position:relative;
-     	border-radius: 7px;
-	}
-	.cometwriter{
-		font-size:15px;
-		height:30px;
-	}
-	.comment{
-		min-height:28px;
-	}
-	.date{
-		font-size:14px;
-		color:#0000004f;
-		font-weight:600;
-		height:20px;
-		border-bottom: 2px solid #0000002e;
-	}
-	.cometupbtn{
-		position:absolute;
-		right:64px;
-		top:7px;
-	}
-	.cometdelbtn{
-		position:absolute;
-		right:20px;
-		top:7px;
-	}
-	.cometup_text{
-		width: 961px;
-    	height: 36px;
-    	resize: vertical;
-    	padding:9px;
-	}
-	.cometupregbtn{
-		position:relative;
-    	display:block;
-    	height:30px;
-    	border-bottom: 2px solid #0000002e
-	}
-	.cometupregbtn input{
-		position:absolute;
-		right: -3px;
-		bottom: 8px;
-	}
-	
+       min-height:75px;
+       padding: 5px 20px 5px 10px;
+       position:relative;
+        border-radius: 7px;
+   }
+   .cometwriter{
+      font-size:15px;
+      height:30px;
+   }
+   .comment{
+      min-height:28px;
+   }
+   .date{
+      font-size:14px;
+      color:#0000004f;
+      font-weight:600;
+      height:20px;
+      border-bottom: 2px solid #0000002e;
+   }
+   .cometupbtn{
+      position:absolute;
+      right:64px;
+      top:7px;
+   }
+   .cometdelbtn{
+      position:absolute;
+      right:20px;
+      top:7px;
+   }
+   .cometup_text{
+      width: 961px;
+       height: 36px;
+       resize: vertical;
+       padding:9px;
+   }
+   .cometupregbtn{
+      position:relative;
+       display:block;
+       height:30px;
+       border-bottom: 2px solid #0000002e
+   }
+   .cometupregbtn input{
+      position:absolute;
+      right: -3px;
+      bottom: 8px;
+   }
+   
 </style>
 
 <script>
@@ -404,25 +405,25 @@ $(document).ready(
 
 
 function del(n){ // 버튼 클릭 시 게시글 삭제
-	let result = confirm("글을 삭제하시겠습니까?");
-	if(result == true){
-		alert("정상적으로 처리되었습니다.");
-		return true;
-	}else{
-		return false;
-	}
-	
+   let result = confirm("글을 삭제하시겠습니까?");
+   if(result == true){
+      alert("정상적으로 처리되었습니다.");
+      return true;
+   }else{
+      return false;
+   }
+   
 
 };
 
 function idcheck(){// session에 저장된 id가 같거나 'admin'일 경우 수정,삭제 버튼 보이기
-	if ('${id}' == '${userImp.q_id}'|| '${id}' == 'admin') {
-	    document.getElementById('delete').style.display = 'block';
-	    document.getElementById('update').style.display = 'block';
-	} else {
-	    document.getElementById('delete').style.display = 'none';
-	    document.getElementById('update').style.display = 'none';
-	}
+   if ('${id}' == '${userImp.q_id}'|| '${id}' == 'admin') {
+       document.getElementById('delete').style.display = 'block';
+       document.getElementById('update').style.display = 'block';
+   } else {
+       document.getElementById('delete').style.display = 'none';
+       document.getElementById('update').style.display = 'none';
+   }
 }
 
 
@@ -430,103 +431,103 @@ function idcheck(){// session에 저장된 id가 같거나 'admin'일 경우 수
 <script >
 
 $(document).ready(function(){
-	let cometnull = '${cometnull}'; // 댓글리스트가 null인 경우 't' null이 아닌경우 'f' 
-	listnull(cometnull);
-	
+   let cometnull = '${cometnull}'; // 댓글리스트가 null인 경우 't' null이 아닌경우 'f' 
+   listnull(cometnull);
+   
 });
 
 function listnull(c){ // 댓글리스트가 null일 경우
-	if(c == 't'){
-	$('#commentlistbox').append('<p id = "cometnull" '+
-			'style="size:40px; text-align: center; height:25px; font-size:20px; padding: 35px 0px 20px 0px; margin:0;">댓글이 없습니다</p>');
-	} else {
-		let id = '${id}';
-		listview(id);
-	}
-	
+   if(c == 't'){
+   $('#commentlistbox').append('<p id = "cometnull" '+
+         'style="size:40px; text-align: center; height:25px; font-size:20px; padding: 35px 0px 20px 0px; margin:0;">댓글이 없습니다</p>');
+   } else {
+      let id = '${id}';
+      listview(id);
+   }
+   
 } 
 
 
 function listview(id){ // 댓글리스트 불러오기
-	let cometlist = ${cometlist}
-	cometlist.forEach(function(list){
-		if (id == list.q_id || id == 'admin'){ //session에 저장된 id 값이 같거나 'admin'일때 
-			$('#commentlistbox').append(' <div id = "cometbox" class = "cometbox">'+
-							'<div id= "cometwriter" class = "cometwriter">'+ list.q_writer + '</div>' +
-							'<div id= "comment" class="comment">'+ list.q_comment + '</div>' +
-							'<div class="date">'+list.q_date +" " +list.q_time+'</div>'+
-							'<input type="hidden" id="cometup_key" value="'+list.q_code_co+'">'+
-							'<input type="hidden" id="id_key" value="'+list.q_id+'">'+
-							'<input type="button" id="cometupbtn" class="cometupbtn" value="수정" onclick="upbtn(this)">' +
-							'<input type="button" id="cometdelbtn" class="cometdelbtn" value="삭제" onclick="cometdel(this)">' +
-							'<div id = "cometupbox" class = "cometupbox" style="display: none">'+
-							'<textarea  id="cometup_text" class="cometup_text"  placeholder="수정할 댓글을 입력하세요. 150자이내" required></textarea>'+
-							'<div class="cometupregbtn"> <input type="button" id="cometupregbtn"  value="수정하기"  onclick="upregbtn(this)"> </div> </div> </div>');
-		}else if(id != list.q_id){
-			$('#commentlistbox').append(' <div id = "cometbox" class="cometbox">'+
-					' <div id= "cometwriter" class = "cometwriter">'+ list.q_writer + '</div>' +
-					'<div id= "comment" class="comment">'+ list.q_comment + '</div>' +
-					'<div class="date">'+list.q_date+  " " +list.q_time+'</div>'+
-					'<input type="hidden" id="cometup_key" value="'+list.q_code_co+'">'+
-					'<input type="hidden" id="id_key" value="'+list.q_id+'"> </div>');
-		}
-	});
+   let cometlist = ${cometlist}
+   cometlist.forEach(function(list){
+      if (id == list.q_id || id == 'admin'){ //session에 저장된 id 값이 같거나 'admin'일때 
+         $('#commentlistbox').append(' <div id = "cometbox" class = "cometbox">'+
+                     '<div id= "cometwriter" class = "cometwriter">'+ list.q_writer + '</div>' +
+                     '<div id= "comment" class="comment">'+ list.q_comment + '</div>' +
+                     '<div class="date">'+list.q_date +" " +list.q_time+'</div>'+
+                     '<input type="hidden" id="cometup_key" value="'+list.q_code_co+'">'+
+                     '<input type="hidden" id="id_key" value="'+list.q_id+'">'+
+                     '<input type="button" id="cometupbtn" class="cometupbtn" value="수정" onclick="upbtn(this)">' +
+                     '<input type="button" id="cometdelbtn" class="cometdelbtn" value="삭제" onclick="cometdel(this)">' +
+                     '<div id = "cometupbox" class = "cometupbox" style="display: none">'+
+                     '<textarea  id="cometup_text" class="cometup_text"  placeholder="수정할 댓글을 입력하세요. 150자이내" required></textarea>'+
+                     '<div class="cometupregbtn"> <input type="button" id="cometupregbtn"  value="수정하기"  onclick="upregbtn(this)"> </div> </div> </div>');
+      }else if(id != list.q_id){  // session에 저장된 id 값이 댓글에 저장된 id와 다른 경우 수정,삭제 버튼 X
+         $('#commentlistbox').append(' <div id = "cometbox" class="cometbox">'+
+               ' <div id= "cometwriter" class = "cometwriter">'+ list.q_writer + '</div>' +
+               '<div id= "comment" class="comment">'+ list.q_comment + '</div>' +
+               '<div class="date">'+list.q_date+  " " +list.q_time+'</div>'+
+               '<input type="hidden" id="cometup_key" value="'+list.q_code_co+'">'+
+               '<input type="hidden" id="id_key" value="'+list.q_id+'"> </div>');
+      }
+   });
 }
 
 
 
 
 function reg(){ // 댓글 등록
-	let code = '${userImp.q_code}';
-	let writer = '${writer}';
-	let id = '${id}';
-	let comment = $('#q_comment').val();
-	if(comment != ""){
-		if(id == 'admin'){
-			writer = '관리자';
-		}
-		let data = {
-			q_code: code,
-			q_id: id,
-			q_comment: comment,
-			q_writer: writer
-		};
-			$.ajax({
-			url: "${path}/qna/cometreg",
-			type: "post",
-			data:  data,
-			success: function(c){
-				let q_code_co = c.q_code_co;
-				let q_date = c.q_date;
-				let q_time = c.q_time;
-				if($('#cometnull').text()){
-					$('#cometnull').remove();
-				}
-				$('#commentlistbox').append('<div id = "cometbox" class="cometbox">'+
-						' <div id= "cometwriter" class="cometwriter">'+ writer + '</div>' +
-						'<div id= "comment" class="comment">'+ comment + '</div>' +
-						'<div class="date">' +q_date + " " + q_time+'</div>'+
-						'<input type="hidden" id="cometup_key" value="'+q_code_co+'">'+
-						'<input type="hidden" id="id_key" value="'+id+'">'+
-						'<input type="button" id="cometupbtn" class="cometupbtn" value="수정" onclick="upbtn(this)" >' +
-						'<input type="button" id="cometdelbtn" class="cometdelbtn" value="삭제" onclick="cometdel(this)">' +
-						'<div id = "cometupbox" class="cometupbox" style="display: none">'+
-						'<textarea  id="cometup_text" class="cometup_text"  placeholder="수정할 댓글을 입력하세요. 150자이내" required></textarea>'+
-						'<div class="cometupregbtn"> <input type="button" id="cometupregbtn"  value="수정하기"  onclick="upregbtn(this)"> </div> </div> </div>');
-				$('#q_comment').val("");
-			},
-			error: function(e){
-				alert("등록실패");
-			}
-		});
-	}else{
-		alert("댓글을 입력하세요");
-		event.stopPropagation();
-	}
-	
+   let code = '${userImp.q_code}';
+   let writer = '${writer}';
+   let id = '${id}';
+   let comment = $('#q_comment').val();
+   if(comment != ""){ // 댓글내용이 없을때
+      if(id == 'admin'){ // 로그인 아이디가 관리자 아이디일 경우 닉네임을 무조건 관리자로
+         writer = '관리자';
+      }
+      let data = {
+         q_code: code,
+         q_id: id,
+         q_comment: comment,
+         q_writer: writer
+      };
+         $.ajax({
+         url: "${path}/qna/cometreg",
+         type: "post",
+         data:  data,
+         success: function(c){
+            let q_code_co = c.q_code_co;
+            let q_date = c.q_date;
+            let q_time = c.q_time;
+            if($('#cometnull').text()){
+               $('#cometnull').remove();
+            }
+            $('#commentlistbox').append('<div id = "cometbox" class="cometbox">'+
+                  ' <div id= "cometwriter" class="cometwriter">'+ writer + '</div>' +
+                  '<div id= "comment" class="comment">'+ comment + '</div>' +
+                  '<div class="date">' +q_date + " " + q_time+'</div>'+
+                  '<input type="hidden" id="cometup_key" value="'+q_code_co+'">'+
+                  '<input type="hidden" id="id_key" value="'+id+'">'+
+                  '<input type="button" id="cometupbtn" class="cometupbtn" value="수정" onclick="upbtn(this)" >' +
+                  '<input type="button" id="cometdelbtn" class="cometdelbtn" value="삭제" onclick="cometdel(this)">' +
+                  '<div id = "cometupbox" class="cometupbox" style="display: none">'+
+                  '<textarea  id="cometup_text" class="cometup_text"  placeholder="수정할 댓글을 입력하세요. 150자이내" required></textarea>'+
+                  '<div class="cometupregbtn"> <input type="button" id="cometupregbtn"  value="수정하기"  onclick="upregbtn(this)"> </div> </div> </div>');
+            $('#q_comment').val("");
+         },
+         error: function(e){
+            alert("등록실패");
+         }
+      });
+   }else{
+      alert("댓글을 입력하세요");
+      event.stopPropagation();
+   }
+   
 };
 
-function upbtn(c) {	// 댓글 수정버튼 토글
+function upbtn(c) {   // 댓글 수정버튼 토글
     let cometbox = $(c).closest('#cometbox');
     cometbox.find('#cometupbox').toggle();
 
@@ -534,55 +535,55 @@ function upbtn(c) {	// 댓글 수정버튼 토글
 };
 
 function upregbtn(c){ // 댓글 수정
-	let cometbox = $(c).closest('#cometbox');
-	let code = cometbox.find('#cometup_key').val();
-	let comment = cometbox.find('#cometup_text').val();
-	
-	if(comment == ""){
-		alert("수정할 댓글을 입력하세요");
-		event.stopPropagation();
-	}else{
-	let data ={
-			q_code_co : code,
-			q_comment : comment
-	};
-	$.ajax({
-		url: "${path}/qna/cometup",
-		type: "post",
-		data: data,
-		success: function(s){
-			cometbox.find('#comment').text(comment);
-		    cometbox.find('#cometup_text').val("");
-		    cometbox.find('#cometupbox').css('display', 'none');
-		},
-		error: function(e){
-			alert("수정실패");
-		}
-	});
-	}
+   let cometbox = $(c).closest('#cometbox');
+   let code = cometbox.find('#cometup_key').val();
+   let comment = cometbox.find('#cometup_text').val();
+   
+   if(comment == ""){ // 댓글내용이 없을때
+      alert("수정할 댓글을 입력하세요");
+      event.stopPropagation();
+   }else{ // 댓글내용이 있을때
+   let data ={
+         q_code_co : code,
+         q_comment : comment
+   };
+   $.ajax({
+      url: "${path}/qna/cometup",
+      type: "post",
+      data: data,
+      success: function(s){
+         cometbox.find('#comment').text(comment);
+          cometbox.find('#cometup_text').val("");
+          cometbox.find('#cometupbox').css('display', 'none');
+      },
+      error: function(e){
+         alert("수정실패");
+      }
+   });
+   }
 };
 
 function cometdel(c){ // 댓글 삭제
-	let cometbox = $(c).closest('#cometbox');
-	let q_code_co = cometbox.find('#cometup_key').val();
-	let f = confirm("댓글을 삭제하시겠습니까?");
-	if(f){
-		
-		let data={
-				q_code_co : q_code_co
-		};
-		$.ajax({
-			url: "${path}/qna/cometdel",
-			type: "post",
-			data: data,
-			success:function(s){
-				cometbox.remove();
-			},
-			error:function(e){
-				alert("삭제실패");
-			}
-		});
-	}
+   let cometbox = $(c).closest('#cometbox');
+   let q_code_co = cometbox.find('#cometup_key').val();
+   let f = confirm("댓글을 삭제하시겠습니까?");
+   if(f){
+      
+      let data={
+            q_code_co : q_code_co
+      };
+      $.ajax({
+         url: "${path}/qna/cometdel",
+         type: "post",
+         data: data,
+         success:function(s){
+            cometbox.remove();
+         },
+         error:function(e){
+            alert("삭제실패");
+         }
+      });
+   }
 };
 
 
@@ -619,7 +620,7 @@ function cometdel(c){ // 댓글 삭제
          }
          %>
             <li><img
-               src="${path}/images/<%=firstSelectedUser.getUser_image()%>"
+               src="<%=firstSelectedUser.getUser_image()%>"
                style="border-radius: 50%; width: 100px; height: 100px;">
                <h2>
                   <%
@@ -692,7 +693,7 @@ function cometdel(c){ // 댓글 삭제
             <input type="hidden" name="newLocation" value="${detail_loc}" />
             <button type="submit">동네거래</button>
          </form>
-      </div>
+      </div>      
       <%
       if (user != null && selectedUser != null) {
       %>
@@ -713,48 +714,50 @@ function cometdel(c){ // 댓글 삭제
 
 
    </header>
+   
 
         <div class="qnaview">
-	        <div class ="qna">
-	           <div class="title">
-	               <span>${userImp.q_title }</span>
-	               <span class="qna-datetime">${userImp.q_date} ${userImp.q_time}</span>
-	           </div>
-	           <div class="contents">
-	               <span>${userImp.q_contents }
-	               </span>
-	           </div>
-	        </div>
-	        
-	        <div class="submit">
-	            <form action="${path}/qna" method="get">
-	                <input type="submit" value="목록으로" class="back">
-	            </form>
-	            <form action="${path}/qna/qup" method="get">
-	                <input type="hidden" value="${userImp.q_code}"  name = "code">
-	                <input type="submit" id ="update" class="update" value="수정하기"/>
-	            </form>
-	            <form action="${path}/qna/qdel" method="post" >
-	                <input type="hidden" value="${userImp.q_code}" name="code">
-	                <input type="submit" onclick="return del(this.form)" class="delete" id = "delete" value="삭제하기"/>
-	            </form>
-	        </div>
-	        <div class="comment-title">
-	        	<span >댓글</span>
-	        </div>
-	        
-	        <div class="comment">
-	            <div>
-	                <div id="commentlistbox" class="commentlistbox">
-	                </div>
-	            </div>
-	            <div id = "comment_text" class="comment-textbox">
-	            	<textarea class="comment-text" name="q_comment" id="q_comment"  placeholder="댓글을 입력하세요. 150자이내" required></textarea>
-	            	<div class="comment-btn">
-	                	<input type="button"  id = "commentbtn"  value="등록" onclick="reg()">
-	            	</div>
-	            </div>
-	        </div>
+           <div class ="qna">
+              <div class="title">
+                  <span>${userImp.q_title }</span>
+                  <span class="qna-datetime">작성자: ${userImp.q_writer} | ${userImp.q_date} ${userImp.q_time}</span>
+              </div>              
+              <div class="contents">
+                  <span>${userImp.q_contents}
+                  </span>
+              </div>
+           </div>
+           
+           
+           <div class="submit">
+               <form action="${path}/qna" method="get">
+                   <input type="submit" value="목록으로" class="back">
+               </form>
+               <form action="${path}/qna/qup" method="get">
+                   <input type="hidden" value="${userImp.q_code}"  name = "code">
+                   <input type="submit" id ="update" class="update" value="수정하기"/>
+               </form>
+               <form action="${path}/qna/qdel" method="post" >
+                   <input type="hidden" value="${userImp.q_code}" name="code">
+                   <input type="submit" onclick="return del(this.form)" class="delete" id = "delete" value="삭제하기"/>
+               </form>
+           </div>
+           <div class="comment-title">
+              <span >댓글</span>
+           </div>
+           
+           <div class="comment">
+               <div>
+                   <div id="commentlistbox" class="commentlistbox">
+                   </div>
+               </div>
+               <div id = "comment_text" class="comment-textbox">
+                  <textarea class="comment-text" name="q_comment" id="q_comment"  placeholder="댓글을 입력하세요. 150자이내" required></textarea>
+                  <div class="comment-btn">
+                      <input type="button"  id = "commentbtn"  value="등록" onclick="reg()">
+                  </div>
+               </div>
+           </div>
     </div>
 
 
