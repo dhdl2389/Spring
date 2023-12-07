@@ -177,20 +177,17 @@ button:hover {
 	background-color: #d55500;
 }
 
-
-
 textarea {
 	resize: none;
 }
 </style>
 <style>
 .reg {
-	min-height: 700px;
+	min-height: 989px;
 	margin: 0 auto;
-	margin-top: 115px;
-	margin-bottom: 20px;
+	padding-top: 115px;
 	border-radius: 26px;
-	width: 1008px;
+	background-color: #fffae0;
 }
 
 .reg input[type=button], input[type=submit] {
@@ -206,61 +203,51 @@ textarea {
 }
 
 .reg-box {
-	width: 1008px;
-	border-top: 1px solid #00000075;
-	border-left: 1px solid #00000075;
-	border-right: 1px solid #00000075;
+	width: 897px;
 	min-height: 500px;
 	margin: 0 auto;
-	width: 1008px;
+	position: relative;
+	box-shadow: 0px 0px 5px #ccc;
+	border-radius: 8px;
 }
 
 .reg-tb {
-	border-collapse: collapse;
 	width: 100%;
 }
 
-.reg-tb tr {
-	min-height: 70px;
-	border-bottom: 1px solid #00000075;
-}
-
-.title, .contents {
-	width: 10%;
-	text-align: center;
+.title {
+	padding: 40px 20px 20px 20px;
+	border-top-left-radius: 8px;
+	border-top-right-radius: 8px;
 	font-size: 20px;
-	background-color: #ff6f0f;
-}
-
-.title-text, .contents-text {
-	border-left: 1px solid #00000075;
-	background-color: #fffcebd4;
-}
-
-.title-text {
-	padding: 10px;
+	background-color: white;
 }
 
 .title-textbox {
 	font-size: 20px;
-	width: 898px;
+	width: 763px;
 	padding: 0px 10px 0px 10px;
+	margin-left: 30px;
 }
 
 .contents {
 	min-height: 100px;
+	padding: 20px;
+	font-size: 20px;
+	background-color: white;
 }
 
-.contents-text {
-	padding: 10px;
+.contents span {
+	display: inline-block;
+	margin-bottom: 30px;
 }
 
 .contents-textbox {
+	text-align: left;
 	font-size: 20px;
 	padding: 10px;
-	width: 900px;
-	resize: vertical;
-	min-height: 400px;
+	width: 835px;
+	min-height: 322px;
 }
 
 .checklist-title {
@@ -268,11 +255,13 @@ textarea {
 }
 
 .checklist {
-	background-color: #fffcebd4;
 	position: relative;
 	height: 40px;
-	border-bottom: none;
-	padding-left: 10px;
+	padding: 20px 20px 40px 20px;
+	font-size: 20px;
+	background-color: white;
+	border-bottom-left-radius: 8px;
+	border-bottom-right-radius: 8px;
 }
 
 .checklist select {
@@ -281,21 +270,18 @@ textarea {
 }
 
 .submit-btn {
-	height: 28px;
+	height: 30px;
 	position: absolute;
-	right: 10px;
-	bottom: 7px;
-}
-
-.back-btnbox {
-	position: relative;
-	height: 60px;
+	right: 21px;
+	bottom: 28px;
+	width: 89px;
 }
 
 .back {
 	font-size: 18px;
 	position: absolute;
-	bottom: 21px;
+	bottom: -50px;
+	left: 14px;
 	height: 34px;
 	width: 92px;
 }
@@ -349,8 +335,7 @@ textarea {
 				<%
 				}
 				%>
-				<li><img
-					src="<%=firstSelectedUser.getUser_image()%>"
+				<li><img src="<%=firstSelectedUser.getUser_image()%>"
 					style="border-radius: 50%; width: 100px; height: 100px;">
 					<h2>
 						<%
@@ -450,32 +435,26 @@ textarea {
 			<form action="${path}/qna/reg" method="post">
 				<input type="hidden" name="id" value="${id }"> <input
 					type="hidden" name="writer" value="${writer }">
-				<table class="reg-tb">
-					<tr>
-						<td class="title"><label>제목</label></td>
-						<td class="title-text"><input type="text" name="title"
-							id="title" class="title-textbox" placeholder="제목을 입력하세요" required />
-						</td>
-					</tr>
-					<tr>
-						<td class="contents"><label>내용</label></td>
-						<td class="contents-text"><textarea name="contents"
-								id="contents" class="contents-textbox" placeholder="내용을 입력하세요"
-								required></textarea></td>
-					</tr>
-					<tr>
-						<td colspan="2" class="checklist"><span
-							class="checklist-title">공개설정</span> <select name="check"
+				<div class="reg-tb">
+					<div class="title">
+						<label>제목</label><input type="text" name="title" id="title"
+							class="title-textbox" placeholder="제목을 입력하세요" required />
+					</div>
+					<div class="contents">
+						<label>내용</label>
+						<textarea name="contents" id="contents" class="contents-textbox"
+							placeholder="내용을 입력하세요" required></textarea>
+					</div>
+					<div class="checklist">
+						<span class="checklist-title">공개설정</span> <select name="check"
 							id="check" required>
-								<option value="">선택하세요</option>
-								<option value="t">공개</option>
-								<option value="f">비공개</option>
-						</select> <input type="submit" class="submit-btn" value="등록"></td>
-					</tr>
-				</table>
+							<option value="">선택하세요</option>
+							<option value="t">공개</option>
+							<option value="f">비공개</option>
+						</select> <input type="submit" class="submit-btn" value="등록">
+					</div>
+				</div>
 			</form>
-		</div>
-		<div class="back-btnbox">
 			<form action="${path}/qna" method="get">
 				<button class="back">목록으로</button>
 			</form>

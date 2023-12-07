@@ -282,17 +282,19 @@ textarea {
     .update{
         position: absolute;
         top: 10px;
-        right: 10px;
+        right: 80px;
         background-color: #ff6f0f;
          color: #fff;
        border-radius: 4px;
        border: none;
        cursor: pointer;
+       
     }
     .delete{
-        position: absolute;
+ 
+         position: absolute;
         top: 10px;
-        right: 80px;
+        right: 10px;
         background-color: #ff6f0f;
          color: #fff;
        border-radius: 4px;
@@ -319,7 +321,6 @@ textarea {
     .comment-text{
        width: 961px;
        height: 36px;
-       resize: vertical;
        padding:9px;
     }
     .comment-btn{
@@ -365,7 +366,6 @@ textarea {
    .cometup_text{
       width: 961px;
        height: 36px;
-       resize: vertical;
        padding:9px;
    }
    .cometupregbtn{
@@ -379,6 +379,8 @@ textarea {
       right: -3px;
       bottom: 8px;
    }
+   
+
    
 </style>
 
@@ -407,7 +409,7 @@ $(document).ready(
 function del(n){ // 버튼 클릭 시 게시글 삭제
    let result = confirm("글을 삭제하시겠습니까?");
    if(result == true){
-      alert("정상적으로 처리되었습니다.");
+     
       return true;
    }else{
       return false;
@@ -417,15 +419,19 @@ function del(n){ // 버튼 클릭 시 게시글 삭제
 };
 
 function idcheck(){// session에 저장된 id가 같거나 'admin'일 경우 수정,삭제 버튼 보이기
-   if ('${id}' == '${userImp.q_id}'|| '${id}' == 'admin') {
+   if ('${id}' == '${userImp.q_id}') {
        document.getElementById('delete').style.display = 'block';
        document.getElementById('update').style.display = 'block';
    } else {
        document.getElementById('delete').style.display = 'none';
        document.getElementById('update').style.display = 'none';
    }
+   
+   if ('${id}' == 'admin') {
+       document.getElementById('update').style.display = 'none';
+       document.getElementById('delete').style.display = 'block';
+	} 
 }
-
 
 </script>
 <script >

@@ -97,13 +97,13 @@ public class QnaRepositoryImp implements QnaRepositoryI{
 	
 	@Override
 	public int deleteComment(QnaDTO dto){
+		// 문의 댓글 삭제
 		return session.delete(namespace + ".deleteco" , dto);
 	}
 	
 	@Override
 	public int deleteAllComment(int code) {
-		//문의 댓글 삭제
-		// TODO Auto-generated method stub
+		// 게시글 삭제 시 해당 문의 댓글 삭제
 		return session.delete(namespace + ".deleteAllco" , code);
 	}
 	

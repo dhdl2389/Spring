@@ -42,6 +42,7 @@ public class DeleteUserController {
 
 		// System.out.println(loginDTO);
 		// productService.deleteProduct2(boardId);
+		productService.deleteProduct6(user_code);
 		productService.deleteProduct4(user_id);
 		productService.deleteProduct3(user_code);
 		orderService.deleteProduct5(user_id);
@@ -63,6 +64,7 @@ public class DeleteUserController {
 			@RequestParam String user_id, @RequestParam String user_code, Model model, HttpServletRequest request) {
 		// @RequestParam String boardId,
 		// productService.deleteProduct2(boardId);
+		productService.deleteProduct6(user_code);
 		productService.deleteProduct4(user_id);
 		productService.deleteProduct3(user_code);
 		orderService.deleteProduct5(user_id);
@@ -82,8 +84,8 @@ public class DeleteUserController {
 
 	//// 관리자 게시글 삭제 /////
 	@PostMapping("/products/adminBoardDelete")
-	public String productDelete(@RequestParam String boardId, @ModelAttribute ProductDTO productDTO, Model model) {
-
+	public String productDelete(@RequestParam String boardId, @RequestParam String user_code, @ModelAttribute ProductDTO productDTO, Model model) {
+		productService.deleteProduct6(user_code);
 		// productService.deleteProduct2(boardId);
 		productService.deleteProduct(boardId);
 		ProductDTO product = productService.getProductById(boardId);
