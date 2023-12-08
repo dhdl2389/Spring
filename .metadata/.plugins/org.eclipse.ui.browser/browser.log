@@ -235,3 +235,8 @@
 12월 07, 2023 11:22:33.269 NEW SESSION
 12월 07, 2023 11:22:33.269 [312536:375728:1207/112233.265:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -105
 12월 07, 2023 13:01:31.159 [312536:375728:1207/130131.159:ERROR:connection_factory_impl.cc(471)] ConnectionHandler failed with net error: -2
+
+12월 08, 2023 10:08:35.328 NEW SESSION
+12월 08, 2023 10:08:35.328 [399304:454628:1208/100835.324:ERROR:interface_endpoint_client.cc(702)] Message 1 rejected by interface blink.mojom.WidgetHost
+12월 08, 2023 10:33:19.68 [399304:454628:1208/103319.068:ERROR:interface_endpoint_client.cc(702)] Message 4 rejected by interface blink.mojom.WidgetHost
+12월 08, 2023 11:43:22.878 INFO: Created TensorFlow Lite XNNPACK delegate for CPU.

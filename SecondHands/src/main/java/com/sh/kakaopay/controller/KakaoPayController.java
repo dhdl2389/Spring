@@ -52,6 +52,7 @@ public class KakaoPayController {
 			@RequestParam String user_nickname, @RequestParam String board_price, @RequestParam String member_addr,
 			@RequestParam String detailed_address, @RequestParam String member_post, @RequestParam String delivery_req,
 			Model model, OrderDTO orderDTO) {
+		
 		// 카카오 api 호출
 		ProductDTO product = productservice.getProductById(board_id);
 		List<ProductDTO> productList = new ArrayList<>();
@@ -82,7 +83,7 @@ public class KakaoPayController {
 		model.addAttribute("info" + kakaopay.kakaoPayInfo(pg_token, order));
 
 		service.registerOrder(order);
-
+		
 		productService.deleteProduct2(order.getBoard_id());
 		productService.deleteProduct(order.getBoard_id());
 

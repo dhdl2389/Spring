@@ -673,6 +673,8 @@ button[type="submit"][form="saveForm"]:hover {
 									onsubmit="return confirm(' 게시글 중 '+' ${products.board_Title}' + '을(를) 삭제합니다 .');">
 									<input type="hidden" name="boardId"
 										value="${products.board_Id}">
+											<input type="hidden" name=user_code
+										value="${products.user_code}">
 									<button type="submit">게시글 삭제</button>
 								</form>
 

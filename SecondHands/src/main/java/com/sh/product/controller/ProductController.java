@@ -191,8 +191,9 @@ public class ProductController {
 
    ///////////////////////////// 상품삭제 /////////////////////////////
    @PostMapping("/products/delete")
-   public String productDelete(@RequestParam String boardId, Model model) {
+   public String productDelete(@RequestParam String boardId, @RequestParam String user_code3, Model model) {
       ProductDTO product = productservice.getProductById(boardId);
+      productservice.deleteProduct6(user_code3);
       productservice.deleteProduct2(boardId);
       productservice.deleteProduct(boardId);
       model.addAttribute("product", product);
