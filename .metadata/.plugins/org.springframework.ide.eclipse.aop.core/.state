@@ -11,11 +11,12 @@
 <aop-project name="day5Test"/>
 <aop-project name="day9"/>
 <aop-project name="dbtest"/>
+<aop-project name="SecondHandsRef"/>
 <aop-project name="mysqlPrj"/>
 <aop-project name="sessionSU"/>
 <aop-project name="cartBatis"/>
-<aop-project name="webchat"/>
 <aop-project name="helloPrj"/>
+<aop-project name="webchat"/>
 <aop-project name="day5Cookie"/>
 <aop-project name="batisTran"/>
 <aop-project name="day2"/>

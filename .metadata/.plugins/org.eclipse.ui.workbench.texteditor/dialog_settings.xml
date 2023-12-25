@@ -1,13 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <section name="Workbench">
 	<section name="org.eclipse.ui.texteditor.FindReplaceDialog">
-		<item key="selection" value="batis"/>
+		<item key="selection" value="spring-context"/>
 		<item key="wrap" value="true"/>
 		<item key="casesensitive" value="false"/>
 		<item key="wholeword" value="false"/>
 		<item key="incremental" value="false"/>
 		<item key="isRegEx" value="false"/>
 		<list key="findhistory">
+			<item value="spring-context"/>
+			<item value="확인"/>
+			<item value="init"/>
+			<item value="ㅑㅜㅑㅅ"/>
+			<item value="Plain Pass"/>
 			<item value="batis"/>
 			<item value="삭제"/>
 			<item value="likeEvent"/>
@@ -18,11 +23,6 @@
 			<item value="웹"/>
 			<item value="ws"/>
 			<item value=".title"/>
-			<item value="비밀글"/>
-			<item value="detail-container"/>
-			<item value="default"/>
-			<item value="board_cate"/>
-			<item value="글등록하기"/>
 		</list>
 		<list key="replacehistory">
 			<item value="location_form"/>
